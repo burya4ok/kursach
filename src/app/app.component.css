@@ -1,0 +1,10 @@
+body {
+    margin: 0;
+}
+md-toolbar {
+    -webkit-user-select: none;
+    -webkit-app-region: drag;
+}
+md-toolbar span, md-toolbar button {
+    -webkit-app-region: no-drag;
+}
