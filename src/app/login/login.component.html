@@ -1,19 +1,16 @@
-<md-toolbar color="primary">
-    <span>
-      GEMK DEMO - Вхід
-    </span>
-  <span class="fill-bar"></span>
-  <button md-icon-button [md-menu-trigger-for]="menu">
-    <md-icon>keyboard_arrow_down</md-icon>
-  </button>
-  <button md-icon-button (click)="close()">
-    <md-icon>close</md-icon>
-  </button>
-</md-toolbar>
-<md-menu x-position="before" #menu="mdMenu">
-  <button routerLink="/student" (click)="toStudent()" md-menu-item>Студент</button>
-  <button routerLink="/teacher" (click)="toTeacher()" md-menu-item>Вчитель</button>
-</md-menu>
-<md-input placeholder="amount" align="end"></md-input>
-<button md-raised-button>УВІЙТИ</button>
+<div class="col-md-5 image-block">
+    <img class="login-image" src="../../assets/img/img.png">
+</div>
+
+<div class="col-md-7">
+    <div class="container col-centered">
+        <span class="subject-name login-content">Назва предемету</span>
+        <button class="choise" md-raised-button [disabled]="teacher" (click)="toStudent()">Студент</button>
+        <button class="choise" md-raised-button [disabled]="student" (click)="toTeacher()">Вчитель</button>
+        <md-input class="login-content" placeholder="Пароль" type="password" align="end"></md-input>
+        <button class="login-content" md-raised-button (click)="login()">УВІЙТИ</button>
+    </div>
+</div>
+
+
 

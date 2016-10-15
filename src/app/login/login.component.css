@@ -1,3 +1,36 @@
-.fill-bar{
-  flex: 1 1 auto;
+.fill-bar {
+    flex: 1 1 auto;
+}
+
+.col-centered md-input {
+    margin: 15px 0;
+    width: 100%;
+}
+
+.col-centered .login-content:not(md-input) {
+    width: 100%;
+    display: inline-block;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.subject-name {
+    position: relative;
+    top: 20vh;
+    vertical-align: middle;
+    height: 50%;
+    font-size: 28px;
+}
+
+.image-block {
+    height: 100%;
+    background: #ccc;
+}
+
+.right {
+    right: 0;
+}
+
+.choise {
+    width: 40%;
 }

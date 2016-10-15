@@ -16,7 +16,9 @@ module.exports = {
   watchOptions: {
     aggregateTimeout: 100
   },
-
+  devServer: {
+    port: 1337
+  },
   devtool: 'source-map',
 
   output: {

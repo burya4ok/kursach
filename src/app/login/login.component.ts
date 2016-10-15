@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router'
+
 import { ipcRenderer, remote } from 'electron';
 
 @Component({
@@ -8,30 +10,37 @@ import { ipcRenderer, remote } from 'electron';
 })
 export class LoginComponent implements OnInit {
   win: Electron.BrowserWindow;
-  constructor() {
+  teacher: boolean;
+  student: boolean;
 
+  constructor(private router: Router) {
+    this.student = false;
+    this.teacher = false;
   }
 
-  toStudent() {
-    this.win = remote.getCurrentWindow();
-    this.win.hide();
-    this.win.setSize(1000, 600);
-    this.win.center();
-    this.win.show();
-  }
+  toStudent = () => {
+    this.student = true;
+    this.teacher = false;
+  };
 
-  toTeacher() {
-    this.win = remote.getCurrentWindow();
-    this.win.hide();
-    this.win.setSize(1000, 600);
-    this.win.center();
-    this.win.show();
-  }
+  toTeacher = () => {
+    this.teacher = true;
+    this.student = false;
+  };
 
-  close() {
-    ipcRenderer.send('closeLogin', function () {
-    })
-  }
+  login = () => {
+    if (this.student || this.teacher){
+      this.win = remote.getCurrentWindow();
+      this.win.maximize();
+      this.win.center();
+      if (this.student) {
+        this.router.navigate(['student']);
+      }
+      else if (this.teacher) {
+        this.router.navigate(['teacher']);
+      }
+    }
+  };
 
   ngOnInit() {
 

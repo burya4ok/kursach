@@ -8,3 +8,8 @@ md-toolbar {
 md-toolbar span, md-toolbar button {
     -webkit-app-region: no-drag;
 }
+
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}

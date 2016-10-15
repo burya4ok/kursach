@@ -1,5 +1,5 @@
 {
-  "name": "angular2desk",
+  "name": "GEMK_DEMO",
   "version": "1.0.0",
   "description": "",
   "main": "src/electron/index.js",
@@ -32,11 +32,11 @@
     "sass-loader": "^4.0.2",
     "ts-helpers": "^1.1.1",
     "ts-loader": "^0.7.2",
-    "typescript": "^1.7.3",
+    "typescript": "^2.1.0-dev.20161013",
     "url-loader": "^0.5.7",
-    "webpack": "^1.12.9",
+    "webpack": "^2.0.1-beta",
     "webpack-dashboard": "^0.2.0",
-    "webpack-dev-server": "^1.14.0"
+    "webpack-dev-server": "^1.16.2"
   },
   "dependencies": {
     "@angular/common": "2.0.0",
@@ -48,10 +48,12 @@
     "@angular/platform-browser": "2.0.0",
     "@angular/platform-browser-dynamic": "2.0.0",
     "@angular/router": "3.0.0",
+    "bootstrap": "^4.0.0-alpha.4",
     "codelyzer": "^1.0.0-beta.0",
     "core-js": "^2.4.1",
     "electron": "^1.4.3",
     "istanbul-instrumenter-loader": "^1.0.0",
+    "jquery": "^3.1.1",
     "null-loader": "^0.1.1",
     "reflect-metadata": "^0.1.8",
     "rimraf": "^2.5.4",
