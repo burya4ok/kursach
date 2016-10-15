@@ -1,26 +1,26 @@
 import { Component, OnInit } from '@angular/core';
-import { remote } from 'electron';
+import { remote, ipcRenderer } from 'electron';
+import {LoginService} from "../services/login.service";
 
 
 @Component({
   selector: 'app-student',
   templateUrl: './student.component.html',
-  styleUrls: ['./student.component.css']
+  styleUrls: ['./student.component.css'],
+  providers: [LoginService]
 
 })
 export class StudentComponent implements OnInit {
   win: Electron.BrowserWindow;
-
-  constructor() { }
+  constructor(private loginService: LoginService) { }
 
   exit() {
-    this.win = remote.getCurrentWindow();
-    this.win.hide();
-    this.win.setSize(500, 370);
-    this.win.center();
-    this.win.show();
+    this.loginService.deleteTypeOfUser();
+    ipcRenderer.send('loginWindow')
+
   }
 
   ngOnInit() {
+    remote.getCurrentWindow().maximize();
   }
 }

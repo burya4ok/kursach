@@ -1,7 +1,7 @@
 const electron = require('electron');
-const {app, BrowserWindow, ipcMain} = electron;
-
-
+const {app, BrowserWindow} = electron;
+const loginWindow = require('./loginWindow');
+const mainWindow = require('./mainWindow');
 let win;
 
 function createWindow() {
@@ -37,3 +37,6 @@ app.on('activate', () => {
         createWindow();
     }
 });
+
+loginWindow(electron);
+mainWindow(electron);

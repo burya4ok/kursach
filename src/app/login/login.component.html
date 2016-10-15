@@ -5,8 +5,8 @@
 <div class="col-md-7">
     <div class="container col-centered">
         <span class="subject-name login-content">Назва предемету</span>
-        <button class="choise" md-raised-button [disabled]="teacher" (click)="toStudent()">Студент</button>
-        <button class="choise" md-raised-button [disabled]="student" (click)="toTeacher()">Вчитель</button>
+        <button class="btn-type" md-raised-button [disabled]="student" (click)="toStudent()">Студент</button>
+        <button class="btn-type" md-raised-button [disabled]="teacher" (click)="toTeacher()">Вчитель</button>
         <md-input class="login-content" placeholder="Пароль" type="password" align="end"></md-input>
         <button class="login-content" md-raised-button (click)="login()">УВІЙТИ</button>
     </div>
