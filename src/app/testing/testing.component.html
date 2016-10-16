@@ -29,7 +29,7 @@
             </button>
         </md-list-item>
         <md-list-item>
-            <a md-line routerLink="/testing">Перевірка знань</a>
+            <a md-line href="#">Перевірка знань</a>
             <button md-icon-button>
                 <md-icon>info</md-icon>
             </button>
@@ -38,6 +38,23 @@
     </md-nav-list>
 </div>
 <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
-    Інформації нема...
+    <div class="container">
+        <h1>Перевірка знань</h1>
+        <div class="col-md-12 mode">
+            <span>Виберіть режим:</span>
+            <button class="btn-type" md-raised-button>Навчання</button>
+            <button class="btn-type" md-raised-button>Тестування</button>
+        </div>
+
+        <div class="col-md-12 theme">
+            <span>Виберіть тему:</span>
+            <button class="btn-type" md-raised-button>Вся програма</button>
+            <button class="btn-type" md-raised-button>Окрема тема</button>
+        </div>
+
+        <div class="col-md-12 start">
+            <button md-raised-button>Розпочати перевірку знань</button>
+        </div>
+    </div>
 </div>
 
