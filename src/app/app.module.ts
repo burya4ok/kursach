@@ -11,6 +11,7 @@ import { LoginComponent } from './login/login.component';
 import { TeacherComponent } from './teacher/teacher.component';
 import { StudentComponent } from './student/student.component';
 import { TestingComponent } from './testing/testing.component';
+import { TestingPageComponent } from './testingPage/testingPage.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { TestingComponent } from './testing/testing.component';
     LoginComponent,
     TeacherComponent,
     StudentComponent,
-    TestingComponent
+    TestingComponent,
+    TestingPageComponent
   ],
   imports: [
     BrowserModule,
