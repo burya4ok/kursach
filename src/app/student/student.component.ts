@@ -14,13 +14,7 @@ export class StudentComponent implements OnInit {
   win: Electron.BrowserWindow;
   constructor(private loginService: LoginService) { }
 
-  exit() {
-    this.loginService.deleteTypeOfUser();
-    ipcRenderer.send('loginWindow')
-
-  }
 
   ngOnInit() {
-    remote.getCurrentWindow().maximize();
   }
 }

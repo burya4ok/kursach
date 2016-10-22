@@ -6,7 +6,7 @@ module.exports = function (electron) {
         var options = {
             width: 1000,
             height: 800,
-            hide: true
+            show: false
         };
         win = new BrowserWindow(options);
         //win.setMenu(null);

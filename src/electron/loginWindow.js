@@ -6,7 +6,8 @@ module.exports = function (electron) {
         var options = {
             width: 800,
             height: 500,
-            resizable: false
+            resizable: false,
+            show: false
 
         };
         win = new BrowserWindow(options);

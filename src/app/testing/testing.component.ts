@@ -12,13 +12,11 @@ import {LoginService} from "../services/login.service";
 })
 export class TestingComponent implements OnInit {
   win: Electron.BrowserWindow;
-  constructor(private loginService: LoginService) { }
-
-  exit() {
-    this.loginService.deleteTypeOfUser();
-    ipcRenderer.send('loginWindow')
-
+  title: string;
+  constructor(private loginService: LoginService) {
+    this.title = 'Testing';
   }
+
 
   ngOnInit() {
     remote.getCurrentWindow().maximize();

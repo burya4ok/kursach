@@ -1,1 +1,42 @@
-<router-outlet> </router-outlet>
+<md-toolbar color="primary">
+    <span>
+      {{title}}
+    </span>
+    <span class="fill-bar"></span>
+    <button md-icon-button (click)="exit()" routerLink="/login">
+        <md-icon>exit_to_app</md-icon>
+    </button>
+</md-toolbar>
+<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+    <md-nav-list>
+        <md-list-item routerLink="/testing" routerLinkActive="active">
+            <a md-line>Пункт меню</a>
+            <button md-icon-button>
+                <md-icon>info</md-icon>
+            </button>
+        </md-list-item>
+        <md-list-item routerLink="/testing" routerLinkActive="active">
+            <a md-line>Пункт меню</a>
+            <button md-icon-button>
+                <md-icon>info</md-icon>
+            </button>
+        </md-list-item>
+        <md-list-item routerLink="/testing" routerLinkActive="active">
+            <a md-line>Пункт меню</a>
+            <button md-icon-button>
+                <md-icon>info</md-icon>
+            </button>
+        </md-list-item>
+        <md-list-item routerLink="/testing" routerLinkActive="active">
+            <a md-line >Перевірка знань</a>
+            <button md-icon-button>
+                <md-icon>info</md-icon>
+            </button>
+        </md-list-item>
+
+    </md-nav-list>
+</div>
+
+<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+        <router-outlet [title]></router-outlet>
+</div>

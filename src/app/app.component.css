@@ -13,3 +13,7 @@ md-toolbar span, md-toolbar button {
     float: none;
     margin: 0 auto;
 }
+
+md-list-item.active .md-list-item {
+    background-color: #cccccc;
+}

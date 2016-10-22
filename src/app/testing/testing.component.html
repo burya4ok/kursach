@@ -1,60 +1,19 @@
-<md-toolbar color="primary">
-    <span>
-      GEMK DEMO - Студент
-    </span>
-    <span class="fill-bar"></span>
-    <button md-icon-button (click)="exit()" routerLink="/login">
-        <md-icon>exit_to_app</md-icon>
-    </button>
-</md-toolbar>
-
-<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-    <md-nav-list>
-        <md-list-item>
-            <a md-line href="#">Пункт меню</a>
-            <button md-icon-button>
-                <md-icon>info</md-icon>
-            </button>
-        </md-list-item>
-        <md-list-item>
-            <a md-line href="#">Пункт меню</a>
-            <button md-icon-button>
-                <md-icon>info</md-icon>
-            </button>
-        </md-list-item>
-        <md-list-item>
-            <a md-line href="#">Пункт меню</a>
-            <button md-icon-button>
-                <md-icon>info</md-icon>
-            </button>
-        </md-list-item>
-        <md-list-item>
-            <a md-line href="#">Перевірка знань</a>
-            <button md-icon-button>
-                <md-icon>info</md-icon>
-            </button>
-        </md-list-item>
-
-    </md-nav-list>
+<h1>Перевірка знань</h1>
+<div class="col-md-12 mode">
+    <span>Виберіть режим:</span>
+    <button class="btn-type" md-raised-button>Навчання</button>
+    <button class="btn-type" md-raised-button>Тестування</button>
 </div>
-<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
-    <div class="container">
-        <h1>Перевірка знань</h1>
-        <div class="col-md-12 mode">
-            <span>Виберіть режим:</span>
-            <button class="btn-type" md-raised-button>Навчання</button>
-            <button class="btn-type" md-raised-button>Тестування</button>
-        </div>
 
-        <div class="col-md-12 theme">
-            <span>Виберіть тему:</span>
-            <button class="btn-type" md-raised-button>Вся програма</button>
-            <button class="btn-type" md-raised-button>Окрема тема</button>
-        </div>
-
-        <div class="col-md-12 start">
-            <button md-raised-button>Розпочати перевірку знань</button>
-        </div>
-    </div>
+<div class="col-md-12 theme">
+    <span>Виберіть тему:</span>
+    <button class="btn-type" md-raised-button>Вся програма</button>
+    <button class="btn-type" md-raised-button>Окрема тема</button>
 </div>
+
+<div class="col-md-12 start">
+    <button md-raised-button>Розпочати перевірку знань</button>
+</div>
+
+
 
