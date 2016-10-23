@@ -1,5 +1,5 @@
 module.exports = function (electron) {
-    const { BrowserWindow, ipcMain} = electron;
+    const {BrowserWindow, ipcMain} = electron;
     let win = null;
 
     function createWindow() {
@@ -19,14 +19,20 @@ module.exports = function (electron) {
 
         win.once('ready-to-show', () => {
             win.show();
+            win.maximize();
         });
     }
 
-    ipcMain.on('mainWindow', function () {
-        let prevWindow =  BrowserWindow.getFocusedWindow();
-        prevWindow.hide();
-        createWindow();
-        prevWindow.close();
-    })
+    ipcMain.on('mainWindow', createMain);
 
+    module.exports.create = createMain;
+    function createMain() {
+        let prevWindow = BrowserWindow.getFocusedWindow();
+        if (prevWindow) {
+            prevWindow.hide();
+            createWindow();
+            prevWindow.close();
+        }
+        createWindow();
+    }
 };

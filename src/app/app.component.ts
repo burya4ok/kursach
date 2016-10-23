@@ -1,8 +1,7 @@
 import {Component, ViewEncapsulation} from '@angular/core';
 import {LoginService} from "./services/login.service";
-import { remote, ipcRenderer } from 'electron';
-import {Router, ActivatedRoute} from "@angular/router";
-import {Location} from "@angular/common";
+import { ipcRenderer } from 'electron';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -12,11 +11,14 @@ import {Location} from "@angular/common";
   encapsulation: ViewEncapsulation.None
 })
 export class AppComponent {
-  constructor(private loginService: LoginService, private location: Location,
-              private route: ActivatedRoute){
+  constructor(private loginService: LoginService, private router: Router){
   }
   exit() {
     this.loginService.deleteTypeOfUser();
     ipcRenderer.send('loginWindow')
+  }
+  isActive() {
+    return window.location.pathname.indexOf('login') > -1 ||
+           window.location.pathname.indexOf('testingPage') > -1;
   }
 }

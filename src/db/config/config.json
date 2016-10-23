@@ -1,0 +1,9 @@
+{
+  "development": {
+    "username": null,
+    "password": null,
+    "host": "localhost",
+    "dialect": "sqlite",
+    "storage": "../data.sqlite3"
+  }
+}

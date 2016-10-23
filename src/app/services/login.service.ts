@@ -1,17 +1,22 @@
 import { Injectable } from '@angular/core';
-
+import { ipcRenderer } from 'electron';
 
 @Injectable()
 export class LoginService {
     setTypeOfUser(type: string): void{
-        localStorage.setItem('typeOfUser', type);
+        ipcRenderer.send('setTypeOfUser', type);
     }
 
-    getTypeOfUser(): string{
-        return localStorage.getItem('typeOfUser');
+    getTypeOfUser(): Promise<any>{
+        ipcRenderer.send('getTypeOfUser');
+        return new Promise(function (resolve, reject) {
+            ipcRenderer.on('typeOfUser', function (type) {
+                resolve(type);
+            })
+        })
     }
 
     deleteTypeOfUser(): void{
-        localStorage.removeItem('typeOfUser');
+        ipcRenderer.send('deleteTypeOfUser');
     }
 }

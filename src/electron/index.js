@@ -1,14 +1,17 @@
 const electron = require('electron');
 const {app, BrowserWindow} = electron;
+const Promise = require('bluebird');
 const loginWindow = require('./loginWindow');
 const mainWindow = require('./mainWindow');
-let win;
+const db = require('./db.js');
+const models = require('../db/models');
+
+let win = null;
 
 function createWindow() {
     var options = {
         width: 800,
         height: 500,
-        resizable: false,
         show: false
     };
     win = new BrowserWindow(options);
@@ -20,9 +23,20 @@ function createWindow() {
         win = null;
     });
 
-    win.once('ready-to-show', () => {
-        win.show();
-    });
+    win.once('ready-to-show', Promise.coroutine(function *() {
+        let type = yield models.Config.findAll({
+            where: {
+                key: 'typeOfUser'
+            },
+
+        });
+        console.log(type);
+        if (type === 'student' || type === 'teacher') {
+            mainWindow.create();
+        } else {
+            loginWindow.create();
+        }
+    }))
 }
 
 app.on('ready', createWindow);
@@ -38,6 +52,5 @@ app.on('activate', () => {
         createWindow();
     }
 });
-
 loginWindow(electron);
 mainWindow(electron);

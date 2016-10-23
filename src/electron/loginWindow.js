@@ -24,10 +24,17 @@ module.exports = function (electron) {
         });
     }
 
-    ipcMain.on('loginWindow', function () {
-        let prevWindow =  BrowserWindow.getFocusedWindow();
-        createWindow();
-        prevWindow.close();
-    })
+    ipcMain.on('loginWindow', createLogin);
 
+    module.exports.create = createLogin;
+
+    function createLogin() {
+        let prevWindow =  BrowserWindow.getFocusedWindow();
+        if (prevWindow) {
+            prevWindow.hide();
+            createWindow();
+            prevWindow.close();
+        }
+        createWindow();
+    }
 };
