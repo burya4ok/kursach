@@ -32,7 +32,8 @@ module.exports = function (electron) {
             prevWindow.hide();
             createWindow();
             prevWindow.close();
+        } else {
+            createWindow();
         }
-        createWindow();
     }
 };
