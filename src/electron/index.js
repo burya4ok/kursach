@@ -24,12 +24,7 @@ function createWindow() {
     });
 
     win.once('ready-to-show', Promise.coroutine(function *() {
-        let type = yield models.Config.findAll({
-            where: {
-                key: 'typeOfUser'
-            },
-
-        });
+        let type = yield models.Config.getTypeOfUser();
         console.log(type);
         if (type === 'student' || type === 'teacher') {
             mainWindow.create();
@@ -53,4 +48,5 @@ app.on('activate', () => {
     }
 });
 loginWindow(electron);
+db(electron);
 mainWindow(electron);

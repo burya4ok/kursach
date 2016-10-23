@@ -7,13 +7,8 @@ export class LoginService {
         ipcRenderer.send('setTypeOfUser', type);
     }
 
-    getTypeOfUser(): Promise<any>{
-        ipcRenderer.send('getTypeOfUser');
-        return new Promise(function (resolve, reject) {
-            ipcRenderer.on('typeOfUser', function (type) {
-                resolve(type);
-            })
-        })
+    getTypeOfUser(): string{
+        return ipcRenderer.sendSync('getTypeOfUser');
     }
 
     deleteTypeOfUser(): void{

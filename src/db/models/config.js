@@ -1,3 +1,7 @@
+var Promise = require('bluebird');
+var coroutine = Promise.coroutine;
+
+
 module.exports = function (sequelize, DataTypes) {
     var Config = sequelize.define('Config', {
         id: {
@@ -8,17 +12,41 @@ module.exports = function (sequelize, DataTypes) {
         },
         key: {
             type: DataTypes.TEXT,
-            allowNull: false,
+            allowNull: true,
         },
         value: {
             type: DataTypes.TEXT,
-            allowNull: false,
+            allowNull: true,
         }
     }, {
         tableName: 'Config',
         paranoid: true,
         timestamps: false,
-        freezeTableName: true
+        freezeTableName: true,
+        classMethods: {
+            getTypeOfUser: coroutine(function *() {
+                let type = yield Config.findOne({
+                    where: {
+                        key: 'typeOfUser'
+                    },
+                    plain: true
+                });
+                return type ? type.value : null;
+            }),
+            setTypeOfUser: coroutine(function *(type) {
+                yield Config.upsert({
+                    key: 'typeOfUser',
+                    value: type
+                });
+            }),
+            deleteTypeOfUser: coroutine(function *() {
+                yield Config.destroy({
+                    where: {
+                        key: 'typeOfUser'
+                    }
+                });
+            })
+        }
     });
     return Config;
 };
