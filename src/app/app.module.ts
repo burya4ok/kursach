@@ -10,8 +10,8 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { TeacherComponent } from './teacher/teacher.component';
 import { StudentComponent } from './student/student.component';
-import { TestingComponent } from './testing/testing.component';
-import { TestingPageComponent } from './testingPage/testingPage.component';
+import { TestingComponent } from './student/testing/testing.component';
+import { TestingPageComponent } from './student/testingPage/testingPage.component';
 import {LoginService} from "./services/login.service";
 
 @NgModule({

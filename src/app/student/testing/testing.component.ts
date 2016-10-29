@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { remote, ipcRenderer } from 'electron';
-import {LoginService} from "../services/login.service";
+import {LoginService} from "../../services/login.service";
 
 
 @Component({
