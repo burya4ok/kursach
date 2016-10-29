@@ -7,14 +7,18 @@ import {LoginService} from "../services/login.service";
   selector: 'app-student',
   templateUrl: './student.component.html',
   styleUrls: ['./student.component.css'],
-  providers: [LoginService]
 
 })
 export class StudentComponent implements OnInit {
   win: Electron.BrowserWindow;
-  constructor(private loginService: LoginService) { }
+  constructor(private loginService: LoginService) {
+  }
 
 
   ngOnInit() {
+    this.loginService.setTitle('Студент');
+    console.log(this.loginService.title);
+
+
   }
 }

@@ -17,3 +17,7 @@ md-toolbar span, md-toolbar button {
 md-list-item.active .md-list-item {
     background-color: #cccccc;
 }
+
+* {
+    -webkit-user-select: none;
+}

@@ -3,7 +3,7 @@ const {app, BrowserWindow} = electron;
 const Promise = require('bluebird');
 const loginWindow = require('./loginWindow');
 const mainWindow = require('./mainWindow');
-const db = require('./db.js');
+const db = require('./db');
 const models = require('../db/models');
 
 let win = null;

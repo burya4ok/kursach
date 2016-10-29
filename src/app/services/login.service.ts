@@ -3,6 +3,7 @@ import { ipcRenderer } from 'electron';
 
 @Injectable()
 export class LoginService {
+    title: string;
     setTypeOfUser(type: string): void{
         ipcRenderer.send('setTypeOfUser', type);
     }
@@ -14,4 +15,16 @@ export class LoginService {
     deleteTypeOfUser(): void{
         ipcRenderer.send('deleteTypeOfUser');
     }
+
+    checkPassword(type: string, password: string): boolean {
+        return ipcRenderer.sendSync('checkPassword', {type: type, password: password});
+    }
+
+    public setTitle(title: string): void {
+        this.title = title;
+    };
+
+    getTitle(): string{
+        return this.title ;
+    };
 }

@@ -4,7 +4,6 @@ module.exports = {
     up: function (queryInterface, Sequelize) {
         return queryInterface.bulkInsert('Test', [
             {
-                id: '1',
                 theme: 'Test theme',
                 question: 'Test question',
                 answer1: 'Test answer1',
@@ -14,7 +13,6 @@ module.exports = {
                 good: 'Test good'
             },
             {
-                id: '2',
                 theme: '2Test theme',
                 question: '2Test question',
                 answer1: '2Test answer1',
@@ -24,7 +22,6 @@ module.exports = {
                 good: '2Test good'
             },
             {
-                id: '3',
                 theme: '3Test theme',
                 question: '3Test question',
                 answer1: '3Test answer1',
@@ -34,7 +31,6 @@ module.exports = {
                 good: '3Test good'
             },
             {
-                id: '4',
                 theme: '4Test theme',
                 question: '4Test question',
                 answer1: '4Test answer1',
@@ -44,7 +40,6 @@ module.exports = {
                 good: '4Test good'
             },
             {
-                id: '5',
                 theme: '5Test theme',
                 question: '5Test question',
                 answer1: '5Test answer1',

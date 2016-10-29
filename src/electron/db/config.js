@@ -1,12 +1,12 @@
+'use strict';
 const Promise = require('bluebird');
 
 module.exports = function (electron) {
     const { ipcMain } = electron;
-    const db = require('../db/models');
+    const db = require('../../db/models');
 
     ipcMain.on('getTypeOfUser', Promise.coroutine(function *(event, data) {
-        let type = yield db.Config.getTypeOfUser();
-        event.returnValue = type;
+        event.returnValue = yield db.Config.getTypeOfUser();
     }));
 
     ipcMain.on('setTypeOfUser', Promise.coroutine(function *(event, data) {

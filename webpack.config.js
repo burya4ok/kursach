@@ -2,14 +2,14 @@ var webpack = require('webpack');
 var path = require('path');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 // Webpack Config
 module.exports = {
   entry: {
-    'polyfills':       './src/polyfills.ts',
-    'vendor':          './src/vendor.ts',
-    'app':             './src/main.ts'
+    'polyfills':       './polyfills.ts',
+    'vendor':          './vendor.ts',
+    'app':             './main.ts'
   },
 
   watch: true,
@@ -25,25 +25,33 @@ module.exports = {
     path: './dist',
     filename: '[name].bundle.js',
     sourceMapFilename: '[name].map',
-    chunkFilename: '[id].chunk.js'
+    chunkFilename: '[id].chunk.js',
+    publicPath: './'
   },
 
   resolve: {
-    extensions: ['', '.ts', '.js']
+    extensions: ['', '.ts', '.js', '.jpg']
   },
+  context: path.join(__dirname, 'src'),
 
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/index.html'
+      template: './index.html'
     }),
     new webpack.optimize.CommonsChunkPlugin({ name: ['app', 'vendor', 'polyfills'], minChunks: Infinity }),
     new ExtractTextPlugin("[name].css"),
-    new webpack.optimize.DedupePlugin()
+    new webpack.optimize.DedupePlugin(),
+    new CopyWebpackPlugin([
+      {
+        context: 'assets',
+        from: '**/*',
+        to: path.join(__dirname, 'dist/assets')
+},
+    ])
   ],
 
   module: {
     loaders: [
-      // .ts files for TypeScript
       {
         test: /\.ts$/,
         loaders: ['awesome-typescript-loader', 'angular2-template-loader'],
@@ -52,6 +60,13 @@ module.exports = {
       {
         test: /\.(html|css)$/,
         loader: 'raw-loader'
+      },
+      {
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        loaders: [
+          'file?hash=sha512&digest=hex&name=[hash].[ext]',
+          'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'
+        ]
       }
     ]
   },

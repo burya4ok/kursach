@@ -18,7 +18,7 @@ const routes: Routes = [
   },
   {
     path: 'student',
-    component: StudentComponent
+    component: StudentComponent,
   },
   {
     path: 'testing',

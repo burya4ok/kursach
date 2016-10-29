@@ -1,5 +1,5 @@
 module.exports = function (electron) {
-    const {BrowserWindow, ipcMain} = electron;
+    const { app, BrowserWindow, ipcMain} = electron;
     let win = null;
 
     function createWindow() {
@@ -14,7 +14,7 @@ module.exports = function (electron) {
         win.loadURL(`file://${__dirname}/../../dist/index.html`);
 
         win.on('closed', () => {
-            win = null;
+            app.quit();
         });
 
         win.once('ready-to-show', () => {
@@ -31,7 +31,7 @@ module.exports = function (electron) {
         if (prevWindow) {
             prevWindow.hide();
             createWindow();
-            prevWindow.close();
+            prevWindow = null;
         } else {
             createWindow();
         }
