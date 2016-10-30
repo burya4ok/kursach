@@ -13,6 +13,7 @@ import { StudentComponent } from './student/student.component';
 import { TestingComponent } from './student/testing/testing.component';
 import { TestingPageComponent } from './student/testingPage/testingPage.component';
 import {LoginService} from "./services/login.service";
+import {TestingService} from "./services/testing.service";
 
 @NgModule({
   declarations: [
@@ -30,7 +31,7 @@ import {LoginService} from "./services/login.service";
     routing,
     MaterialModule.forRoot()
   ],
-  providers: [appRoutingProviders, LoginService],
+  providers: [appRoutingProviders, LoginService, TestingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

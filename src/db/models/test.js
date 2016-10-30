@@ -44,7 +44,9 @@ module.exports = function (sequelize, DataTypes) {
         timestamps: false,
         freezeTableName: true,
         classMethods: {
-
+            getAllTest: coroutine(function *() {
+                return yield Test.findAll();
+            })
         }
     });
     return Test;

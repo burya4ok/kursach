@@ -1,4 +1,4 @@
-<h1>Тестування</h1>
+<h1>{{question.theme}}</h1>
 
 <div class="col-md-12 image">
     <img src="https://pixabay.com/static/uploads/photo/2015/10/01/21/39/background-image-967820_960_720.jpg"
@@ -6,29 +6,29 @@
 </div>
 
 <div class="col-md-12 block-question">
-    <span class="question">Питання</span>
+    <span class="question">{{question.question}}</span>
     <div class="question-block">
         <div>
-            <input type="radio" name="radiog_lite" id="radio1" class="css-checkbox"/>
-            <label for="radio1" class="css-label radGroup1">Ответ 1</label>
+            <input type="radio" name="radiog_lite" id="radio1" class="css-checkbox" (click)="saveResult(1)"/>
+            <label for="radio1" class="css-label radGroup1" (click)="saveResult(1)">{{question.answer1}}</label>
         </div>
         <div>
-            <input type="radio" name="radiog_lite" id="radio2" class="css-checkbox"/>
-            <label for="radio2" class="css-label radGroup1">Ответ 2</label>
+            <input type="radio" name="radiog_lite" id="radio2" class="css-checkbox" (click)="saveResult(2)"/>
+            <label for="radio2" class="css-label radGroup1" (click)="saveResult(2)">{{question.answer2}}</label>
         </div>
         <div>
-            <input type="radio" name="radiog_lite" id="radio3" class="css-checkbox"/>
-            <label for="radio3" class="css-label radGroup1">Ответ 3</label>
+            <input type="radio" name="radiog_lite" id="radio3" class="css-checkbox" (click)="saveResult(3)"/>
+            <label for="radio3" class="css-label radGroup1" (click)="saveResult(3)">{{question.answer3}}</label>
         </div>
         <div>
-            <input type="radio" name="radiog_lite" id="radio4" class="css-checkbox"/>
-            <label for="radio4" class="css-label radGroup1">Ответ 4</label>
+            <input type="radio" name="radiog_lite" id="radio4" class="css-checkbox" (click)="saveResult(4)"/>
+            <label for="radio4" class="css-label radGroup1" (click)="saveResult(4)">{{question.answer4}}</label>
         </div>
     </div>
 </div>
 
 <div class="col-md-12 button">
-    <button md-raised-button>Следующий вопрос</button>
+    <button md-raised-button (click)="goNextQuestion()">Следующий вопрос</button>
 </div>
 
 
