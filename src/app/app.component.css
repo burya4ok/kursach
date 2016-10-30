@@ -21,3 +21,7 @@ md-list-item.active .md-list-item {
 * {
     -webkit-user-select: none;
 }
+
+.fill-bar {
+    flex: 1 1 auto;
+}

@@ -14,11 +14,8 @@ export class StudentComponent implements OnInit {
   constructor(private loginService: LoginService) {
   }
 
-
   ngOnInit() {
     this.loginService.setTitle('Студент');
-    console.log(this.loginService.title);
-
 
   }
 }

@@ -1,4 +1,4 @@
-import {Component, ViewEncapsulation} from '@angular/core';
+import {Component, ViewEncapsulation, OnInit} from '@angular/core';
 import {LoginService} from "./services/login.service";
 import {ipcRenderer} from 'electron';
 import {Router } from "@angular/router";
@@ -12,15 +12,14 @@ import {Router } from "@angular/router";
 export class AppComponent {
     title: string;
     constructor(private loginService: LoginService, private router: Router) {
-    }
+        this.loginService = loginService;
+        setInterval(() => {
+            this.title = this.loginService.getTitle();
+        }, 100);}
 
     exit() {
         this.loginService.deleteTypeOfUser();
         ipcRenderer.send('loginWindow')
-    }
-
-    reload() {
-        this.title = this.loginService.getTitle();
     }
 
     isActive() {
