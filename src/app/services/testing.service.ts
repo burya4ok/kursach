@@ -4,7 +4,7 @@ import { ipcRenderer } from 'electron';
 @Injectable()
 export class TestingService {
 
-    getAllTest(): any{
+    getAllTest(){
         return ipcRenderer.sendSync('getAllTest');
     }
 }

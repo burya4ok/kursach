@@ -35,7 +35,7 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: true,
         },
         good: {
-            type: DataTypes.TEXT,
+            type: DataTypes.INTEGER,
             allowNull: true,
         }
     }, {
