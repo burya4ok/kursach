@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { remote, ipcRenderer } from 'electron';
-import {LoginService} from "../../services/login.service";
+import {Component, OnInit} from "@angular/core";
+import {remote} from "electron";
 import {TestingService} from "../../services/testing.service";
 
 
@@ -21,10 +20,16 @@ export class TestingPageComponent implements OnInit {
   g: number;
   sumResult: number;
 
+  success: boolean;
+  wrong: boolean;
+
   procent: number;
   ball: number;
   public question: any;
   i: number;
+
+  currentTimeout: number;
+
   constructor(private testingService: TestingService) {
     this.result = [];
     this.tempResult = null;
@@ -33,6 +38,8 @@ export class TestingPageComponent implements OnInit {
     this.sumResult = 0;
     this.procent = 0;
     this.ball = 0;
+    this.success = false;
+    this.wrong = false;
   }
 
   saveResult(data) {
@@ -64,14 +71,26 @@ export class TestingPageComponent implements OnInit {
   }
 
   goNextQuestion() {
+    if (this.tempResult == this.test[this.i].good) {
+      this.success = true;
+      this.wrong = false;
+    } else {
+      this.success = false;
+      this.wrong = true;
+    }
     this.result.push(this.tempResult);
     this.i++;
-    if (this.i < this.test.length ) {
-      this.question = this.test[this.i];
-    } else {
-      this.showResult = true;
-      this.checkResult();
-    }
+
+    this.currentTimeout = window.setTimeout(() => {
+      this.success = false;
+      this.wrong = false;
+      if (this.i < this.test.length) {
+        this.question = this.test[this.i];
+      } else {
+        this.checkResult();
+        this.showResult = true;
+      }
+    }, 1000);
   }
 
 

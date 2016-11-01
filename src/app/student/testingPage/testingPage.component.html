@@ -27,21 +27,21 @@
             </div>
         </div>
     </div>
-
+    <div class="alert alert-success" *ngIf="success">
+        Відповідь правильна
+    </div>
+    <div class="alert alert-danger" *ngIf="wrong">
+        Відповідь неправильна
+    </div>
     <div class="col-md-12 button">
         <button md-raised-button (click)="goNextQuestion()">Слідуюче питання</button>
     </div>
+
 </div>
 <div *ngIf="showResult">
     <h1>Результати тесту</h1>
     <h1>Процентне співвідношення: {{procent}}</h1>
     <h1>Ваша оцінка: {{ball}}</h1>
-    <div>
-        <h3>Тема: </h3>
-        <h3>Питання: </h3>
-        <h3>Правильна відповідь: </h3>
-        <h3>Ваша відповідь: </h3>
-    </div>
 </div>
 
 
