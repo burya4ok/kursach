@@ -27,4 +27,12 @@ export class AppComponent {
         return window.location.pathname.indexOf('login') > -1 ||
             window.location.pathname.indexOf('testingPage') > -1;
     }
+
+    isTeacher() {
+        return this.loginService.getTypeOfUser() === 'teacher'
+    }
+
+    isStudent() {
+        return this.loginService.getTypeOfUser() === 'student'
+    }
 }

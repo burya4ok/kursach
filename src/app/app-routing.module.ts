@@ -5,6 +5,7 @@ import {TeacherComponent} from "./teacher/teacher.component";
 import {StudentComponent} from "./student/student.component";
 import {TestingComponent} from "./student/testing/testing.component";
 import {TestingPageComponent} from "./student/testingPage/testingPage.component";
+import {LecturesComponent} from "./student/lectures/lectures.component";
 
 const routes: Routes = [
 
@@ -27,6 +28,10 @@ const routes: Routes = [
   {
     path: 'testingPage',
     component: TestingPageComponent
+  },
+    {
+    path: 'lectures',
+    component: LecturesComponent
   },
   {
     path: '',
