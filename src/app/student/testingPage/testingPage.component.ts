@@ -2,12 +2,10 @@ import {Component, OnInit} from "@angular/core";
 import {remote} from "electron";
 import {TestingService} from "../../services/testing.service";
 
-
 @Component({
   selector: 'app-testingPage',
   templateUrl: './testingPage.component.html',
-  styleUrls: ['./testingPage.component.css'],
-  providers: [TestingService]
+  styleUrls: ['./testingPage.component.css']
 
 })
 export class TestingPageComponent implements OnInit {
@@ -19,10 +17,10 @@ export class TestingPageComponent implements OnInit {
   tempResult: number;
   g: number;
   sumResult: number;
-
+  showAllert: boolean;
   success: boolean;
   wrong: boolean;
-
+  showImg: boolean;
   procent: number;
   ball: number;
   public question: any;
@@ -40,6 +38,7 @@ export class TestingPageComponent implements OnInit {
     this.ball = 0;
     this.success = false;
     this.wrong = false;
+    this.showImg = false;
   }
 
   saveResult(data) {
@@ -78,9 +77,15 @@ export class TestingPageComponent implements OnInit {
       this.success = false;
       this.wrong = true;
     }
+
+    if (this.question.image === '') {
+      this.showImg = false;
+    } else {
+      this.showImg = true;
+    }
+
     this.result.push(this.tempResult);
     this.i++;
-
     this.currentTimeout = window.setTimeout(() => {
       this.success = false;
       this.wrong = false;
@@ -90,16 +95,28 @@ export class TestingPageComponent implements OnInit {
         this.checkResult();
         this.showResult = true;
       }
-    }, 1000);
+    }, this.showAllert ? 1000 : 0);
   }
 
 
   ngOnInit() {
     remote.getCurrentWindow().maximize();
-    this.test = this.testingService.getAllTest();
-    console.log(this.test);
+    if (this.testingService.allTheme) {
+      this.test = this.testingService.getAllTest();
+    } else if (this.testingService.oneTheme) {
+      this.test = this.testingService.getTest();
+    }
+    if (this.testingService.learn) {
+      this.showAllert = true;
+    } else if (this.testingService.modTest) {
+      this.showAllert = false;
+    }
     this.i = 0;
     this.question = this.test[this.i];
-
+    if (this.question.image === '') {
+      this.showImg = false;
+    } else {
+      this.showImg = true;
+    }
   }
 }

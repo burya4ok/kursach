@@ -35,6 +35,10 @@ module.exports = {
                     allowNull: true,
                 },
                 good: {
+                    type: Sequelize.INTEGER,
+                    allowNull: true,
+                },
+                image: {
                     type: Sequelize.TEXT,
                     allowNull: true,
                 }

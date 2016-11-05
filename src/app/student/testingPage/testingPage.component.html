@@ -2,7 +2,7 @@
     <h1>{{question.theme}}</h1>
 
     <div class="col-md-12 image">
-        <img src="https://pixabay.com/static/uploads/photo/2015/10/01/21/39/background-image-967820_960_720.jpg"
+        <img src={{question.image}}
              class="img-responsive">
     </div>
 
@@ -27,10 +27,10 @@
             </div>
         </div>
     </div>
-    <div class="alert alert-success" *ngIf="success">
+    <div class="alert alert-success" *ngIf="success && showAllert">
         Відповідь правильна
     </div>
-    <div class="alert alert-danger" *ngIf="wrong">
+    <div class="alert alert-danger" *ngIf="wrong && showAllert">
         Відповідь неправильна
     </div>
     <div class="col-md-12 button">

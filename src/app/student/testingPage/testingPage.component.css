@@ -31,9 +31,11 @@ span {
 .image .img-responsive {
   margin: 0 auto;
   position: relative;
-  left: 50%;
-  height: 350px;
-  margin-left: -175px;
+  width: 350px;
+}
+
+.image {
+  text-align: center;
 }
 
 .button {
@@ -61,11 +63,19 @@ input[type=radio].css-checkbox:checked + label.css-label {
   background-position: 0 -22px;
 }
 label.css-label {
-  background-image:url(http://csscheckbox.com/checkboxes/u/csscheckbox_b4e0ed1d8a916bde66f1284e1df07479.png);
+  background-image:url(./assets/img/csscheckbox.png);
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+.alert {
+  text-align: center;
+  width: 300px;
+  position: absolute;
+  left: 50%;
+  margin-left: -150px;
+  bottom: -12%;
 }

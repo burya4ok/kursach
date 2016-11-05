@@ -1,18 +1,18 @@
 <h1>Перевірка знань</h1>
 <div class="col-md-12 mode">
     <span>Виберіть режим:</span>
-    <button class="btn-type" md-raised-button>Навчання</button>
-    <button class="btn-type" md-raised-button>Тестування</button>
+    <button class="btn-type" md-raised-button [disabled]="learn" (click)="toLearn()">Навчання</button>
+    <button class="btn-type" md-raised-button [disabled]="modTest" (click)="toModTest()">Тестування</button>
 </div>
 
 <div class="col-md-12 theme">
     <span>Виберіть тему:</span>
-    <button class="btn-type" md-raised-button>Вся програма</button>
-    <button class="btn-type" md-raised-button>Окрема тема</button>
+    <button class="btn-type" md-raised-button [disabled]="allTheme" (click)="toAllTheme()">Вся програма</button>
+    <button class="btn-type" md-raised-button [disabled]="oneTheme" (click)="toOneTheme()">Окрема тема</button>
 </div>
 
 <div class="col-md-12 start">
-    <button md-raised-button routerLink="/testingPage" routerLinkActive="active">Розпочати перевірку знань</button>
+    <button md-raised-button routerLink="/testingPage" [disabled]="(!learn && !modTest) || (!allTheme && !oneTheme)" routerLinkActive="active">Розпочати перевірку знань</button>
 </div>
 
 

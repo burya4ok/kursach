@@ -10,7 +10,8 @@ module.exports = {
                 answer2: 'Test answer2',
                 answer3: 'Test answer3',
                 answer4: 'Test answer4',
-                good: 1
+                good: 1,
+                image: './assets/img/test-img.jpg',
             },
             {
                 theme: '2Test theme',
@@ -19,7 +20,8 @@ module.exports = {
                 answer2: '2Test answer2',
                 answer3: '2Test answer3',
                 answer4: '2Test answer4',
-                good: 2
+                good: 2,
+                image: './assets/img/test-img.jpg',
             },
             {
                 theme: '3Test theme',
@@ -28,7 +30,8 @@ module.exports = {
                 answer2: '3Test answer2',
                 answer3: '3Test answer3',
                 answer4: '3Test answer4',
-                good: 3
+                good: 3,
+                image: ''
             },
             {
                 theme: '4Test theme',
@@ -37,7 +40,8 @@ module.exports = {
                 answer2: '4Test answer2',
                 answer3: '4Test answer3',
                 answer4: '4Test answer4',
-                good: 4
+                good: 4,
+                image: ''
             },
             {
                 theme: '5Test theme',
@@ -46,7 +50,8 @@ module.exports = {
                 answer2: '5Test answer2',
                 answer3: '5Test answer3',
                 answer4: '5Test answer4',
-                good: 2
+                good: 2,
+                image: ''
             }
         ], {});
     },

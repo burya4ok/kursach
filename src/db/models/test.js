@@ -37,7 +37,12 @@ module.exports = function (sequelize, DataTypes) {
         good: {
             type: DataTypes.INTEGER,
             allowNull: true,
+        },
+        image: {
+            type: DataTypes.TEXT,
+            allowNull: true,
         }
+
     }, {
         tableName: 'Test',
         paranoid: true,
@@ -46,6 +51,9 @@ module.exports = function (sequelize, DataTypes) {
         classMethods: {
             getAllTest: coroutine(function *() {
                 return yield Test.findAll();
+            }),
+            getTest: coroutine(function *(testTheme) {
+                return yield Test.findAll( {where: {theme: testTheme}} );
             })
         }
     });
