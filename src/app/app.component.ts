@@ -11,8 +11,13 @@ import {Router } from "@angular/router";
 })
 export class AppComponent {
     title: string;
+    typeOfUser: string;
     constructor(private loginService: LoginService, private router: Router) {
-        this.loginService = loginService;
+        router.events.subscribe((val) => {
+            this.typeOfUser = this.loginService.getTypeOfUser();
+        });
+
+            this.loginService = loginService;
         setInterval(() => {
             this.title = this.loginService.getTitle();
         }, 100);}
@@ -23,16 +28,15 @@ export class AppComponent {
     }
 
     isActive() {
-
         return window.location.pathname.indexOf('login') > -1 ||
             window.location.pathname.indexOf('testingPage') > -1;
     }
 
     isTeacher() {
-        return this.loginService.getTypeOfUser() === 'teacher'
+        return this.typeOfUser === 'teacher'
     }
 
     isStudent() {
-        return this.loginService.getTypeOfUser() === 'student'
+        return this.typeOfUser === 'student'
     }
 }
