@@ -1,6 +1,7 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, OnInit, ElementRef, Renderer} from "@angular/core";
 import {remote} from "electron";
 import {TestingService} from "../../services/testing.service";
+import {createScope} from "@angular/core/src/profile/wtf_impl";
 
 @Component({
   selector: 'app-testingPage',
@@ -20,7 +21,6 @@ export class TestingPageComponent implements OnInit {
   showAllert: boolean;
   success: boolean;
   wrong: boolean;
-  showImg: boolean;
   procent: number;
   ball: number;
   public question: any;
@@ -28,7 +28,7 @@ export class TestingPageComponent implements OnInit {
 
   currentTimeout: number;
 
-  constructor(private testingService: TestingService) {
+  constructor(private testingService: TestingService, private el: ElementRef, private renderer: Renderer) {
     this.result = [];
     this.tempResult = null;
     this.showResult = false;
@@ -38,7 +38,6 @@ export class TestingPageComponent implements OnInit {
     this.ball = 0;
     this.success = false;
     this.wrong = false;
-    this.showImg = false;
   }
 
   saveResult(data) {
@@ -78,15 +77,14 @@ export class TestingPageComponent implements OnInit {
       this.wrong = true;
     }
 
-    if (this.question.image === '') {
-      this.showImg = false;
-    } else {
-      this.showImg = true;
-    }
-
     this.result.push(this.tempResult);
     this.i++;
     this.currentTimeout = window.setTimeout(() => {
+      const tmp = document.getElementsByName('radiog_lite');
+      this.renderer.setElementProperty(tmp[0], 'checked', false);
+      this.renderer.setElementProperty(tmp[1], 'checked', false);
+      this.renderer.setElementProperty(tmp[2], 'checked', false);
+      this.renderer.setElementProperty(tmp[3], 'checked', false);
       this.success = false;
       this.wrong = false;
       if (this.i < this.test.length) {
@@ -113,10 +111,5 @@ export class TestingPageComponent implements OnInit {
     }
     this.i = 0;
     this.question = this.test[this.i];
-    if (this.question.image === '') {
-      this.showImg = false;
-    } else {
-      this.showImg = true;
-    }
   }
 }

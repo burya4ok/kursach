@@ -9,6 +9,9 @@
     <span>Виберіть тему:</span>
     <button class="btn-type" md-raised-button [disabled]="allTheme" (click)="toAllTheme()">Вся програма</button>
     <button class="btn-type" md-raised-button [disabled]="oneTheme" (click)="toOneTheme()">Окрема тема</button>
+    <select #selectedTheme *ngIf="oneTheme" (change)="saveSelectedTheme(selectedTheme.value)" >
+        <option *ngFor='let test of tests' [value]="test.theme">{{test.theme}}</option>
+    </select>
 </div>
 
 <div class="col-md-12 start">
