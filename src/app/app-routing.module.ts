@@ -23,11 +23,11 @@ const routes: Routes = [
     component: StudentComponent,
   },
   {
-    path: 'testing',
+    path: 'student/testing',
     component: TestingComponent
   },
   {
-    path: 'testingPage',
+    path: 'student/testingPage',
     component: TestingPageComponent
   },
     {
