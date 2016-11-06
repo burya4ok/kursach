@@ -24,15 +24,23 @@ span {
 
 }
 md-nav-list {
+  flex-basis: 20%;
   display: flex !important;
   overflow-y: auto;
 }
 
 .document {
-
+  flex-basis: 80%;
 }
 
 .content {
+  width: 100%;
+  height: calc(100% - 64px);
+  flex-direction: column;
   position: relative;
   display: flex;
+}
+
+a.active {
+  background-color: #cccccc;
 }

@@ -10,7 +10,7 @@
     </md-toolbar>
     <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" *ngIf="isTeacher()">
         <md-nav-list>
-            <md-list-item routerLink="/lectures" routerLinkActive="active">
+            <md-list-item routerLink="/teacher/lectures" routerLinkActive="active">
                 <a md-line>Лекції</a>
                 <button md-icon-button>
                     <md-icon>info</md-icon>
@@ -27,7 +27,7 @@
     </div>
     <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" *ngIf="isStudent()">
         <md-nav-list>
-            <md-list-item routerLink="/lectures" routerLinkActive="active">
+            <md-list-item routerLink="/student/lectures" routerLinkActive="active">
                 <a md-line>Лекції</a>
                 <button md-icon-button>
                     <md-icon>info</md-icon>

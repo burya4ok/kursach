@@ -4,8 +4,10 @@ module.exports = function (electron) {
 
     function createWindow() {
         var options = {
-            width: 1000,
-            height: 800,
+            width: 900,
+            height: 600,
+            minWidth: 900,
+            minHeight: 600,
             show: false
         };
         win = new BrowserWindow(options);

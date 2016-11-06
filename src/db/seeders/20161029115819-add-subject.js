@@ -2,7 +2,7 @@
 
 module.exports = {
   up: function (queryInterface, Sequelize) {
-    return queryInterface.bulkInsert('subject', [
+    return queryInterface.bulkInsert('subjects', [
       {
         name: 'Інструментальні засоби візуального программування',
         mainImg: 'main.jpg'
@@ -11,6 +11,6 @@ module.exports = {
   },
 
   down: function (queryInterface, Sequelize) {
-    return queryInterface.bulkDelete('subject', null, {});
+    return queryInterface.bulkDelete('subjects', null, {});
   }
 };

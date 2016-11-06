@@ -1,0 +1,106 @@
+.fill-bar{
+  flex: 1 1 auto;
+}
+
+h1 {
+  text-align: center;
+  margin: 10px 0;
+}
+
+span {
+  font-size: 1.5em;
+}
+
+.mode, .theme {
+  margin-bottom: 30px;
+}
+
+.start {
+  margin-top: 30px;
+}
+
+.start button {
+  width: 100%;
+
+}
+
+.drop-zone {
+  display: flex;
+  align-items: center;
+  opacity: 0.5;
+  vertical-align: middle;
+  text-align: center;
+  font-size: 4.6vh;
+  font-weight: 900;
+  background-color: #666666;
+  -webkit-background-clip: text;
+  color: transparent;
+  text-shadow: rgba(255,255,255,0.5) 0 3px 3px;
+  border: dotted 3px lightgray;
+  height: 75%;
+}
+
+.nv-file-over {
+  opacity: 1;
+  content: '';
+}
+
+.action-button {
+  height: 50px;
+  min-width: 60px;
+}
+
+.actions-all {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.actions-all button {
+  width: 32%;
+  vertical-align: middle;
+}
+
+.row.full {
+  height: calc(100% - 64px);
+}
+
+.choose-text {
+  font-size: 3.3vh;
+  margin: 10px 0;
+}
+
+.loader {
+  width: 50px;
+}
+
+.header {
+  margin: 15px 0;
+  height: 40px;
+  border-bottom: 2px outset #ccc;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.file {
+  display: flex;
+  align-items: center;
+  height: 60px;
+  padding: 5px 0;
+ -webkit-box-shadow: 0 1px 1px #555;
+}
+
+.name strong.in-progress {
+  opacity: 0.5;
+}
+
+.name .loader.in-progress {
+  visibility: visible;
+}
+
+.name .loader {
+  visibility: hidden;
+  width: 50px;
+  position: absolute;
+  right: 0;
+  top: -37px;
+}

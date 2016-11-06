@@ -30,7 +30,7 @@ module.exports = {
   },
 
   resolve: {
-    extensions: ['', '.ts', '.js', '.jpg']
+    extensions: ['', '.ts', '.js', '.jpg', '.css', '.html']
   },
   context: path.join(__dirname, 'src'),
 
@@ -46,7 +46,17 @@ module.exports = {
         context: 'assets',
         from: '**/*',
         to: path.join(__dirname, 'dist/assets')
-},
+      },
+      {
+        context: 'pdfjs/build',
+        from: '**/*',
+        to: path.join(__dirname, 'dist/build')
+      },
+      {
+        context: 'pdfjs',
+        from: '**/*',
+        to: path.join(__dirname, 'dist/pdfjs')
+      }
     ])
   ],
 

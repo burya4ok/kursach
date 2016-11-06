@@ -19,7 +19,7 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: true,
         }
     }, {
-        tableName: 'Config',
+        tableName: 'configs',
         paranoid: true,
         timestamps: false,
         freezeTableName: true,

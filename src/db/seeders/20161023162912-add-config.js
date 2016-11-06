@@ -2,7 +2,7 @@
 
 module.exports = {
     up: function (queryInterface, Sequelize) {
-        return queryInterface.bulkInsert('Config', [{
+        return queryInterface.bulkInsert('configs', [{
             key: 'typeOfUser',
             value: 'student'
         }], {});
@@ -10,6 +10,6 @@ module.exports = {
 
     down: function (queryInterface, Sequelize) {
 
-         return queryInterface.bulkDelete('Config', null, {});
+         return queryInterface.bulkDelete('configs', null, {});
     }
 };

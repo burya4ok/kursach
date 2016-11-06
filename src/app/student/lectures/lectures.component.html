@@ -1,20 +1,9 @@
 <div class="content">
-    <iframe class="document" src="http://google.com"  frameborder="0"></iframe>
+    <iframe class="document" [src]="currentLecture.viewerPath | safe" frameborder="0"></iframe>
     <md-nav-list layout="row">
-        <a md-list-item href="#"> qweqwe </a>
-        <a md-list-item href="#"> qweqwe </a>
-        <a md-list-item href="#"> qweqwe </a>
-        <a md-list-item href="#"> qweqwe </a>
-        <a md-list-item href="#"> qweqwe </a>
-        <a md-list-item href="#"> qweqwe </a>
-        <a md-list-item href="#"> qweqwe </a>
-        <a md-list-item href="#"> qweqwe </a>
-        <a md-list-item href="#"> qweqwe </a>
-        <a md-list-item href="#"> qweqwe </a>
-        <a md-list-item href="#"> qweqwe </a>
-        <a md-list-item href="#"> qweqwe </a>
-        <a md-list-item href="#"> qweqwe </a>
-        <a md-list-item href="#"> qweqwe </a>
-        <a md-list-item href="#"> qweqwe </a>
+        <a md-list-item [ngClass]="{active: lecture.id === currentLecture.id}"
+           *ngFor="let lecture of lectures" (click)="setLecture(lecture)">
+            {{lecture.name}}
+        </a>
     </md-nav-list>
 </div>

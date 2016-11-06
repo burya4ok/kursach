@@ -10,7 +10,7 @@ let win = null;
 
 function createWindow() {
     var options = {
-        width: 800,
+        width: 900,
         height: 500,
         show: false
     };
