@@ -34,7 +34,7 @@
         Відповідь неправильна
     </div>
     <div class="col-md-12 button">
-        <button md-raised-button (click)="goNextQuestion()">Слідуюче питання</button>
+        <button md-raised-button (click)="goNextQuestion()" [disabled]="!activeButton">Слідуюче питання</button>
     </div>
 
 </div>

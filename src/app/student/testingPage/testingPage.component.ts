@@ -25,6 +25,7 @@ export class TestingPageComponent implements OnInit {
   ball: number;
   public question: any;
   i: number;
+  activeButton: boolean;
 
   currentTimeout: number;
 
@@ -38,10 +39,13 @@ export class TestingPageComponent implements OnInit {
     this.ball = 0;
     this.success = false;
     this.wrong = false;
+    this.activeButton = false;
+
   }
 
   saveResult(data) {
     this.tempResult = data;
+    this.activeButton = true;
   }
 
   checkResult() {
@@ -85,6 +89,7 @@ export class TestingPageComponent implements OnInit {
       this.renderer.setElementProperty(tmp[1], 'checked', false);
       this.renderer.setElementProperty(tmp[2], 'checked', false);
       this.renderer.setElementProperty(tmp[3], 'checked', false);
+      this.activeButton = false;
       this.success = false;
       this.wrong = false;
       if (this.i < this.test.length) {
