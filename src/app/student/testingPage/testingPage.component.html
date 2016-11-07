@@ -1,29 +1,34 @@
+<button md-raised-button class="back-button" routerLink="/student/testing">❮ В головне меню</button>
 <div *ngIf="!showResult">
     <h1>{{question.theme}}</h1>
+    <div class="col-md-12">
+        <div class="col-md-6 image">
+            <img src={{question.image}}
+                 class="img-responsive">
+        </div>
 
-    <div class="col-md-12 image">
-        <img src={{question.image}}
-             class="img-responsive">
-    </div>
-
-    <div class="col-md-12 block-question">
-        <span class="question">{{question.question}}</span>
-        <div class="question-block">
-            <div>
-                <input type="radio" name="radiog_lite" id="radio1" class="css-checkbox" (click)="saveResult(1)"/>
-                <label for="radio1" class="css-label radGroup1" (click)="saveResult(1)">{{question.answer1}}</label>
+        <div class="col-md-6 block-question">
+            <span class="question">{{question.question}}</span>
+            <div class="question-block">
+                <div>
+                    <input type="radio" name="radiog_lite" id="radio1" class="css-checkbox" (click)="saveResult(1)"/>
+                    <label for="radio1" class="css-label radGroup1" (click)="saveResult(1)">{{question.answer1}}</label>
+                </div>
+                <div>
+                    <input type="radio" name="radiog_lite" id="radio2" class="css-checkbox" (click)="saveResult(2)"/>
+                    <label for="radio2" class="css-label radGroup1" (click)="saveResult(2)">{{question.answer2}}</label>
+                </div>
+                <div>
+                    <input type="radio" name="radiog_lite" id="radio3" class="css-checkbox" (click)="saveResult(3)"/>
+                    <label for="radio3" class="css-label radGroup1" (click)="saveResult(3)">{{question.answer3}}</label>
+                </div>
+                <div>
+                    <input type="radio" name="radiog_lite" id="radio4" class="css-checkbox" (click)="saveResult(4)"/>
+                    <label for="radio4" class="css-label radGroup1" (click)="saveResult(4)">{{question.answer4}}</label>
+                </div>
             </div>
-            <div>
-                <input type="radio" name="radiog_lite" id="radio2" class="css-checkbox" (click)="saveResult(2)"/>
-                <label for="radio2" class="css-label radGroup1" (click)="saveResult(2)">{{question.answer2}}</label>
-            </div>
-            <div>
-                <input type="radio" name="radiog_lite" id="radio3" class="css-checkbox" (click)="saveResult(3)"/>
-                <label for="radio3" class="css-label radGroup1" (click)="saveResult(3)">{{question.answer3}}</label>
-            </div>
-            <div>
-                <input type="radio" name="radiog_lite" id="radio4" class="css-checkbox" (click)="saveResult(4)"/>
-                <label for="radio4" class="css-label radGroup1" (click)="saveResult(4)">{{question.answer4}}</label>
+            <div class="col-md-12 button">
+                <button md-raised-button (click)="goNextQuestion()" [disabled]="!activeButton">Слідуюче питання</button>
             </div>
         </div>
     </div>
@@ -32,9 +37,6 @@
     </div>
     <div class="alert alert-danger" *ngIf="wrong && showAllert">
         Відповідь неправильна
-    </div>
-    <div class="col-md-12 button">
-        <button md-raised-button (click)="goNextQuestion()" [disabled]="!activeButton">Слідуюче питання</button>
     </div>
 
 </div>
