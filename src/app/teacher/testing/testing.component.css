@@ -1,0 +1,9 @@
+.global-block {
+  margin-top: 30px;
+}
+h1 {
+  text-align: center;
+}
+.enter-theme, .enter-question, .enter-ans, .enter-good {
+  width: 50%;
+}

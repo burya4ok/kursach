@@ -4,6 +4,7 @@ import {LoginComponent} from "./login/login.component";
 import {TeacherComponent} from "./teacher/teacher.component";
 import {StudentComponent} from "./student/student.component";
 import {TestingComponent} from "./student/testing/testing.component";
+import {TeacherTestingComponent} from "./teacher/testing/testing.component";
 import {TestingPageComponent} from "./student/testingPage/testingPage.component";
 import {StudentLecturesComponent} from "./student/lectures/lectures.component";
 import {TeacherLecturesComponent} from "./teacher/lectures/lectures.component";
@@ -25,6 +26,10 @@ const routes: Routes = [
   {
     path: 'student/testing',
     component: TestingComponent
+  },
+  {
+    path: 'teacher/testing',
+    component: TeacherTestingComponent
   },
   {
     path: 'student/testingPage',

@@ -11,6 +11,7 @@ import {LoginComponent} from './login/login.component';
 import {TeacherComponent} from './teacher/teacher.component';
 import {StudentComponent} from './student/student.component';
 import {TestingComponent} from './student/testing/testing.component';
+import {TeacherTestingComponent} from './teacher/testing/testing.component';
 import {TestingPageComponent} from './student/testingPage/testingPage.component';
 import {StudentLecturesComponent, SafePipe} from './student/lectures/lectures.component';
 import {TeacherLecturesComponent} from './teacher/lectures/lectures.component';
@@ -25,6 +26,7 @@ import {LecturesService} from "./services/lectures.service";
         TeacherComponent,
         StudentComponent,
         TestingComponent,
+        TeacherTestingComponent,
         TestingPageComponent,
         StudentLecturesComponent,
         TeacherLecturesComponent,
