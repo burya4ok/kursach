@@ -3,6 +3,7 @@ import {FileUploader} from 'ng2-file-upload/ng2-file-upload';
 import {remote, ipcRenderer} from 'electron';
 import {LoginService} from "../../services/login.service";
 import {LecturesService} from "../../services/lectures.service";
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 
 const URL = 'https://evening-anchorage-3159.herokuapp.com/api/';
 
@@ -23,7 +24,7 @@ export class TeacherLecturesComponent implements OnInit {
         this.hasBaseDropZoneOver = e;
     }
 
-    constructor(private loginService: LoginService, private lecturesService: LecturesService) {
+    constructor(private loginService: LoginService, private lecturesService: LecturesService, public toastr: ToastsManager) {
         this.lectures = this.lecturesService.getFullLecturesInfo();
         this.uploader.addToQueue(this.lectures);
         this.uploader.queue.forEach((item: any, index: number) => {
@@ -52,9 +53,10 @@ export class TeacherLecturesComponent implements OnInit {
                 this.uploader.queue[index].isSuccess = true;
                 this.uploader.queue[index].isUploaded = true;
                 this.uploader.queue[index].progress = 100;
-
+                this.showSuccess()
             } else {
                 this.uploader.queue[item.index].isError = true;
+                this.showError()
             }
         };
     }
@@ -63,6 +65,14 @@ export class TeacherLecturesComponent implements OnInit {
         this.uploader.removeFromQueue(item);
         this.lecturesService.removeLecture(item._file.id);
     };
+
+    private showSuccess() {
+        this.toastr.success('You are awesome!', 'Success!');
+    }
+
+    private showError() {
+        this.toastr.error('This is not good!', 'Oops!');
+    }
 
     ngOnInit() {
         this.loginService.setTitle('Лекції');

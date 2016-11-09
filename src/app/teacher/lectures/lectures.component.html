@@ -17,20 +17,16 @@
         <div class="row">
             <div class="header">
                 <div class="col-md-8">Список лекцій</div>
-                <div class="col-md-4">Дії над файлами</div>
+                <div class="col-md-4">Дії</div>
             </div>
             <div class="files">
                 <div class="file" *ngFor="let item of uploader.queue">
                     <div class="name col-md-8">
                         <strong [ngClass]="{'in-progress': item.progress !== 100 && item.isUploading}">{{ item?.file?.name }}</strong>
-                        <md-progress-circle class="loader" [ngClass]="{'in-progress': item.progress !== 100 && item.isUploading}" mode="indeterminate"></md-progress-circle>
                     </div>
                     <div class="actions col-md-4">
                         <button md-raised-button color="primary" class="action-button btn-xs" (click)="item.upload()"
                                 [disabled]="item.isReady || item.isUploading || item.isSuccess"><i class="material-icons">note_add</i>
-                        </button>
-                        <button md-raised-button color="warn" class="action-button btn-xs" (click)="item.cancel()"
-                                [disabled]="!item.isUploading"><i class="material-icons">cancel</i>
                         </button>
                         <button md-raised-button color="accent" class="action-button btn-xs" (click)="removeLecture(item)"><i
                                 class="material-icons">remove_circle</i>
@@ -43,9 +39,6 @@
         <div class="actions-all">
             <button md-raised-button color="primary" class=" btn-xs" (click)="uploader.uploadAll()"
                     [disabled]="uploader.isUploading || !uploader.getNotUploadedItems().length">Додати всі
-            </button>
-            <button md-raised-button color="warn" class=" btn-xs" (click)="uploader.cancelAll()"
-                    [disabled]="!uploader.isUploading">Відмінити всі
             </button>
             <button md-raised-button color="accent" class=" btn-xs" (click)="uploader.clearQueue()"
                     [disabled]="!uploader.queue.length">Видалити всі

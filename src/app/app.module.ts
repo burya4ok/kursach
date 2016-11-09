@@ -4,6 +4,7 @@ import {FormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 import {MaterialModule} from '@angular/material';
 import { FileUploadModule } from 'ng2-file-upload/components/file-upload/file-upload.module';
+import {ToastModule} from 'ng2-toastr/ng2-toastr';
 
 import {routing, appRoutingProviders}  from './app-routing.module';
 import {AppComponent} from './app.component';
@@ -38,7 +39,8 @@ import {LecturesService} from "./services/lectures.service";
         FormsModule,
         HttpModule,
         routing,
-        MaterialModule.forRoot()
+        MaterialModule.forRoot(),
+        ToastModule
     ],
     providers: [appRoutingProviders, LoginService, TestingService, LecturesService],
     bootstrap: [AppComponent]
