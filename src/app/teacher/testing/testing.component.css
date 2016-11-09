@@ -5,5 +5,17 @@ h1 {
   text-align: center;
 }
 .enter-theme, .enter-question, .enter-ans, .enter-good {
-  width: 50%;
+  width: 100%;
+}
+.form-group {
+  height: 70%;
+}
+.multiple {
+  height: 80%;
+}
+.single {
+  height: 40px !important;
+}
+.margin {
+  margin-top: 15px;
 }
