@@ -17,7 +17,7 @@ module.exports = function (electron) {
     }));
     ipcMain.on('addQuestion', Promise.coroutine(function *(event, data) {
         event.returnValue = yield db.Test.addQuestion(data.testTheme, data.testQuestion, data.testAns1,
-            data.testAns2, data.testAns3, data.testAns4, data.testGood, data.testImg);
+            data.testAns2, data.testAns3, data.testAns4, data.testGood, data.testImg, data.testPath);
     }));
     ipcMain.on('destroyQuestions', Promise.coroutine(function *(event, data) {
         event.returnValue = yield db.Test.destroyQuestions(data.tempId);

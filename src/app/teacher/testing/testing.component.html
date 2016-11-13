@@ -8,23 +8,23 @@
                     <option *ngFor='let test of newTest' [value]="test.question" (click)="activeChangeTest(test)">{{test.question}}</option>
                 </select>
 
-                <label class="margin" for="exampleSelect1">Виберіть тему: </label>
-                <select #selectedTheme class="form-control single" id="exampleSelect1" (change)="sortTheme(selectedTheme.value)">
+                <label class="margin"  for="exampleSelect1">Виберіть тему: </label>
+                <select #selectedTheme class="form-control single" id="exampleSelect1" [disabled]="disable" (change)="sortTheme(selectedTheme.value)">
                     <option>Всі теми</option>
                     <option *ngFor='let test of themeArray' [value]="test.id">
                         {{test.theme}}
                     </option>
                 </select>
             </div>
-            <button md-raised-button (click)="addQuestion()">Додати нове питання</button>
-            <button md-raised-button (click)="addTheme()">Створити тему</button>
-            <button md-raised-button (click)="removeTheme()">Видалити тему</button>
+            <button md-raised-button class="md-raised md-primary" [disabled]="disable" (click)="addQuestion()">Додати нове питання</button>
+            <button md-raised-button class="md-raised md-primary" [disabled]="disable" (click)="addTheme()">Створити тему</button>
+            <button md-raised-button class="md-raised md-warn" [disabled]="disable" (click)="removeTheme()">Видалити тему</button>
         </div>
         <div class="col-md-6" *ngIf="changeAddTheme">
             <div class="form-group">
                 <md-input class="enter-question" [(ngModel)]="newTheme" [placeholder]="'Введіть назву теми...'"
                           type="text"></md-input>
-                <button md-raised-button (click)="confirmAddTheme()">Створити тему</button>
+                <button md-raised-button class="md-raised md-primary" (click)="confirmAddTheme()">Створити тему</button>
             </div>
         </div>
         <div class="col-md-6" *ngIf="changeTest">
@@ -41,8 +41,9 @@
                           type="text"></md-input>
                 <md-input class="enter-good" [(ngModel)]="newGood"
                           [placeholder]="'Введіть правильну відповідь...(Номер: 1,2,3,4)'" type="text"></md-input>
-                <button md-raised-button (click)="confirmChangeTest()">Внести зміни в питання</button>
-                <button md-raised-button (click)="removeQuestion()">Видалити питання</button>
+                <button md-raised-button class="md-raised md-primary" (click)="confirmChangeTest()">Внести зміни в питання</button>
+                <button md-raised-button class="md-raised md-warn" (click)="removeQuestion()">Видалити питання</button>
+                <button md-raised-button class="md-raised md-warn" (click)="cancelAddTest()">Відмінити</button>
             </div>
         </div>
         <div class="col-md-6" *ngIf="changeAddTest">
@@ -59,7 +60,10 @@
                           type="text"></md-input>
                 <md-input class="enter-good" [(ngModel)]="newGood"
                           [placeholder]="'Введіть правильну відповідь...(Номер: 1,2,3,4)'" type="text"></md-input>
-                <button md-raised-button (click)="confirmAddTest()">Створити нове питанння</button>
+                <span class="choose-text">Вибрати зображення(не обов'язково)</span>
+                <input class="file" type="file" ng2FileSelect [uploader]="uploader"/>
+                <button md-raised-button class="md-raised md-primary" (click)="confirmAddTest()">Створити нове питанння</button>
+                <button md-raised-button class="md-raised md-warn" (click)="cancelAddTest()">Відмінити</button>
             </div>
         </div>
     </div>

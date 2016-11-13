@@ -33,10 +33,10 @@ export class TestingService {
         });
     }
 
-    addQuestion(tempTheme, tempQuestion, tempAns1, tempAns2, tempAns3, tempAns4, tempGood, tempImg) {
+    addQuestion(tempTheme, tempQuestion, tempAns1, tempAns2, tempAns3, tempAns4, tempGood, tempImg, tempPath) {
         return ipcRenderer.sendSync('addQuestion', {
             testTheme: tempTheme, testQuestion: tempQuestion, testAns1: tempAns1,
-            testAns2: tempAns2, testAns3: tempAns3, testAns4: tempAns4, testGood: tempGood, testImg: tempImg
+            testAns2: tempAns2, testAns3: tempAns3, testAns4: tempAns4, testGood: tempGood, testImg: tempImg, testPath: tempPath
         });
     }
 

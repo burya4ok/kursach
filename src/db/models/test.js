@@ -1,6 +1,8 @@
 var Promise = require('bluebird');
 var coroutine = Promise.coroutine;
-
+const path = require('path');
+const fse = require('fs-extra');
+const fs = require('fs');
 
 module.exports = function (sequelize, DataTypes) {
     var Test = sequelize.define('Test', {
@@ -56,15 +58,23 @@ module.exports = function (sequelize, DataTypes) {
                 return yield Test.findAll({where: {theme: testTheme}});
             }),
             updateTest: coroutine(function *(testId, testQuestion, testAns1, testAns2, testAns3, testAns4, testGood) {
-                return yield Test.update({question: testQuestion, answer1: testAns1,
+                return yield Test.update({
+                        question: testQuestion, answer1: testAns1,
                         answer2: testAns2, answer3: testAns3,
-                        answer4: testAns4, good: testGood},
+                        answer4: testAns4, good: testGood
+                    },
                     {where: {id: testId}});
             }),
-            addQuestion: coroutine(function *(testTheme, testQuestion, testAns1, testAns2, testAns3, testAns4, testGood, testImg) {
-                return yield Test.create({theme: testTheme, question: testQuestion, answer1: testAns1,
-                        answer2: testAns2, answer3: testAns3,
-                        answer4: testAns4, good: testGood, image: testImg});
+            addQuestion: coroutine(function *(testTheme, testQuestion, testAns1, testAns2, testAns3, testAns4, testGood, testImg, testPath) {
+                if (testPath !== '') {
+                    let newPlace = path.join(__dirname, '../../assets/img/', testPath.replace(/.*[\/|\\](.*)/g, '$1'));
+                    fse.copySync(testPath, newPlace);
+                }
+                return yield Test.create({
+                    theme: testTheme, question: testQuestion, answer1: testAns1,
+                    answer2: testAns2, answer3: testAns3,
+                    answer4: testAns4, good: testGood, image: testImg
+                });
             }),
             destroyQuestions: coroutine(function *(tempId) {
                 return yield Test.destroy({where: {theme: tempId}});
