@@ -11,7 +11,7 @@ module.exports = function (sequelize, DataTypes) {
             autoIncrement: true,
         },
         theme: {
-            type: DataTypes.TEXT,
+            type: DataTypes.INTEGER,
             allowNull: true,
         },
         question: {
@@ -53,7 +53,24 @@ module.exports = function (sequelize, DataTypes) {
                 return yield Test.findAll();
             }),
             getTest: coroutine(function *(testTheme) {
-                return yield Test.findAll( {where: {theme: testTheme}} );
+                return yield Test.findAll({where: {theme: testTheme}});
+            }),
+            updateTest: coroutine(function *(testId, testQuestion, testAns1, testAns2, testAns3, testAns4, testGood) {
+                return yield Test.update({question: testQuestion, answer1: testAns1,
+                        answer2: testAns2, answer3: testAns3,
+                        answer4: testAns4, good: testGood},
+                    {where: {id: testId}});
+            }),
+            addQuestion: coroutine(function *(testTheme, testQuestion, testAns1, testAns2, testAns3, testAns4, testGood, testImg) {
+                return yield Test.create({theme: testTheme, question: testQuestion, answer1: testAns1,
+                        answer2: testAns2, answer3: testAns3,
+                        answer4: testAns4, good: testGood, image: testImg});
+            }),
+            destroyQuestions: coroutine(function *(tempId) {
+                return yield Test.destroy({where: {theme: tempId}});
+            }),
+            destroyQuestion: coroutine(function *(tempId) {
+                return yield Test.destroy({where: {id: tempId}});
             })
         }
     });

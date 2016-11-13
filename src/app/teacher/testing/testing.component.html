@@ -3,21 +3,31 @@
     <div class="col-md-12">
         <div class="col-md-6">
             <div class="form-group">
-                <label for="exampleSelect2">Список питань</label>
+                <label for="exampleSelect2">Список питань: </label>
                 <select #selectedQuestion multiple class="form-control multiple" id="exampleSelect2">
-                    <option *ngFor='let test of newTest' [value]="test.question">{{test.question}}</option>
+                    <option *ngFor='let test of newTest' [value]="test.question" (click)="activeChangeTest(test)">{{test.question}}</option>
                 </select>
 
-                <label class="margin" for="exampleSelect1">Сортування за темою</label>
+                <label class="margin" for="exampleSelect1">Виберіть тему: </label>
                 <select #selectedTheme class="form-control single" id="exampleSelect1" (change)="sortTheme(selectedTheme.value)">
-                    <option>Виберіть тему...</option>
-                    <option *ngFor='let test of newTest' [value]="test.theme">
+                    <option>Всі теми</option>
+                    <option *ngFor='let test of themeArray' [value]="test.id">
                         {{test.theme}}
                     </option>
                 </select>
             </div>
+            <button md-raised-button (click)="addQuestion()">Додати нове питання</button>
+            <button md-raised-button (click)="addTheme()">Створити тему</button>
+            <button md-raised-button (click)="removeTheme()">Видалити тему</button>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6" *ngIf="changeAddTheme">
+            <div class="form-group">
+                <md-input class="enter-question" [(ngModel)]="newTheme" [placeholder]="'Введіть назву теми...'"
+                          type="text"></md-input>
+                <button md-raised-button (click)="confirmAddTheme()">Створити тему</button>
+            </div>
+        </div>
+        <div class="col-md-6" *ngIf="changeTest">
             <div class="form-group">
                 <md-input class="enter-question" [(ngModel)]="newQuestion" [placeholder]="'Введіть питання...'"
                           type="text"></md-input>
@@ -31,6 +41,25 @@
                           type="text"></md-input>
                 <md-input class="enter-good" [(ngModel)]="newGood"
                           [placeholder]="'Введіть правильну відповідь...(Номер: 1,2,3,4)'" type="text"></md-input>
+                <button md-raised-button (click)="confirmChangeTest()">Внести зміни в питання</button>
+                <button md-raised-button (click)="removeQuestion()">Видалити питання</button>
+            </div>
+        </div>
+        <div class="col-md-6" *ngIf="changeAddTest">
+            <div class="form-group">
+                <md-input class="enter-question" [(ngModel)]="newQuestion" [placeholder]="'Введіть питання...'"
+                          type="text"></md-input>
+                <md-input class="enter-ans" [(ngModel)]="newAns1" [placeholder]="'Введіть першу відповідь...'"
+                          type="text"></md-input>
+                <md-input class="enter-ans" [(ngModel)]="newAns2" [placeholder]="'Введіть другу відповідь...'"
+                          type="text"></md-input>
+                <md-input class="enter-ans" [(ngModel)]="newAns3" [placeholder]="'Введіть третю відповідь...'"
+                          type="text"></md-input>
+                <md-input class="enter-ans" [(ngModel)]="newAns4" [placeholder]="'Введіть четверту відповідь...'"
+                          type="text"></md-input>
+                <md-input class="enter-good" [(ngModel)]="newGood"
+                          [placeholder]="'Введіть правильну відповідь...(Номер: 1,2,3,4)'" type="text"></md-input>
+                <button md-raised-button (click)="confirmAddTest()">Створити нове питанння</button>
             </div>
         </div>
     </div>

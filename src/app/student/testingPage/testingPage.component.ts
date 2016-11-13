@@ -1,7 +1,6 @@
 import {Component, OnInit, ElementRef, Renderer} from "@angular/core";
 import {remote} from "electron";
 import {TestingService} from "../../services/testing.service";
-import {createScope} from "@angular/core/src/profile/wtf_impl";
 
 @Component({
   selector: 'app-testingPage',
@@ -11,6 +10,7 @@ import {createScope} from "@angular/core/src/profile/wtf_impl";
 })
 export class TestingPageComponent implements OnInit {
   win: Electron.BrowserWindow;
+  themeArray: any[];
   title: string;
   test: any;
   result: number[];
@@ -94,6 +94,8 @@ export class TestingPageComponent implements OnInit {
       this.wrong = false;
       if (this.i < this.test.length) {
         this.question = this.test[this.i];
+        var temp = this.testingService.getThemeById(this.question.theme);
+        this.question.theme = temp[0].theme;
       } else {
         this.checkResult();
         this.showResult = true;
@@ -104,6 +106,7 @@ export class TestingPageComponent implements OnInit {
 
   ngOnInit() {
     remote.getCurrentWindow().maximize();
+    this.themeArray = this.testingService.getAllTheme();
     if (this.testingService.allTheme) {
       this.test = this.testingService.getAllTest();
     } else if (this.testingService.oneTheme) {
@@ -116,5 +119,7 @@ export class TestingPageComponent implements OnInit {
     }
     this.i = 0;
     this.question = this.test[this.i];
+    var temp = this.testingService.getThemeById(this.question.theme);
+    this.question.theme = temp[0].theme;
   }
 }

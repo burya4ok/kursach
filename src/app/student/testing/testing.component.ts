@@ -18,6 +18,7 @@ export class TestingComponent implements OnInit {
   oneTheme: boolean;
   testName: string;
   tests: any;
+  themeArray: any[];
 
   constructor(private testingService: TestingService) {
     this.title = 'Testing';
@@ -52,14 +53,13 @@ export class TestingComponent implements OnInit {
   };
 
   saveSelectedTheme(value) {
-    //if (this.testName == null)
     this.testName = value;
     this.testingService.saveAll(this.learn, this.modTest, this.allTheme, this.oneTheme, this.testName);
   }
 
   start() {
     if (this.testName == null) {
-      this.testName = this.tests[0].theme;
+      this.testName = this.themeArray[0].theme;
       this.testingService.saveAll(this.learn, this.modTest, this.allTheme, this.oneTheme, this.testName);
     }
   }
@@ -67,5 +67,6 @@ export class TestingComponent implements OnInit {
   ngOnInit() {
     remote.getCurrentWindow().maximize();
     this.tests = this.testingService.getAllTest();
+    this.themeArray = this.testingService.getAllTheme();
   }
 }

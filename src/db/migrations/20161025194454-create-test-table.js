@@ -11,7 +11,7 @@ module.exports = {
                     autoIncrement: true,
                 },
                 theme: {
-                    type: Sequelize.TEXT,
+                    type: Sequelize.INTEGER,
                     allowNull: true,
                 },
                 question: {
