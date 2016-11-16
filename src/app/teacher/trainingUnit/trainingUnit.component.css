@@ -1,0 +1,11 @@
+.global-block {
+  margin-top: 30px;
+}
+h1 {
+  text-align: center;
+  margin: 10px 0;
+}
+
+md-input {
+  width: 100%
+}

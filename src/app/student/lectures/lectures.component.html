@@ -3,6 +3,7 @@
     <md-nav-list layout="row">
         <a md-list-item [ngClass]="{active: lecture.id === currentLecture.id}"
            *ngFor="let lecture of lectures" (click)="setLecture(lecture)">
+            <img class="list-img" src="./assets/img/pdf.png">
             {{lecture.name}}
         </a>
     </md-nav-list>

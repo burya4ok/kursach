@@ -5,6 +5,8 @@ import {HttpModule} from '@angular/http';
 import {MaterialModule} from '@angular/material';
 import { FileUploadModule } from 'ng2-file-upload/components/file-upload/file-upload.module';
 import {ToastModule} from 'ng2-toastr/ng2-toastr';
+import { DevExtremeModule } from 'devextreme-angular2';
+
 
 import {routing, appRoutingProviders}  from './app-routing.module';
 import {AppComponent} from './app.component';
@@ -19,6 +21,12 @@ import {TeacherLecturesComponent} from './teacher/lectures/lectures.component';
 import {LoginService} from "./services/login.service";
 import {TestingService} from "./services/testing.service";
 import {LecturesService} from "./services/lectures.service";
+import {CurriculumService} from "./services/curriculum.service";
+import {CurriculumStudentComponent} from "./student/curriculum/curriculum.component";
+import {CurriculumTeacherComponent} from "./teacher/curriculum/curriculum.component";
+import {TrainingUnitComponent} from "./teacher/trainingUnit/trainingUnit.component";
+import {TrainingUnitService} from "./services/trainingUnit";
+import {SubjectService} from "./services/subject.service";
 
 @NgModule({
     declarations: [
@@ -31,7 +39,10 @@ import {LecturesService} from "./services/lectures.service";
         TestingPageComponent,
         StudentLecturesComponent,
         TeacherLecturesComponent,
-        SafePipe
+        SafePipe,
+        CurriculumStudentComponent,
+        CurriculumTeacherComponent,
+        TrainingUnitComponent
     ],
     imports: [
         FileUploadModule,
@@ -40,9 +51,11 @@ import {LecturesService} from "./services/lectures.service";
         HttpModule,
         routing,
         MaterialModule.forRoot(),
-        ToastModule
+        ToastModule,
+        DevExtremeModule
     ],
-    providers: [appRoutingProviders, LoginService, TestingService, LecturesService],
+    providers: [appRoutingProviders, LoginService, TestingService, LecturesService, CurriculumService,
+                TrainingUnitService, SubjectService],
     bootstrap: [AppComponent]
 })
 export class AppModule {

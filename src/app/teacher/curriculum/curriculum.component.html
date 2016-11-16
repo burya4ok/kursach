@@ -1,0 +1,16 @@
+<div class="row">
+    <h1>Навчальний план</h1>
+    <div class="curriculum">
+        <md-input [(ngModel)]="editCurriculum.trainingYear" [placeholder]="'Рік підготовки'" type="text"></md-input>
+        <md-input [(ngModel)]="editCurriculum.semesters" [placeholder]="'Семестри вивчення'" type="text"></md-input>
+        <md-input [(ngModel)]="editCurriculum.amountOfHours" [placeholder]="'Загальний обсяг годин'" type="text"></md-input>
+        <md-input [(ngModel)]="editCurriculum.lectures" [placeholder]="'Лекції'" type="text"></md-input>
+        <md-input [(ngModel)]="editCurriculum.practicalWork" [placeholder]="'Практичні роботи'" type="text"></md-input>
+        <md-input [(ngModel)]="editCurriculum.laboratory" [placeholder]="'Лабораторні'" type="text"></md-input>
+        <md-input [(ngModel)]="editCurriculum.selfStudy" [placeholder]="'Самостійне вивчення'" type="text"></md-input>
+        <md-input [(ngModel)]="editCurriculum.workshops" [placeholder]="'Семінари'" type="text"></md-input>
+        <md-input [(ngModel)]="editCurriculum.typeOfControl" [placeholder]="'Вид контролю'" type="text"></md-input>
+        <button md-raised-button color="primary" [disabled]="isSame()" class=" btn-xs" (click)="saveChanges()">Зберегти</button>
+        <button md-raised-button color="accent" [disabled]="isSame()" class=" btn-xs" (click)="cancelChanges()">Відмінити</button>
+    </div>
+</div>

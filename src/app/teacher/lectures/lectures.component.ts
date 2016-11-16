@@ -36,10 +36,6 @@ export class TeacherLecturesComponent implements OnInit {
             }
         });
 
-        this.uploader.onAfterAddingFile = (file: any) => {
-            console.log(file);
-        };
-
         this.uploader.uploadItem = (item: any) => {
             let index = this.uploader.queue.indexOf(item);
             let isAdded = this.lecturesService.addLecture(
@@ -55,7 +51,8 @@ export class TeacherLecturesComponent implements OnInit {
                 this.uploader.queue[index].progress = 100;
                 this.showSuccess()
             } else {
-                this.uploader.queue[item.index].isError = true;
+                this.uploader.queue[index].isError = true;
+                this.uploader.removeFromQueue(this.uploader.queue[index]);
                 this.showError()
             }
         };
@@ -67,11 +64,11 @@ export class TeacherLecturesComponent implements OnInit {
     };
 
     private showSuccess() {
-        this.toastr.success('You are awesome!', 'Success!');
+        this.toastr.success('Файл доданий до списку', 'Успіх!');
     }
 
     private showError() {
-        this.toastr.error('This is not good!', 'Oops!');
+        this.toastr.error('Невірний формат файлу або файл вже існує', 'Помилка!');
     }
 
     ngOnInit() {

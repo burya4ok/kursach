@@ -25,3 +25,7 @@ md-list-item.active .md-list-item {
 .fill-bar {
     flex: 1 1 auto;
 }
+
+.dx-fileuploader-file-status-message{
+    display: none !important;
+}

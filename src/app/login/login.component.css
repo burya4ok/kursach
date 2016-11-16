@@ -15,7 +15,9 @@
 }
 
 .subject-name {
+    /*
     position: relative;
+    */
     top: 20vh;
     vertical-align: middle;
     height: 50%;
@@ -23,8 +25,14 @@
 }
 
 .image-block {
+    display: flex;
+    align-items: center;
     height: 100%;
     background: #ccc;
+}
+
+.image-block .login-image {
+    width: 100%;
 }
 
 .right {

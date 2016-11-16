@@ -44,3 +44,8 @@ md-nav-list {
 a.active {
   background-color: #cccccc;
 }
+
+.list-img {
+  flex-direction: column;
+  height: 100%;
+}

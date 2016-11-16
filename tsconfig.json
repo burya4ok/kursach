@@ -12,7 +12,8 @@
   "exclude": [
     "node_modules",
     "src/typings/index.d.ts",
-    "src/typings/index"
+    "src/typings/index",
+    "bin"
   ],
   "awesomeTypescriptLoaderOptions": {
     "useWebpackText": true

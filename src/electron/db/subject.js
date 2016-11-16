@@ -8,4 +8,8 @@ module.exports = function (electron) {
     ipcMain.on('getSubject', Promise.coroutine(function *(event, data) {
         event.returnValue = yield db.Subject.getSubject();
     }));
+
+    ipcMain.on('setSubject', Promise.coroutine(function *(event, data) {
+        event.returnValue = yield db.Subject.setSubject(data);
+    }));
 };

@@ -3,12 +3,12 @@ import { ipcRenderer } from 'electron';
 
 @Injectable()
 export class SubjectService {
-    subject: any;
-    constructor(){
-        this.subject = ipcRenderer.sendSync('getSubject');
-    }
 
-    reloadSubject(): void{
-        this.subject = ipcRenderer.sendSync('getSubject');
+    setSubject = (data): void => {
+        ipcRenderer.sendSync('setSubject', data);
+    };
+
+    getSubject = (): any => {
+        return ipcRenderer.sendSync('getSubject');
     }
 }

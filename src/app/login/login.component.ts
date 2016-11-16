@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router'
-
+import {Router} from '@angular/router';
+import * as path from 'path';
 import {ipcRenderer, remote} from 'electron';
 import {LoginService} from "../services/login.service";
 import {SubjectService} from "../services/subject.service";
@@ -9,7 +9,7 @@ import {SubjectService} from "../services/subject.service";
     selector: 'app-login',
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.css'],
-    providers: [LoginService, SubjectService],
+    providers: [LoginService],
 })
 export class LoginComponent implements OnInit {
     win: Electron.BrowserWindow;
@@ -25,7 +25,8 @@ export class LoginComponent implements OnInit {
         this.teacher = false;
         this.placeholder = 'Пароль';
         this.password = '';
-        this.subject = this.subjectService.subject;
+        this.subject = this.subjectService.getSubject();
+        this.subject.mainImg = path.join('./assets/img/', this.subject.mainImg)
     }
 
     toStudent = () => {
@@ -65,9 +66,9 @@ export class LoginComponent implements OnInit {
     ngOnInit() {
         let type = this.loginService.getTypeOfUser();
         if (type === 'student') {
-            this.router.navigate(['student']);
+            this.router.navigate(['student/curriculum']);
         } else if (type === 'teacher') {
-            this.router.navigate(['teacher']);
+            this.router.navigate(['teacher/curriculum']);
         }
     }
 

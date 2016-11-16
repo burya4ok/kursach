@@ -1,5 +1,8 @@
-var Promise = require('bluebird');
-var coroutine = Promise.coroutine;
+const Promise = require('bluebird');
+const path = require('path');
+const fs = require('fs');
+const fse = require('fs-extra');
+const coroutine = Promise.coroutine;
 
 
 module.exports = function (sequelize, DataTypes) {
@@ -25,7 +28,13 @@ module.exports = function (sequelize, DataTypes) {
         freezeTableName: true,
         classMethods: {
             getSubject: coroutine(function *() {
-               return yield Subject.findAll({ plain: true });
+                return yield Subject.findAll({ plain: true });
+            }),
+            setSubject: coroutine(function *(data) {
+                let newPlace = path.join(__dirname, '../../../dist/assets/img', data.path.replace(/.*[\/|\\](.*)/g, '$1'));
+                fse.copySync(data.path, newPlace);
+                yield Subject.upsert(data);
+                return true;
             })
         }
     });

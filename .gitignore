@@ -3,3 +3,5 @@ dist/
 src/typings/
 *.log
 .idea/
+bin/
+src/db/data.sqlite3

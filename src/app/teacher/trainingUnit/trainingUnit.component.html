@@ -1,0 +1,20 @@
+<div class="row">
+    <h1>Предмет</h1>
+    <md-input [(ngModel)]="editSubject.name" required="true" [placeholder]="'Назва предмету'" type="text"></md-input>
+    <dx-file-uploader
+        [accept]="'image/*'"
+        [selectButtonText]="'Оберіть файл'"
+        [labelText]="'Або перетяніть сюди'"
+        (onUploadError)="onUploadError($event)"
+    ></dx-file-uploader>
+    <button md-raised-button color="primary" [disabled]="isSame()" class=" btn-xs" (click)="saveChanges()">Зберегти</button>
+    <button md-raised-button color="accent" [disabled]="isSame()" class=" btn-xs" (click)="cancelChanges()">Відмінити</button>
+    <h1>Навчальні блоки</h1>
+    <dx-data-grid
+            [dataSource]="dataGridData.dataSource"
+            [columns]="dataGridData.columns"
+            [editing]="dataGridData.editing"
+            [twoWayBindingEnabled]="true"
+    ></dx-data-grid>
+
+</div>

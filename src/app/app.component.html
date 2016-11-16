@@ -10,34 +10,31 @@
     </md-toolbar>
     <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" *ngIf="isTeacher()">
         <md-nav-list>
+            <md-list-item routerLink="teacher/curriculum" routerLinkActive="active">
+                <a md-line>Навчальний план</a>
+            </md-list-item>
+            <md-list-item routerLink="/teacher/unit" routerLinkActive="active">
+                <a md-line>Навчальний блок</a>
+            </md-list-item>
             <md-list-item routerLink="/teacher/lectures" routerLinkActive="active">
                 <a md-line>Лекції</a>
-                <button md-icon-button>
-                    <md-icon>info</md-icon>
-                </button>
             </md-list-item>
             <md-list-item routerLink="/teacher/testing" routerLinkActive="active">
                 <a md-line >Перевірка знань</a>
-                <button md-icon-button>
-                    <md-icon>info</md-icon>
-                </button>
             </md-list-item>
 
         </md-nav-list>
     </div>
     <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" *ngIf="isStudent()">
         <md-nav-list>
+            <md-list-item routerLink="student/curriculum" routerLinkActive="active">
+                <a md-line>Навчальний план</a>
+            </md-list-item>
             <md-list-item routerLink="/student/lectures" routerLinkActive="active">
                 <a md-line>Лекції</a>
-                <button md-icon-button>
-                    <md-icon>info</md-icon>
-                </button>
             </md-list-item>
             <md-list-item routerLink="/student/testing" routerLinkActive="active">
                 <a md-line >Перевірка знань</a>
-                <button md-icon-button>
-                    <md-icon>info</md-icon>
-                </button>
             </md-list-item>
 
         </md-nav-list>
