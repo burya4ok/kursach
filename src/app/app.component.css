@@ -1,6 +1,10 @@
 body {
     margin: 0;
 }
+html, body {
+    height: 100vh;
+    overflow: hidden;
+}
 md-toolbar {
     -webkit-user-select: none;
     -webkit-app-region: drag;
@@ -28,4 +32,12 @@ md-list-item.active .md-list-item {
 
 .dx-fileuploader-file-status-message{
     display: none !important;
+}
+
+.main-without-toolbar {
+    height: 100%;
+}
+
+.main-with-toolbar {
+    height: calc(100% - 64px);
 }

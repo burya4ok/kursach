@@ -11,8 +11,10 @@
     "goto-sqlite": "cd ./node_modules/sqlite3",
     "configure-sqlite32": "node-gyp configure --module_name=node_sqlite3 --module_path=../lib/binding/electron-v1.4-win32-ia32",
     "configure-sqlite64": "node-gyp configure --module_name=node_sqlite3 --module_path=../lib/binding/electron-v1.4-win32-x64",
+    "configure-sqliteUNIX": "node-gyp configure --module_name=node_sqlite3 --module_path=../lib/binding/electron-v1.4-linux-x64",
     "rebuild-sqlite32": "node-gyp rebuild --target=1.4.0 --arch=ia32 --target_platform=win32 --dist-url=https://atom.io/download/atom-shell --module_name=node_sqlite3 --module_path=../lib/binding/electron-v1.4-win32-ia32",
     "rebuild-sqlite64": "node-gyp rebuild --target=1.4.0 --arch=x64 --target_platform=win32 --dist-url=https://atom.io/download/atom-shell --module_name=node_sqlite3 --module_path=../lib/binding/electron-v1.4-win32-x64",
+    "rebuild-sqliteUNIX": "node-gyp rebuild --target=1.4.0 --arch=x64 --target_platform=linux --dist-url=https://atom.io/download/atom-shell --module_name=node_sqlite3 --module_path=../lib/binding/electron-v1.4-linux-x64",
     "pack": "electron-packager . \"kursach\" --out=bin --platform=win32 --arch=ia32 icon=src/assets/img/logo.ico --overwrite"
   },
   "author": "Rajayogan",

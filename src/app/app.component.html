@@ -41,7 +41,7 @@
     </div>
 </div>
 
-<div [ngClass]="{'col-xs-12 col-sm-12 col-md-12 col-lg-12 row': isActive(),
-              'col-xs-9 col-sm-9 col-md-9 col-lg-9': !isActive()}">
+<div class="" [ngClass]="{'col-xs-12 col-sm-12 col-md-12 col-lg-12 row main-without-toolbar': isActive(),
+              'col-xs-9 col-sm-9 col-md-9 col-lg-9 main-with-toolbar': !isActive()}">
     <router-outlet></router-outlet>
 </div>

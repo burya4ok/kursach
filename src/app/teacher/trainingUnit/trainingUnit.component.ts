@@ -46,17 +46,13 @@ export class TrainingUnitComponent implements OnInit {
                 {
                     dataField: "code",
                     caption: 'Шифр',
-                    alignment: "center",
-                    editCellTemplate: function (cellElemente, options) {
-                        cellElemente.height(15);
-                        $('<button>' + options.value + '</button>')
-                            .on('dxClick', function () {
-                                alert('Open ' + options.value)
-                            })
-                            .appendTo(cellElemente)
-                    }
+                    alignment: "center"
                 },
-                {dataField: "name", caption: 'Назва', alignment: "center"},
+                {
+                    dataField: "name",
+                    caption: 'Назва',
+                    alignment: "center"
+                },
             ],
             bindingOptions: {
                 noDataText: 'Немає данних'

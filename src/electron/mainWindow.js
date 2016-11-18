@@ -11,7 +11,7 @@ module.exports = function (electron) {
             show: false
         };
         win = new BrowserWindow(options);
-        win.setMenu(null);
+        //win.setMenu(null);
 
         win.loadURL(`file://${__dirname}/../../dist/index.html`);
 
