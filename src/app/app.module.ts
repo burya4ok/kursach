@@ -57,7 +57,7 @@ import {CustomIconsService} from "./services/customIcons.service";
         DevExtremeModule
     ],
     providers: [appRoutingProviders, LoginService, TestingService, MaterialsService, CurriculumService,
-                TrainingUnitService, SubjectService, CustomIconsService],
+                TrainingUnitService, SubjectService, CustomIconsService, SimpleTimer],
     bootstrap: [AppComponent]
 })
 export class AppModule {
