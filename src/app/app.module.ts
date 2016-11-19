@@ -17,16 +17,17 @@ import {TestingComponent} from './student/testing/testing.component';
 import {TeacherTestingComponent} from './teacher/testing/testing.component';
 import {TestingPageComponent} from './student/testingPage/testingPage.component';
 import {StudentLecturesComponent, SafePipe} from './student/lectures/lectures.component';
-import {TeacherLecturesComponent} from './teacher/lectures/lectures.component';
+import {TeacherMaterialsComponent} from './teacher/materials/materials.component';
 import {LoginService} from "./services/login.service";
 import {TestingService} from "./services/testing.service";
-import {LecturesService} from "./services/lectures.service";
+import { MaterialsService} from "./services/materials.service";
 import {CurriculumService} from "./services/curriculum.service";
 import {CurriculumStudentComponent} from "./student/curriculum/curriculum.component";
 import {CurriculumTeacherComponent} from "./teacher/curriculum/curriculum.component";
 import {TrainingUnitComponent} from "./teacher/trainingUnit/trainingUnit.component";
 import {TrainingUnitService} from "./services/trainingUnit";
 import {SubjectService} from "./services/subject.service";
+import {CustomIconsService} from "./services/customIcons.service";
 
 @NgModule({
     declarations: [
@@ -38,7 +39,7 @@ import {SubjectService} from "./services/subject.service";
         TeacherTestingComponent,
         TestingPageComponent,
         StudentLecturesComponent,
-        TeacherLecturesComponent,
+        TeacherMaterialsComponent,
         SafePipe,
         CurriculumStudentComponent,
         CurriculumTeacherComponent,
@@ -54,8 +55,8 @@ import {SubjectService} from "./services/subject.service";
         ToastModule,
         DevExtremeModule
     ],
-    providers: [appRoutingProviders, LoginService, TestingService, LecturesService, CurriculumService,
-                TrainingUnitService, SubjectService],
+    providers: [appRoutingProviders, LoginService, TestingService, MaterialsService, CurriculumService,
+                TrainingUnitService, SubjectService, CustomIconsService],
     bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -5,7 +5,7 @@ import { ipcRenderer } from 'electron';
 export class SubjectService {
 
     setSubject = (data): void => {
-        ipcRenderer.sendSync('setSubject', data);
+        return ipcRenderer.sendSync('setSubject', data);
     };
 
     getSubject = (): any => {

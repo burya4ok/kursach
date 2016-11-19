@@ -1,16 +1,33 @@
 <div class="row">
-    <h1>Навчальний план</h1>
-    <div class="curriculum">
-        <md-input [(ngModel)]="editCurriculum.trainingYear" [placeholder]="'Рік підготовки'" type="text"></md-input>
-        <md-input [(ngModel)]="editCurriculum.semesters" [placeholder]="'Семестри вивчення'" type="text"></md-input>
-        <md-input [(ngModel)]="editCurriculum.amountOfHours" [placeholder]="'Загальний обсяг годин'" type="text"></md-input>
-        <md-input [(ngModel)]="editCurriculum.lectures" [placeholder]="'Лекції'" type="text"></md-input>
-        <md-input [(ngModel)]="editCurriculum.practicalWork" [placeholder]="'Практичні роботи'" type="text"></md-input>
-        <md-input [(ngModel)]="editCurriculum.laboratory" [placeholder]="'Лабораторні'" type="text"></md-input>
-        <md-input [(ngModel)]="editCurriculum.selfStudy" [placeholder]="'Самостійне вивчення'" type="text"></md-input>
-        <md-input [(ngModel)]="editCurriculum.workshops" [placeholder]="'Семінари'" type="text"></md-input>
-        <md-input [(ngModel)]="editCurriculum.typeOfControl" [placeholder]="'Вид контролю'" type="text"></md-input>
-        <button md-raised-button color="primary" [disabled]="isSame()" class=" btn-xs" (click)="saveChanges()">Зберегти</button>
-        <button md-raised-button color="accent" [disabled]="isSame()" class=" btn-xs" (click)="cancelChanges()">Відмінити</button>
+    <div class="clo-md-12">
+        <div class="col-md-6">
+            <h1>Предмет</h1>
+            <md-input [(ngModel)]="editSubject.name" required="true" [placeholder]="'Назва предмету'" type="text"></md-input>
+            <dx-file-uploader
+                    [accept]="'image/*'"
+                    [selectButtonText]="'Оберіть файл'"
+                    [labelText]="'Або перетяніть сюди'"
+                    (onUploadError)="onUploadError($event)"
+            ></dx-file-uploader>
+            <button md-raised-button color="primary" [disabled]="isSameSubject()" class=" btn-xs" (click)="saveSubject()">Зберегти</button>
+            <button md-raised-button color="accent" [disabled]="isSameSubject()" class=" btn-xs" (click)="cancelSubject()">Відмінити</button>
+        </div>
+        <div class="col-md-6">
+            <h1>Навчальний план</h1>
+            <div class="curriculum">
+                <md-input [(ngModel)]="editCurriculum.trainingYear" [placeholder]="'Рік підготовки'" type="text"></md-input>
+                <md-input [(ngModel)]="editCurriculum.semesters" [placeholder]="'Семестри вивчення'" type="text"></md-input>
+                <md-input [(ngModel)]="editCurriculum.amountOfHours" [placeholder]="'Загальний обсяг годин'" type="text"></md-input>
+                <md-input [(ngModel)]="editCurriculum.lectures" [placeholder]="'Лекції'" type="text"></md-input>
+                <md-input [(ngModel)]="editCurriculum.practicalWork" [placeholder]="'Практичні роботи'" type="text"></md-input>
+                <md-input [(ngModel)]="editCurriculum.laboratory" [placeholder]="'Лабораторні'" type="text"></md-input>
+                <md-input [(ngModel)]="editCurriculum.selfStudy" [placeholder]="'Самостійне вивчення'" type="text"></md-input>
+                <md-input [(ngModel)]="editCurriculum.workshops" [placeholder]="'Семінари'" type="text"></md-input>
+                <md-input [(ngModel)]="editCurriculum.typeOfControl" [placeholder]="'Вид контролю'" type="text"></md-input>
+                <button md-raised-button color="primary" [disabled]="isSameCurriculum()" class=" btn-xs" (click)="saveCurriculum()">Зберегти</button>
+                <button md-raised-button color="accent" [disabled]="isSameCurriculum()" class=" btn-xs" (click)="cancelCurriculum()">Відмінити</button>
+            </div>
+        </div>
     </div>
+
 </div>

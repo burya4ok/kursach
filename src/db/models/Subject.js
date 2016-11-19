@@ -31,8 +31,10 @@ module.exports = function (sequelize, DataTypes) {
                 return yield Subject.findAll({ plain: true });
             }),
             setSubject: coroutine(function *(data) {
-                let newPlace = path.join(__dirname, '../../../dist/assets/img', data.path.replace(/.*[\/|\\](.*)/g, '$1'));
-                fse.copySync(data.path, newPlace);
+                if (data.path) {
+                    let newPlace = path.join(__dirname, '../../../dist/assets/img', data.path.replace(/.*[\/|\\](.*)/g, '$1'));
+                    fse.copySync(data.path, newPlace);
+                }
                 yield Subject.upsert(data);
                 return true;
             })

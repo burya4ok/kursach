@@ -6,7 +6,7 @@
     <div class="container col-centered">
         <span class="subject-name login-content">{{subject.name}}</span>
         <button class="btn-type" md-raised-button [disabled]="student" (click)="toStudent()">Студент</button>
-        <button class="btn-type" md-raised-button [disabled]="teacher" (click)="toTeacher()">Вчитель</button>
+        <button class="btn-type" md-raised-button [disabled]="teacher" (click)="toTeacher()">Викладач</button>
         <md-input class="login-content" [(ngModel)]="password" [placeholder]="placeholder" type="password" [disabled]="!student && !teacher" align="end"></md-input>
         <button class="login-content" md-raised-button [disabled]="!student && !teacher" (click)="login()">УВІЙТИ</button>
     </div>

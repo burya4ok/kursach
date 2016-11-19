@@ -1,4 +1,4 @@
-import {NgModule, ModuleWithProviders} from '@angular/core';
+import {ModuleWithProviders} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {LoginComponent} from "./login/login.component";
 import {TeacherComponent} from "./teacher/teacher.component";
@@ -7,7 +7,7 @@ import {TestingComponent} from "./student/testing/testing.component";
 import {TeacherTestingComponent} from "./teacher/testing/testing.component";
 import {TestingPageComponent} from "./student/testingPage/testingPage.component";
 import {StudentLecturesComponent} from "./student/lectures/lectures.component";
-import {TeacherLecturesComponent} from "./teacher/lectures/lectures.component";
+import {TeacherMaterialsComponent} from "./teacher/materials/materials.component";
 import {CurriculumStudentComponent} from "./student/curriculum/curriculum.component";
 import {CurriculumTeacherComponent} from "./teacher/curriculum/curriculum.component";
 import {TrainingUnitComponent} from "./teacher/trainingUnit/trainingUnit.component";
@@ -39,12 +39,12 @@ const routes: Routes = [
         component: TestingPageComponent
     },
     {
-        path: 'student/lectures',
+        path: 'student/materials',
         component: StudentLecturesComponent
     },
     {
-        path: 'teacher/lectures',
-        component: TeacherLecturesComponent
+        path: 'teacher/materials',
+        component: TeacherMaterialsComponent
     },
     {
         path: 'student/curriculum',

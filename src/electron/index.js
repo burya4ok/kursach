@@ -26,9 +26,9 @@ function createWindow() {
     win.once('ready-to-show', Promise.coroutine(function *() {
         let type = yield models.Config.getTypeOfUser();
         if (type === 'student' || type === 'teacher') {
-            mainWindow.create();
+            mainWindow.create(null, type);
         } else {
-            loginWindow.create();
+            loginWindow.create(null, type);
         }
     }))
 }

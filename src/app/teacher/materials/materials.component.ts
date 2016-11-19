@@ -1,56 +1,64 @@
 import {Component, OnInit} from '@angular/core';
-import {TrainingUnitService} from "../../services/trainingUnit";
 import {LoginService} from "../../services/login.service";
+import {MaterialsService} from "../../services/materials.service";
 import {CustomIconsService} from "../../services/customIcons.service";
 
 @Component({
-    selector: 'my-app',
-    templateUrl: './trainingUnit.component.html',
-    styleUrls: ['./trainingUnit.component.css'],
-})
+    selector: 'app-materials',
+    templateUrl: 'materials.component.html',
+    styleUrls: ['materials.component.css'],
 
-export class TrainingUnitComponent implements OnInit {
+})
+export class TeacherMaterialsComponent implements OnInit {
+    win: Electron.BrowserWindow;
+    materials: any;
     dataGridData: any;
 
-    constructor(private trainingUnitService: TrainingUnitService, private loginService: LoginService,
+    constructor(private loginService: LoginService, private materialsService: MaterialsService,
     private customIcons: CustomIconsService) {
         this.dataGridData = {
             dataSource: {
                 load: () => {
-                    return this.trainingUnitService.getTrainingUnits()
+                    return this.materialsService.getAllMaterials()
                 },
                 insert: (data) => {
-                    return this.trainingUnitService.insertTrainingUnits(data)
+                    return this.materialsService.insertMaterial(data)
                 },
                 update: (data, updated) => {
-                    let newVal = {
-                        id: data.id,
-                        code: updated.code ? updated.code: data.code,
-                        name: updated.name ? updated.name: data.name
-                    };
-                    return this.trainingUnitService.updateTrainingUnits(newVal)
+                    return this.materialsService.updateMaterial(updated)
 
                 },
                 remove: (data) => {
-                    return this.trainingUnitService.deleteTrainingUnits(data.id)
+                    return this.materialsService.deleteMaterial(data.id)
 
                 },
                 totalCount: () => {
-                    return this.trainingUnitService.getTrainingUnits().length
+                    return this.materialsService.getAllMaterials().length
 
                 }
             },
             columns: [
                 {
-                    dataField: "code",
-                    caption: 'Шифр',
-                    alignment: "center"
-                },
-                {
-                    dataField: "name",
+                    dataField: "title",
                     caption: 'Назва',
                     alignment: "center"
                 },
+                {
+                    dataField: "unit",
+                    caption: 'Блок',
+                    alignment: "center"
+                },
+                {
+                    dataField: "type",
+                    caption: 'Тип',
+                    alignment: "center"
+                },
+                {
+                    dataField: "file",
+                    caption: 'Файл',
+                    alignment: "center"
+                },
+
             ],
             bindingOptions: {
                 noDataText: 'Немає данних'
@@ -61,10 +69,10 @@ export class TrainingUnitComponent implements OnInit {
                 allowUpdating: true,
                 mode: "form",
                 texts: {
-                    addRow: "Додати блок",
+                    addRow: "Додати",
                     cancelAllChanges: "Відмінити зміни",
                     cancelRowChanges: "Відмінити",
-                    confirmDeleteMessage: "Ви впевненні, що хочети видалити блок?",
+                    confirmDeleteMessage: "Ви впевненні, що хочети видалити?",
                     deleteRow: customIcons.remove,
                     editRow: customIcons.edit,
                     saveAllChanges: "Зберегти зміни",
@@ -74,8 +82,7 @@ export class TrainingUnitComponent implements OnInit {
         }
     }
 
-
     ngOnInit() {
-        this.loginService.setTitle('Навчальний блок');
+        this.loginService.setTitle('Навчальний матеріал');
     }
 }

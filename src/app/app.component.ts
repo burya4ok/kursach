@@ -23,8 +23,12 @@ export class AppComponent {
         }, 100);}
 
     exit() {
-        this.loginService.deleteTypeOfUser();
-        ipcRenderer.send('loginWindow')
+        //noinspection TypeScriptUnresolvedFunction
+        var answer: boolean = confirm("Ви дійсно хочете змінити режим?", "Обережно!");
+        if (answer){
+            this.loginService.deleteTypeOfUser();
+            ipcRenderer.send('loginWindow')
+        }
     }
 
     isActive() {

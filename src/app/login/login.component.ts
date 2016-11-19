@@ -56,7 +56,7 @@ export class LoginComponent implements OnInit {
         let checkPassword = this.loginService.checkPassword(type, this.password);
         if (checkPassword) {
             this.win.hide();
-            ipcRenderer.send('mainWindow');
+            ipcRenderer.send('mainWindow', type);
         } else {
             this.password = '';
             this.placeholder = 'Введіть вірний пароль'

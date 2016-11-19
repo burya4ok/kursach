@@ -15,8 +15,6 @@
 }
 
 .subject-name {
-    position: relative;
-    top: 20vh;
     vertical-align: middle;
     height: 50%;
     font-size: 28px;

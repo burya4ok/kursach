@@ -4,7 +4,7 @@
     "password": null,
     "host": "localhost",
     "dialect": "sqlite",
-    "йцу": "../data.sqlite3",
+    "storageForBuild": "../data.sqlite3",
     "storage": "./src/db/data.sqlite3"
   }
 }

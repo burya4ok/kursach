@@ -2,7 +2,7 @@ module.exports = function (electron) {
     const { app, BrowserWindow, ipcMain} = electron;
     let win = null;
 
-    function createWindow() {
+    function createWindow(event, data) {
         var options = {
             width: 900,
             height: 600,
@@ -20,6 +20,8 @@ module.exports = function (electron) {
         });
 
         win.once('ready-to-show', () => {
+            let title = data === 'student' ? 'Режим студента' : 'Режим викладача';
+            win.setTitle(title);
             win.show();
             win.maximize();
         });
@@ -28,14 +30,14 @@ module.exports = function (electron) {
     ipcMain.on('mainWindow', createMain);
 
     module.exports.create = createMain;
-    function createMain() {
+    function createMain(event, data) {
         let prevWindow = BrowserWindow.getFocusedWindow();
         if (prevWindow) {
             prevWindow.hide();
-            createWindow();
+            createWindow(event, data);
             prevWindow = null;
         } else {
-            createWindow();
+            createWindow(event, data);
         }
     }
 };
