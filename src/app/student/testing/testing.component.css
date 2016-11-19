@@ -21,5 +21,9 @@ span {
 
 .start button {
   width: 100%;
+}
 
+.small-text {
+  font-size: 1em !important;
+  font-style: oblique !important;
 }

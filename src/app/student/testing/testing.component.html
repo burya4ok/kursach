@@ -3,6 +3,8 @@
     <span>Виберіть режим:</span>
     <button class="btn-type" md-raised-button [disabled]="learn" (click)="toLearn()">Навчання</button>
     <button class="btn-type" md-raised-button [disabled]="modTest" (click)="toModTest()">Тестування</button>
+    <span class="small-text" *ngIf="learn">Без відліку часу та з відміткою про невірність питання</span>
+    <span class="small-text" *ngIf="modTest">З обмеженим часом, без повідомлення про вірність питання</span>
 </div>
 
 <div class="col-md-12 theme">

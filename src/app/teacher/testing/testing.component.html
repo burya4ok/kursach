@@ -1,11 +1,11 @@
 <div class="global-block">
     <h1>Заповнення тестів</h1>
-    <div class="col-md-12">
-        <div class="col-md-6">
+    <div class="col-md-12 height">
+        <div class="col-md-6 height">
             <div class="form-group">
                 <label for="exampleSelect2">Список питань: </label>
                 <select #selectedQuestion multiple class="form-control multiple" id="exampleSelect2">
-                    <option *ngFor='let test of newTest' [value]="test.question" (click)="activeChangeTest(test)">{{test.question}}</option>
+                    <option *ngFor='let test of newTest' [value]="test.question" (click)="activeChangeTest(test)" name="list-questions">{{test.question}}</option>
                 </select>
 
                 <label class="margin"  for="exampleSelect1">Виберіть тему: </label>
@@ -21,14 +21,17 @@
             <button md-raised-button class="md-raised md-warn" [disabled]="disable" (click)="removeTheme()">Видалити тему</button>
         </div>
         <div class="col-md-6" *ngIf="changeAddTheme">
-            <div class="form-group">
+            <div class="form-group margin-top">
                 <md-input class="enter-question" [(ngModel)]="newTheme" [placeholder]="'Введіть назву теми...'"
                           type="text"></md-input>
                 <button md-raised-button class="md-raised md-primary" (click)="confirmAddTheme()">Створити тему</button>
+                <button md-raised-button class="md-raised md-warn" (click)="cancelAddTest()">Відмінити</button>
             </div>
         </div>
         <div class="col-md-6" *ngIf="changeTest">
-            <div class="form-group">
+            <div class="form-group margin-top">
+                <md-input class="enter-question" [(ngModel)]="Theme" [placeholder]="'Тема: '"
+                          type="text" [disabled]="true"></md-input>
                 <md-input class="enter-question" [(ngModel)]="newQuestion" [placeholder]="'Введіть питання...'"
                           type="text"></md-input>
                 <md-input class="enter-ans" [(ngModel)]="newAns1" [placeholder]="'Введіть першу відповідь...'"
@@ -41,13 +44,18 @@
                           type="text"></md-input>
                 <md-input class="enter-good" [(ngModel)]="newGood"
                           [placeholder]="'Введіть правильну відповідь...(Номер: 1,2,3,4)'" type="text"></md-input>
+                <span class="choose-text">Поточне зображення: {{img}}</span><br>
+                <span class="choose-text">Вибрати нове зображення(не обов'язково)</span>
+                <input class="file" type="file" ng2FileSelect [uploader]="uploader"/>
                 <button md-raised-button class="md-raised md-primary" (click)="confirmChangeTest()">Внести зміни в питання</button>
                 <button md-raised-button class="md-raised md-warn" (click)="removeQuestion()">Видалити питання</button>
                 <button md-raised-button class="md-raised md-warn" (click)="cancelAddTest()">Відмінити</button>
             </div>
         </div>
         <div class="col-md-6" *ngIf="changeAddTest">
-            <div class="form-group">
+            <div class="form-group margin-top">
+                <md-input class="enter-question" [(ngModel)]="Theme" [placeholder]="'Тема: '"
+                          type="text" [disabled]="true"></md-input>
                 <md-input class="enter-question" [(ngModel)]="newQuestion" [placeholder]="'Введіть питання...'"
                           type="text"></md-input>
                 <md-input class="enter-ans" [(ngModel)]="newAns1" [placeholder]="'Введіть першу відповідь...'"

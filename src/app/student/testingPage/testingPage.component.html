@@ -32,6 +32,9 @@
             </div>
         </div>
     </div>
+    <div class="col-md-12 timer" *ngIf="showTimer">
+        <h2>Відлік часу: {{minutes}}:{{sec}}</h2>
+    </div>
     <div class="alert alert-success" *ngIf="success && showAllert">
         Відповідь правильна
     </div>
@@ -42,8 +45,10 @@
 </div>
 <div *ngIf="showResult">
     <h1>Результати тесту</h1>
-    <h1>Процентне співвідношення: {{procent}}</h1>
-    <h1>Ваша оцінка: {{ball}}</h1>
+    <h1>Кількість правильних відповідей/всього відповідей: {{goodQuestion}}/{{allQuestion}}</h1>
+    <h1>Процентне співвідношення: {{procent}}%</h1>
+    <h1>Ваша оцінка: {{ball}}. </h1>
+    <h1 *ngIf="showTimer && timeend">Ви не втигли по часу</h1>
 </div>
 
 

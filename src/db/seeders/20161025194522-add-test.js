@@ -11,7 +11,7 @@ module.exports = {
                 answer3: 'Test answer3',
                 answer4: 'Test answer4',
                 good: 1,
-                image: '../src/assets/img/test-img.jpg',
+                image: '../dist/assets/img/test-img.jpg',
             },
             {
                 theme: 2,
@@ -21,7 +21,7 @@ module.exports = {
                 answer3: '2Test answer3',
                 answer4: '2Test answer4',
                 good: 2,
-                image: '../src/assets/img/test-img.jpg',
+                image: '../dist/assets/img/test-img.jpg',
             },
             {
                 theme: 3,
@@ -31,7 +31,7 @@ module.exports = {
                 answer3: '3Test answer3',
                 answer4: '3Test answer4',
                 good: 3,
-                image: '../src/assets/img/test-img.jpg',
+                image: '../dist/assets/img/test-img.jpg',
             },
             {
                 theme: 4,
@@ -41,7 +41,7 @@ module.exports = {
                 answer3: '4Test answer3',
                 answer4: '4Test answer4',
                 good: 4,
-                image: '../src/assets/img/test-img.jpg',
+                image: '../dist/assets/img/test-img.jpg',
             },
             {
                 theme: 5,
@@ -51,7 +51,7 @@ module.exports = {
                 answer3: '5Test answer3',
                 answer4: '5Test answer4',
                 good: 2,
-                image: '../src/assets/img/test-img.jpg',
+                image: '../dist/assets/img/test-img.jpg',
             }
         ], {});
     },

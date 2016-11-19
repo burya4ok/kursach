@@ -26,10 +26,10 @@ export class TestingService {
         return ipcRenderer.sendSync('getTest', {testTheme: id[0].id});
     }
 
-    updateTest(tempId, tempQuestion, tempAns1, tempAns2, tempAns3, tempAns4, tempGood) {
+    updateTest(tempId, tempQuestion, tempAns1, tempAns2, tempAns3, tempAns4, tempGood, tempImg, tempPath) {
         return ipcRenderer.sendSync('updateTest', {
             testId: tempId, testQuestion: tempQuestion, testAns1: tempAns1,
-            testAns2: tempAns2, testAns3: tempAns3, testAns4: tempAns4, testGood: tempGood
+            testAns2: tempAns2, testAns3: tempAns3, testAns4: tempAns4, testGood: tempGood, testImg: tempImg, testPath: tempPath
         });
     }
 

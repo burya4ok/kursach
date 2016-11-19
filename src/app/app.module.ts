@@ -6,6 +6,7 @@ import {MaterialModule} from '@angular/material';
 import { FileUploadModule } from 'ng2-file-upload/components/file-upload/file-upload.module';
 import {ToastModule} from 'ng2-toastr/ng2-toastr';
 import { DevExtremeModule } from 'devextreme-angular2';
+import { SimpleTimer } from 'ng2-simple-timer';
 
 
 import {routing, appRoutingProviders}  from './app-routing.module';

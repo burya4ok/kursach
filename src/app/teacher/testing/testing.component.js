@@ -88,7 +88,7 @@ var TeacherTestingComponent = (function () {
         var tempPath;
         if (this.uploader.queue.length > 0) {
             tempPath = this.uploader.queue[0]._file.path;
-            this.newImg = '../src/assets/img/' + this.uploader.queue[0]._file.name;
+            this.newImg = '../dist/assets/img/' + this.uploader.queue[0]._file.name;
         }
         else {
             tempPath = '';
@@ -96,7 +96,7 @@ var TeacherTestingComponent = (function () {
         }
         if (this.newImg === null) {
             tempPath = '';
-            this.newImg = '../src/assets/img/test-img.jpg';
+            this.newImg = '../dist/assets/img/test-img.jpg';
         }
         this.testingService.addQuestion(this.saveThemeForAdd, this.newQuestion, this.newAns1, this.newAns2, this.newAns3, this.newAns4, this.newGood, this.newImg, tempPath);
         this.tests = this.testingService.getAllTest();

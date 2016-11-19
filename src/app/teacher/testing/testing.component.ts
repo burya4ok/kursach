@@ -1,7 +1,9 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, OnInit, ElementRef, Renderer} from "@angular/core";
 import {remote} from "electron";
 import {TestingService} from "../../services/testing.service";
 import {FileUploader} from 'ng2-file-upload/ng2-file-upload';
+import {LoginService} from "../../services/login.service";
+
 
 const fse = require('fs-extra');
 const fs = require('fs');
@@ -17,6 +19,7 @@ export class TeacherTestingComponent implements OnInit {
     win: Electron.BrowserWindow;
     title: string;
     tests: any;
+    img: any;
     newTest: any[];
     themeArray: any[];
     changeTest: boolean;
@@ -27,6 +30,7 @@ export class TeacherTestingComponent implements OnInit {
     newAns2: string;
     newAns3: string;
     newAns4: string;
+    Theme: string;
     newGood: string;
     newTheme: string;
     testId: number;
@@ -37,7 +41,7 @@ export class TeacherTestingComponent implements OnInit {
     public uploader: FileUploader = new FileUploader({isHTML5: true});
     disable: boolean;
 
-    constructor(private testingService: TestingService) {
+    constructor(private testingService: TestingService, private loginService: LoginService, private renderer: Renderer) {
         this.title = 'Testing';
         this.newTest = [];
         this.allTheme = [];
@@ -72,6 +76,8 @@ export class TeacherTestingComponent implements OnInit {
     }
 
     activeChangeTest(data) {
+        var temp = this.testingService.getThemeById(data.theme);
+        this.Theme = temp[0].theme;
         this.newQuestion = data.question;
         this.newAns1 = data.answer1;
         this.newAns2 = data.answer2;
@@ -79,13 +85,28 @@ export class TeacherTestingComponent implements OnInit {
         this.newAns4 = data.answer4;
         this.newGood = data.good;
         this.testId = data.id;
+        this.img = data.image.replace(/.*[\/|\\](.*)/g, '$1');
         this.disable = true;
         this.changeTest = true;
     }
 
     confirmChangeTest() {
-        this.testingService.updateTest(this.testId, this.newQuestion, this.newAns1, this.newAns2, this.newAns3, this.newAns4, this.newGood);
+        var tempPath;
+        if (this.uploader.queue.length > 0) {
+            tempPath = this.uploader.queue[0]._file.path;
+            this.newImg = '../dist/assets/img/' + this.uploader.queue[0]._file.name;
+        } else {
+            tempPath = '';
+            this.newImg = null;
+        }
+        if (this.newImg === null) {
+            tempPath = '';
+            this.newImg = '../dist/assets/img/test-img.jpg';
+        }
+        this.testingService.updateTest(this.testId, this.newQuestion, this.newAns1, this.newAns2, this.newAns3,
+            this.newAns4, this.newGood, this.newImg, tempPath);
         this.tests = this.testingService.getAllTest();
+        this.sortArray();
         this.newTest = this.tests;
         this.changeTest = false;
         this.disable = false;
@@ -96,6 +117,8 @@ export class TeacherTestingComponent implements OnInit {
         if (this.saveThemeForAdd === null) {
             alert('Виберіть тему');
         } else {
+            var temp = this.testingService.getThemeById(this.saveThemeForAdd);
+            this.Theme = temp[0].theme;
             this.newQuestion = '';
             this.newAns1 = '';
             this.newAns2 = '';
@@ -111,18 +134,19 @@ export class TeacherTestingComponent implements OnInit {
         var tempPath;
         if (this.uploader.queue.length > 0) {
             tempPath = this.uploader.queue[0]._file.path;
-            this.newImg = '../src/assets/img/' + this.uploader.queue[0]._file.name;
+            this.newImg = '../dist/assets/img/' + this.uploader.queue[0]._file.name;
         } else {
             tempPath = '';
-            this.newImg === null;
+            this.newImg = null;
         }
         if (this.newImg === null) {
             tempPath = '';
-            this.newImg = '../src/assets/img/test-img.jpg';
+            this.newImg = '../dist/assets/img/test-img.jpg';
         }
         this.testingService.addQuestion(this.saveThemeForAdd, this.newQuestion, this.newAns1,
             this.newAns2, this.newAns3, this.newAns4, this.newGood, this.newImg, tempPath);
         this.tests = this.testingService.getAllTest();
+        this.sortArray();
         this.sortTheme(this.saveThemeForAdd);
         this.changeAddTest = false;
         this.disable = false;
@@ -150,6 +174,7 @@ export class TeacherTestingComponent implements OnInit {
             this.testingService.destroyQuestions(this.saveThemeForAdd);
             this.themeArray = this.testingService.getAllTheme();
             this.tests = this.testingService.getAllTest();
+            this.sortArray();
             this.newTest = this.tests;
             this.changeTest = false;
             alert('Тема та всі її питання були видалені!!!')
@@ -160,6 +185,7 @@ export class TeacherTestingComponent implements OnInit {
         this.testingService.destroyQuestion(this.testId);
         this.themeArray = this.testingService.getAllTheme();
         this.tests = this.testingService.getAllTest();
+        this.sortArray();
         this.newTest = this.tests;
         this.changeTest = false;
         this.disable = false;
@@ -174,10 +200,24 @@ export class TeacherTestingComponent implements OnInit {
         alert('Тема була створена!!!');
     }
 
+    sortArray() {
+        this.tests.sort(function(obj1, obj2) {
+            return obj1.theme - obj2.theme;
+        });
+    };
+
     ngOnInit() {
         remote.getCurrentWindow().maximize();
+        this.loginService.setTitle('Питання для тестування');
         this.themeArray = this.testingService.getAllTheme();
         this.tests = this.testingService.getAllTest();
+        this.tests.sort(function(obj1, obj2) {
+            return obj1.theme - obj2.theme;
+        });
+        /*this.activeChangeTest(this.tests[0]);
+        var tmp = document.getElementsByName('list-questions');
+        console.log(tmp);
+        this.renderer.setElementAttribute(tmp[0], "selected", "true");*/
         this.newTest = this.tests;
     }
 }

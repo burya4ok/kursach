@@ -13,7 +13,7 @@ module.exports = function (electron) {
     }));
     ipcMain.on('updateTest', Promise.coroutine(function *(event, data) {
         event.returnValue = yield db.Test.updateTest(data.testId, data.testQuestion, data.testAns1,
-            data.testAns2, data.testAns3, data.testAns4, data.testGood);
+            data.testAns2, data.testAns3, data.testAns4, data.testGood, data.testImg, data.testPath);
     }));
     ipcMain.on('addQuestion', Promise.coroutine(function *(event, data) {
         event.returnValue = yield db.Test.addQuestion(data.testTheme, data.testQuestion, data.testAns1,

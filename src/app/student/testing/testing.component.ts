@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {remote} from 'electron';
 import {TestingService} from "../../services/testing.service";
+import {LoginService} from "../../services/login.service";
 
 
 @Component({
@@ -20,7 +21,7 @@ export class TestingComponent implements OnInit {
   tests: any;
   themeArray: any[];
 
-  constructor(private testingService: TestingService) {
+  constructor(private testingService: TestingService, private loginService: LoginService) {
     this.title = 'Testing';
     this.learn = false;
     this.modTest = false;
@@ -66,6 +67,7 @@ export class TestingComponent implements OnInit {
 
   ngOnInit() {
     remote.getCurrentWindow().maximize();
+    this.loginService.setTitle('Перевірка знань');
     this.tests = this.testingService.getAllTest();
     this.themeArray = this.testingService.getAllTheme();
   }
