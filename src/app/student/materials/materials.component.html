@@ -1,7 +1,7 @@
 <div class="content" *ngIf="!filesNotFound">
     <iframe class="document" [src]="currentMaterial.viewerPath | safe" frameborder="0"></iframe>
     <md-nav-list layout="row">
-        <a md-list-item [ngClass]="{active: material.id === currentMaterial.id}"
+        <a class="material" md-list-item [ngClass]="{active: material.id === currentMaterial.id}"
            *ngFor="let material of materials" (click)="setLecture(material)">
             <img class="list-img" src="./assets/img/pdf.png">
             {{material.title}}

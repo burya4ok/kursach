@@ -49,3 +49,9 @@ a.active {
   flex-direction: column;
   height: 100%;
 }
+
+.material {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

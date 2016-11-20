@@ -52,11 +52,15 @@ module.exports = function (sequelize, DataTypes) {
                 return yield Materials.findAll(query);
             }),
             getMaterialsByType: coroutine(function *(type) {
-                return yield Materials.findAll({
+                let materials = yield Materials.findAll({
                     where: {
                         type: type
                     }
                 });
+                for (let material of materials) {
+                    material.file = path.join(__dirname, '../../../dist/assets/docs', material.file)
+                }
+                return materials;
             }),
             getTypes: coroutine(function *() {
                 return [
@@ -89,7 +93,7 @@ module.exports = function (sequelize, DataTypes) {
                 }
                 let newPlace = path.join(__dirname, '../../../dist/assets/docs', material.file.replace(/.*[\/|\\](.*)/g, '$1'));
                 fse.copySync(material.file, newPlace);
-                material.file = newPlace;
+                material.file = material.file.replace(/.*[\/|\\](.*)/g, '$1');
 
                 yield Materials.create(material);
                 return true;
@@ -126,8 +130,8 @@ module.exports = function (sequelize, DataTypes) {
                     },
                     plain: true
                 });
-                if (material.file && fs.lstatSync(material.file).isFile()) {
-                    fse.removeSync(material.file);
+                if (material.file && fs.lstatSync(path.join(__dirname, '../../../dist/assets/docs',material.file)).isFile()) {
+                    fse.removeSync(path.join(__dirname, '../../../dist/assets/docs',material.file));
                 }
                 yield Materials.destroy({
                     where: {
