@@ -4,7 +4,7 @@
         <div class="col-md-6 height">
             <div class="form-group">
                 <label for="exampleSelect2">Список питань: </label>
-                <select #selectedQuestion multiple class="form-control multiple" id="exampleSelect2">
+                <select #selectedQuestion multiple class="form-control multiple  scroll-on" id="exampleSelect2">
                     <option *ngFor='let test of newTest' [value]="test.question" (click)="activeChangeTest(test)" name="list-questions">{{test.question}}</option>
                 </select>
 

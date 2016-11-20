@@ -123,8 +123,8 @@ export class TestingPageComponent implements OnInit {
             this.minutes = 59;
             this.sec = 60;
         } else {
-            this.minutes = 0;
-            this.sec = 10;
+            this.minutes = 29;
+            this.sec = 60;
         }
         this.timeend = false;
         this.st.newTimer('1sec', 1);

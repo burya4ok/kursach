@@ -31,3 +31,7 @@ h1 {
 .form-group.margin-top {
   margin-top: 2rem !important;
 }
+
+.scroll-on {
+  overflow: scroll !important;
+}
