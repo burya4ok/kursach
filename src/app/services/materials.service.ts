@@ -4,13 +4,13 @@ import { ipcRenderer } from 'electron';
 @Injectable()
 export class MaterialsService {
 
-    getAllMaterials(): any[]{
-        return ipcRenderer.sendSync('getAllMaterials');
+    getAllMaterials(loadOptions: any): any[]{
+        return ipcRenderer.sendSync('getAllMaterials', loadOptions);
     }
     getMaterialsByType(type: string): any[]{
         return ipcRenderer.sendSync('getMaterialsByType', {type: type});
     }
-    getTypes(): boolean{
+    getTypes(): any[]{
         return ipcRenderer.sendSync('getTypes');
     }
     insertMaterial(material: any): boolean{
@@ -21,6 +21,9 @@ export class MaterialsService {
     }
     deleteMaterial(id: number): boolean{
         return ipcRenderer.sendSync('deleteMaterial', {id: id});
+    }
+    countMaterials(): number{
+        return ipcRenderer.sendSync('countMaterials');
     }
 
 }

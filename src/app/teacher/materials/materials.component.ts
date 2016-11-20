@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {LoginService} from "../../services/login.service";
 import {MaterialsService} from "../../services/materials.service";
 import {CustomIconsService} from "../../services/customIcons.service";
+import {TrainingUnitService} from "../../services/trainingUnit.service";
 
 @Component({
     selector: 'app-materials',
@@ -15,17 +16,24 @@ export class TeacherMaterialsComponent implements OnInit {
     dataGridData: any;
 
     constructor(private loginService: LoginService, private materialsService: MaterialsService,
-    private customIcons: CustomIconsService) {
+                private customIcons: CustomIconsService, private unitService: TrainingUnitService) {
         this.dataGridData = {
             dataSource: {
-                load: () => {
-                    return this.materialsService.getAllMaterials()
+                load: (loadOptions) => {
+                    return this.materialsService.getAllMaterials(loadOptions)
                 },
                 insert: (data) => {
                     return this.materialsService.insertMaterial(data)
                 },
                 update: (data, updated) => {
-                    return this.materialsService.updateMaterial(updated)
+                    let material = {
+                        title: updated.title ? updated.title : data.title,
+                        unit: updated.unit ? updated.unit : data.unit,
+                        type: updated.type ? updated.type : data.type,
+                        file: updated.file ? updated.file : data.file,
+                        id: data.id
+                    };
+                    return this.materialsService.updateMaterial(material)
 
                 },
                 remove: (data) => {
@@ -33,9 +41,31 @@ export class TeacherMaterialsComponent implements OnInit {
 
                 },
                 totalCount: () => {
-                    return this.materialsService.getAllMaterials().length
+                    return this.materialsService.countMaterials()
 
                 }
+            },
+            filterRow: {
+                applyFilter: "auto",
+                applyFilterText: "Apply filter",
+                betweenEndText: "End",
+                betweenStartText: "Start",
+                resetOperationText: "Reset",
+                showAllText: "(Всі)",
+                showOperationChooser: true,
+                visible: true
+            },
+            pager: {
+                infoText: "Сторінка {0} із {1}",
+                showInfo: false,
+                showNavigationButtons: false,
+                showPageSizeSelector: false,
+                visible: "auto"
+            },
+            paging: {
+                enabled: true,
+                pageIndex: 0,
+                pageSize: 10
             },
             columns: [
                 {
@@ -46,17 +76,28 @@ export class TeacherMaterialsComponent implements OnInit {
                 {
                     dataField: "unit",
                     caption: 'Блок',
-                    alignment: "center"
+                    alignment: "center",
+                    lookup: {
+                        dataSource: this.unitService.getTrainingUnits(null),
+                        valueExpr: 'code',
+                        displayExpr: 'code'
+                    }
                 },
                 {
                     dataField: "type",
                     caption: 'Тип',
-                    alignment: "center"
+                    alignment: "center",
+                    lookup: {
+                        dataSource: this.materialsService.getTypes(),
+                        valueExpr: 'value',
+                        displayExpr: 'title'
+                    }
                 },
                 {
                     dataField: "file",
                     caption: 'Файл',
-                    alignment: "center"
+                    alignment: "center",
+                    editCellTemplate: 'fileUploader'
                 },
 
             ],
@@ -80,6 +121,10 @@ export class TeacherMaterialsComponent implements OnInit {
                 }
             }
         }
+    }
+
+    uploadFile(e, cell) {
+        cell.setValue(e.file.path)
     }
 
     ngOnInit() {

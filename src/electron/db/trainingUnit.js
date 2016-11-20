@@ -6,7 +6,7 @@ module.exports = function (electron) {
     const db = require('../../db/models');
 
     ipcMain.on('getTrainingUnits', Promise.coroutine(function *(event, data) {
-        event.returnValue = yield db.TrainingUnit.getTrainingUnits();
+        event.returnValue = yield db.TrainingUnit.getTrainingUnits(data);
     }));
 
     ipcMain.on('insertTrainingUnits', Promise.coroutine(function *(event, data) {
@@ -19,6 +19,10 @@ module.exports = function (electron) {
 
     ipcMain.on('deleteTrainingUnits', Promise.coroutine(function *(event, data) {
         event.returnValue = yield db.TrainingUnit.deleteTrainingUnits(data.id);
+    }));
+
+    ipcMain.on('countTrainingUnits', Promise.coroutine(function *(event, data) {
+        event.returnValue = yield db.TrainingUnit.countTrainingUnits();
     }));
 
 };

@@ -1,5 +1,6 @@
 var Promise = require('bluebird');
 var coroutine = Promise.coroutine;
+const QueryHelper = require('../helpers/queryHelper');
 
 
 module.exports = function (sequelize, DataTypes) {
@@ -24,8 +25,17 @@ module.exports = function (sequelize, DataTypes) {
         timestamps: false,
         freezeTableName: true,
         classMethods: {
-            getTrainingUnits: coroutine(function *() {
-                return yield TrainingUnit.findAll();
+            countTrainingUnits: coroutine(function *() {
+                return yield TrainingUnit.count();
+            }),
+            getTrainingUnits: coroutine(function *(loadOptions) {
+                let query = {};
+                let queryHelper = new QueryHelper(query, loadOptions);
+                queryHelper
+                    .PageByOptions()
+                    .SortByOptions()
+                    .FilterByOptions();
+                return yield TrainingUnit.findAll(query);
             }),
             insertTrainingUnits: coroutine(function *(data) {
                 yield TrainingUnit.create(data);

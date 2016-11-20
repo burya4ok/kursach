@@ -6,7 +6,7 @@ import {StudentComponent} from "./student/student.component";
 import {TestingComponent} from "./student/testing/testing.component";
 import {TeacherTestingComponent} from "./teacher/testing/testing.component";
 import {TestingPageComponent} from "./student/testingPage/testingPage.component";
-import {StudentLecturesComponent} from "./student/lectures/lectures.component";
+import {StudentMaterialsComponent} from "./student/materials/materials.component";
 import {TeacherMaterialsComponent} from "./teacher/materials/materials.component";
 import {CurriculumStudentComponent} from "./student/curriculum/curriculum.component";
 import {CurriculumTeacherComponent} from "./teacher/curriculum/curriculum.component";
@@ -39,8 +39,8 @@ const routes: Routes = [
         component: TestingPageComponent
     },
     {
-        path: 'student/materials',
-        component: StudentLecturesComponent
+        path: 'student/materials/:type',
+        component: StudentMaterialsComponent
     },
     {
         path: 'teacher/materials',

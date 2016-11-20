@@ -6,6 +6,7 @@ const path = require('path');
 const fs = require('fs');
 const fse = require('fs-extra');
 const coroutine = Promise.coroutine;
+const QueryHelper = require('../helpers/queryHelper');
 
 
 module.exports = function (sequelize, DataTypes) {
@@ -38,8 +39,17 @@ module.exports = function (sequelize, DataTypes) {
         timestamps: false,
         freezeTableName: true,
         classMethods: {
-            getAllMaterials: coroutine(function *() {
-                return yield Materials.findAll();
+            countMaterials: coroutine(function *() {
+                return yield Materials.count();
+            }),
+            getAllMaterials: coroutine(function *(loadOptions) {
+                let query = {};
+                let queryHelper = new QueryHelper(query, loadOptions);
+                queryHelper
+                    .PageByOptions()
+                    .SortByOptions()
+                    .FilterByOptions();
+                return yield Materials.findAll(query);
             }),
             getMaterialsByType: coroutine(function *(type) {
                 return yield Materials.findAll({
@@ -55,8 +65,20 @@ module.exports = function (sequelize, DataTypes) {
                         title: 'Лекції'
                     },
                     {
-                        value: 'selfWork',
-                        title: 'Самостійна робота'
+                        value: 'selfStudy',
+                        title: 'Самостійне вивчення'
+                    },
+                    {
+                        value: 'laboratoryWork',
+                        title: 'Лабораторні роботи'
+                    },
+                    {
+                        value: 'practicalWork',
+                        title: 'Практичні роботи'
+                    },
+                    {
+                        value: 'controlWork',
+                        title: 'Контрольна робота'
                     }
                 ]
             }),
@@ -73,15 +95,28 @@ module.exports = function (sequelize, DataTypes) {
                 return true;
             }),
             updateMaterial: coroutine(function *(material) {
-                let ext = material.file.replace(/.*(\..*)/g, '$1');
-                if (ext !== '.pdf') {
-                    return false;
+                let current = yield Materials.findOne({
+                    where: {
+                        id: material.id
+                    }
+                });
+                if (current.file !== material.file) {
+                    let ext = material.file.replace(/.*(\..*)/g, '$1');
+                    if (ext !== '.pdf') {
+                        return false;
+                    }
+                    let newPlace = path.join(__dirname, '../../../dist/assets/docs', material.file.replace(/.*[\/|\\](.*)/g, '$1'));
+                    fse.copySync(material.file, newPlace);
+                    material.file = newPlace;
                 }
-                let newPlace = path.join(__dirname, '../../../dist/assets/docs', material.file.replace(/.*[\/|\\](.*)/g, '$1'));
-                fse.copySync(material.file, newPlace);
-                material.file = newPlace;
 
-                yield Materials.upsert(material);
+                yield Materials.upsert(
+                    material,
+                    {
+                        where: {
+                            id: material.id
+                        }
+                    });
                 return true;
             }),
             deleteMaterial: coroutine(function *(id) {
@@ -91,7 +126,9 @@ module.exports = function (sequelize, DataTypes) {
                     },
                     plain: true
                 });
-                fse.removeSync(material.file);
+                if (material.file && fs.lstatSync(material.file).isFile()) {
+                    fse.removeSync(material.file);
+                }
                 yield Materials.destroy({
                     where: {
                         id: id

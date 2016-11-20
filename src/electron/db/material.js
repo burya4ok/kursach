@@ -6,7 +6,7 @@ module.exports = function (electron) {
     const db = require('../../db/models');
 
     ipcMain.on('getAllMaterials', Promise.coroutine(function *(event, data) {
-        event.returnValue = yield db.Materials.getAllMaterials();
+        event.returnValue = yield db.Materials.getAllMaterials(data);
     }));
 
     ipcMain.on('getMaterialsByType', Promise.coroutine(function *(event, data) {
@@ -27,6 +27,10 @@ module.exports = function (electron) {
 
     ipcMain.on('deleteMaterial', Promise.coroutine(function *(event, data) {
         event.returnValue = yield db.Materials.deleteMaterial(data.id);
+    }));
+
+    ipcMain.on('countMaterials', Promise.coroutine(function *(event, data) {
+        event.returnValue = yield db.Materials.countMaterials();
     }));
 
 

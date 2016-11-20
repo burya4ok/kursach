@@ -1,0 +1,13 @@
+<div class="content" *ngIf="!filesNotFound">
+    <iframe class="document" [src]="currentMaterial.viewerPath | safe" frameborder="0"></iframe>
+    <md-nav-list layout="row">
+        <a md-list-item [ngClass]="{active: material.id === currentMaterial.id}"
+           *ngFor="let material of materials" (click)="setLecture(material)">
+            <img class="list-img" src="./assets/img/pdf.png">
+            {{material.title}}
+        </a>
+    </md-nav-list>
+</div>
+<div class="not-found" *ngIf="filesNotFound">
+    <h1 class="title">За данною категорією файлів немає</h1>
+</div>

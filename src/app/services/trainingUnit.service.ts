@@ -4,8 +4,8 @@ import { ipcRenderer } from 'electron';
 @Injectable()
 export class TrainingUnitService {
 
-    getTrainingUnits(): any[]{
-        return ipcRenderer.sendSync('getTrainingUnits');
+    getTrainingUnits(loadOptions: any): any[]{
+        return ipcRenderer.sendSync('getTrainingUnits', loadOptions);
     }
 
     insertTrainingUnits(data): any[]{
@@ -18,5 +18,9 @@ export class TrainingUnitService {
 
     deleteTrainingUnits(id): any[]{
         return ipcRenderer.sendSync('deleteTrainingUnits', {id: id});
+    }
+
+    countTrainingUnits(): any[]{
+        return ipcRenderer.sendSync('countTrainingUnits');
     }
 }

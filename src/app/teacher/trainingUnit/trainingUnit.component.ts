@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {TrainingUnitService} from "../../services/trainingUnit";
+import {TrainingUnitService} from "../../services/trainingUnit.service";
 import {LoginService} from "../../services/login.service";
 import {CustomIconsService} from "../../services/customIcons.service";
 
@@ -16,8 +16,8 @@ export class TrainingUnitComponent implements OnInit {
     private customIcons: CustomIconsService) {
         this.dataGridData = {
             dataSource: {
-                load: () => {
-                    return this.trainingUnitService.getTrainingUnits()
+                load: (loadOptions) => {
+                    return this.trainingUnitService.getTrainingUnits(loadOptions)
                 },
                 insert: (data) => {
                     return this.trainingUnitService.insertTrainingUnits(data)
@@ -36,9 +36,30 @@ export class TrainingUnitComponent implements OnInit {
 
                 },
                 totalCount: () => {
-                    return this.trainingUnitService.getTrainingUnits().length
-
+                    return this.trainingUnitService.countTrainingUnits()
                 }
+            },
+            filterRow: {
+                applyFilter: "auto",
+                applyFilterText: "Apply filter",
+                betweenEndText: "End",
+                betweenStartText: "Start",
+                resetOperationText: "Reset",
+                showAllText: "(Всі)",
+                showOperationChooser: true,
+                visible: true
+            },
+            pager: {
+                infoText: "Сторінка {0} із {1}",
+                showInfo: false,
+                showNavigationButtons: false,
+                showPageSizeSelector: false,
+                visible: "auto"
+            },
+            paging: {
+                enabled: true,
+                pageIndex: 0,
+                pageSize: 10
             },
             columns: [
                 {

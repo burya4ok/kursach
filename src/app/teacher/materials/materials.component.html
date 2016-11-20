@@ -1,9 +1,19 @@
 <div class="row">
-        <h2>Додати лекції</h2>
+        <h2>Додати навчальні матеріали</h2>
     <dx-data-grid
             [dataSource]="dataGridData.dataSource"
             [columns]="dataGridData.columns"
             [editing]="dataGridData.editing"
             [twoWayBindingEnabled]="true"
-    ></dx-data-grid>
+            [paging]="dataGridData.paging"
+            [pager]="dataGridData.pager"
+            [filterRow]="dataGridData.filterRow"
+    >
+        <div *dxTemplate="let cell of 'fileUploader'">
+            <dx-file-uploader
+            (onUploadError)="uploadFile($event, cell)">
+
+            </dx-file-uploader>
+        </div>
+    </dx-data-grid>
 </div>

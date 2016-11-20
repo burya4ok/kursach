@@ -4,7 +4,7 @@
   "description": "",
   "main": "src/electron/index.js",
   "scripts": {
-    "build": "rimraf dist && webpack --progress --profile --bail",
+    "watch": "rimraf dist && webpack --progress --profile --bail",
     "postinstall": "cd ./src && typings install",
     "start": "electron .",
     "serve": "webpack-dev-server --inline --progress --port 8080",
