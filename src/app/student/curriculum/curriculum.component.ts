@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {remote} from 'electron';
 import {CurriculumService} from "../../services/curriculum.service";
 import {LoginService} from "../../services/login.service";
 
