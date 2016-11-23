@@ -1,4 +1,4 @@
-<button md-raised-button class="back-button" routerLink="/student/testing">❮ В головне меню</button>
+<button md-raised-button class="back-button" routerLink="/student/testing" *ngIf="!showResult">❮ В головне меню</button>
 <div *ngIf="!showResult">
     <h1>{{question.theme}}</h1>
     <div class="col-md-12">
@@ -43,12 +43,13 @@
     </div>
 
 </div>
-<div *ngIf="showResult">
+<div *ngIf="showResult" class="textcenter">
     <h1>Результати тесту</h1>
     <h1>Кількість правильних відповідей/всього відповідей: {{goodQuestion}}/{{allQuestion}}</h1>
     <h1>Процентне співвідношення: {{procent.toFixed(0)}}%</h1>
     <h1>Ваша оцінка: {{ball}}. </h1>
     <h1 *ngIf="showTimer && timeend">Ви не втигли по часу</h1>
+    <button md-raised-button class="menu md-raised md-primary"  routerLink="/student/testing">❮ В головне меню</button>
 </div>
 
 
