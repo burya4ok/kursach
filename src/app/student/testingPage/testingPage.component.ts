@@ -147,7 +147,7 @@ export class TestingPageComponent implements OnInit {
             this.sec = '00';
         } else {
 
-            if (this.sec < 0) {
+            if (this.sec < 1) {
                 this.minutes -= 1;
                 this.sec = 60;
             }
