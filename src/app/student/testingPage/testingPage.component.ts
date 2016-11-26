@@ -102,8 +102,18 @@ export class TestingPageComponent implements OnInit {
             const tmp = document.getElementsByName('radiog_lite');
             this.renderer.setElementProperty(tmp[0], 'checked', false);
             this.renderer.setElementProperty(tmp[1], 'checked', false);
-            this.renderer.setElementProperty(tmp[2], 'checked', false);
-            this.renderer.setElementProperty(tmp[3], 'checked', false);
+            if (tmp.length > 2) {
+                this.renderer.setElementProperty(tmp[2], 'checked', false);
+            }
+            if (tmp.length > 3) {
+                this.renderer.setElementProperty(tmp[3], 'checked', false);
+            }
+            if (tmp.length > 4) {
+                this.renderer.setElementProperty(tmp[4], 'checked', false);
+            }
+            if (tmp.length > 5) {
+                this.renderer.setElementProperty(tmp[5], 'checked', false);
+            }
             this.activeButton = false;
             this.success = false;
             this.wrong = false;

@@ -3,6 +3,7 @@ import {remote} from "electron";
 import {TestingService} from "../../services/testing.service";
 import {FileUploader} from 'ng2-file-upload/ng2-file-upload';
 import {LoginService} from "../../services/login.service";
+import parseInt = require("core-js/fn/number/parse-int");
 
 
 const fse = require('fs-extra');
@@ -19,6 +20,7 @@ export class TeacherTestingComponent implements OnInit {
     win: Electron.BrowserWindow;
     title: string;
     tests: any;
+    simpleValue: any;
     img: any;
     newTest: any[];
     themeArray: any[];
@@ -30,8 +32,10 @@ export class TeacherTestingComponent implements OnInit {
     newAns2: string;
     newAns3: string;
     newAns4: string;
+    newAns5: string;
+    newAns6: string;
     Theme: string;
-    newGood: string;
+    newGood: any;
     newTheme: string;
     testId: number;
     saveThemeForAdd: string;
@@ -40,6 +44,8 @@ export class TeacherTestingComponent implements OnInit {
     allTheme: any[];
     public uploader: FileUploader = new FileUploader({isHTML5: true});
     disable: boolean;
+
+    showAns: boolean[];
 
     constructor(private testingService: TestingService, private loginService: LoginService, private renderer: Renderer) {
         this.title = 'Testing';
@@ -54,6 +60,7 @@ export class TeacherTestingComponent implements OnInit {
         this.newTheme = '';
         this.checkBoxForImg = false;
         this.disable = false;
+        this.showAns = [true,false,false,false,false];
 
         this.uploader.onAfterAddingFile = (file: any) => {
             console.log(file);
@@ -83,6 +90,27 @@ export class TeacherTestingComponent implements OnInit {
         this.newAns2 = data.answer2;
         this.newAns3 = data.answer3;
         this.newAns4 = data.answer4;
+        this.newAns5 = data.answer5;
+        this.newAns6 = data.answer6;
+        if (data.answer6 === '') {
+            this.simpleValue = 5;
+            this.showAns = [true,true,true,true,false];
+        } else {
+            this.simpleValue = 6;
+            this.showAns = [true,true,true,true,true];
+        }
+        if (data.answer5 === '') {
+            this.simpleValue = 4;
+            this.showAns = [true,true,true,false,false];
+        }
+        if (data.answer4 === '') {
+            this.simpleValue = 3;
+            this.showAns = [true,true,false,false,false];
+        }
+        if (data.answer3 === '') {
+            this.simpleValue = 2;
+            this.showAns = [true,false,false,false,false];
+        }
         this.newGood = data.good;
         this.testId = data.id;
         this.img = data.image.replace(/.*[\/|\\](.*)/g, '$1');
@@ -103,8 +131,31 @@ export class TeacherTestingComponent implements OnInit {
             tempPath = '';
             this.newImg = '../dist/assets/img/test-img.jpg';
         }
+
+        switch (parseFloat(this.simpleValue)) {
+            case 2:
+                this.newAns3 = '';
+                this.newAns4 = '';
+                this.newAns5 = '';
+                this.newAns6 = '';
+                break;
+            case 3:
+                this.newAns4 = '';
+                this.newAns5 = '';
+                this.newAns6 = '';
+                break;
+            case 4:
+                this.newAns5 = '';
+                this.newAns6 = '';
+                break;
+            case 5:
+                this.newAns6 = '';
+                break;
+            case 6:
+                break;
+        }
         this.testingService.updateTest(this.testId, this.newQuestion, this.newAns1, this.newAns2, this.newAns3,
-            this.newAns4, this.newGood, this.newImg, tempPath);
+            this.newAns4, this.newAns5, this.newAns6, this.newGood, this.newImg, tempPath);
         this.tests = this.testingService.getAllTest();
         this.sortArray();
         this.newTest = this.tests;
@@ -117,6 +168,8 @@ export class TeacherTestingComponent implements OnInit {
         if (this.saveThemeForAdd === null) {
             alert('Виберіть тему');
         } else {
+            this.showAns = [true,true,true,false,false];
+            this.simpleValue = 4;
             var temp = this.testingService.getThemeById(this.saveThemeForAdd);
             this.Theme = temp[0].theme;
             this.newQuestion = '';
@@ -124,7 +177,9 @@ export class TeacherTestingComponent implements OnInit {
             this.newAns2 = '';
             this.newAns3 = '';
             this.newAns4 = '';
-            this.newGood = null;
+            this.newAns5 = '';
+            this.newAns6 = '';
+            this.newGood = 1;
             this.changeAddTest = true;
             this.disable = true;
         }
@@ -144,7 +199,7 @@ export class TeacherTestingComponent implements OnInit {
             this.newImg = '../dist/assets/img/test-img.jpg';
         }
         this.testingService.addQuestion(this.saveThemeForAdd, this.newQuestion, this.newAns1,
-            this.newAns2, this.newAns3, this.newAns4, this.newGood, this.newImg, tempPath);
+            this.newAns2, this.newAns3, this.newAns4, this.newAns5, this.newAns6, this.newGood, this.newImg, tempPath);
         this.tests = this.testingService.getAllTest();
         this.sortArray();
         this.sortTheme(this.saveThemeForAdd);
@@ -206,6 +261,31 @@ export class TeacherTestingComponent implements OnInit {
         });
     };
 
+    changeCountAnswer(count) {
+        this.simpleValue = parseFloat(count);
+        switch (parseFloat(count)) {
+           case 2:
+               this.showAns = [true,false,false,false,false];
+               break;
+           case 3:
+               this.showAns = [true,true,false,false,false];
+               break;
+           case 4:
+               this.showAns = [true,true,true,false,false];
+               break;
+           case 5:
+               this.showAns = [true,true,true,true,false];
+               break;
+           case 6:
+               this.showAns = [true,true,true,true,true];
+               break;
+        }
+    }
+
+    changeSimpleGood(good) {
+        this.newGood = parseFloat(good);
+    }
+
     ngOnInit() {
         remote.getCurrentWindow().maximize();
         this.loginService.setTitle('Питання для тестування');
@@ -214,10 +294,6 @@ export class TeacherTestingComponent implements OnInit {
         this.tests.sort(function(obj1, obj2) {
             return obj1.theme - obj2.theme;
         });
-        /*this.activeChangeTest(this.tests[0]);
-        var tmp = document.getElementsByName('list-questions');
-        console.log(tmp);
-        this.renderer.setElementAttribute(tmp[0], "selected", "true");*/
         this.newTest = this.tests;
     }
 }

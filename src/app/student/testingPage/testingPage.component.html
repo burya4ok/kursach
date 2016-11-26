@@ -18,13 +18,21 @@
                     <input type="radio" name="radiog_lite" id="radio2" class="css-checkbox" (click)="saveResult(2)"/>
                     <label for="radio2" class="css-label radGroup1" (click)="saveResult(2)">{{question.answer2}}</label>
                 </div>
-                <div>
+                <div *ngIf="question.answer3 !== ''">
                     <input type="radio" name="radiog_lite" id="radio3" class="css-checkbox" (click)="saveResult(3)"/>
                     <label for="radio3" class="css-label radGroup1" (click)="saveResult(3)">{{question.answer3}}</label>
                 </div>
-                <div>
+                <div *ngIf="question.answer4 !== ''">
                     <input type="radio" name="radiog_lite" id="radio4" class="css-checkbox" (click)="saveResult(4)"/>
                     <label for="radio4" class="css-label radGroup1" (click)="saveResult(4)">{{question.answer4}}</label>
+                </div>
+                <div *ngIf="question.answer5 !== ''">
+                    <input type="radio" name="radiog_lite" id="radio5" class="css-checkbox" (click)="saveResult(5)"/>
+                    <label for="radio5" class="css-label radGroup1" (click)="saveResult(5)">{{question.answer5}}</label>
+                </div>
+                <div *ngIf="question.answer6 !== ''">
+                    <input type="radio" name="radiog_lite" id="radio6" class="css-checkbox" (click)="saveResult(6)"/>
+                    <label for="radio6" class="css-label radGroup1" (click)="saveResult(6)">{{question.answer6}}</label>
                 </div>
             </div>
             <div class="col-md-12 button">

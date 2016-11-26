@@ -8,6 +8,11 @@ h1 {
 .enter-theme, .enter-question, .enter-ans, .enter-good {
   width: 100%;
 }
+
+.enter-question {
+  margin-top: 5px;
+}
+
 .form-group {
   height: 70%;
   margin-bottom: 2rem !important;
@@ -34,4 +39,17 @@ h1 {
 
 .scroll-on {
   overflow: scroll !important;
+}
+textarea {
+  resize: none;
+}
+
+.scroll {
+  overflow-y: scroll;
+  height: 70%;
+}
+
+.setCountAnswers {
+  margin-top: 5px;
+  width: 50px;
 }

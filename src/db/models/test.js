@@ -36,6 +36,14 @@ module.exports = function (sequelize, DataTypes) {
             type: DataTypes.TEXT,
             allowNull: true,
         },
+        answer5: {
+            type: DataTypes.TEXT,
+            allowNull: true,
+        },
+        answer6: {
+            type: DataTypes.TEXT,
+            allowNull: true,
+        },
         good: {
             type: DataTypes.INTEGER,
             allowNull: true,
@@ -57,24 +65,26 @@ module.exports = function (sequelize, DataTypes) {
             getTest: coroutine(function *(testTheme) {
                 return yield Test.findAll({where: {theme: testTheme}});
             }),
-            updateTest: coroutine(function *(testId, testQuestion, testAns1, testAns2, testAns3, testAns4, testGood, testImg, testPath) {
+            updateTest: coroutine(function *(testId, testQuestion, testAns1, testAns2, testAns3, testAns4, testAns5, testAns6,
+                                             testGood, testImg, testPath) {
                 if (testPath !== '') {
                     let newPlace = path.join(__dirname, '../../../dist/assets/img', testPath.replace(/.*[\/|\\](.*)/g, '$1'));
                     fse.copySync(testPath, newPlace);
                     return yield Test.update({
                             question: testQuestion, answer1: testAns1,
                             answer2: testAns2, answer3: testAns3,
-                            answer4: testAns4, good: testGood, image: testImg
+                            answer4: testAns4,answer5: testAns5,answer6: testAns6, good: testGood, image: testImg
                         },
                         {where: {id: testId}});
                 } else { return yield Test.update({
                         question: testQuestion, answer1: testAns1,
                         answer2: testAns2, answer3: testAns3,
-                        answer4: testAns4, good: testGood, image: testImg
+                        answer4: testAns4,answer5: testAns5,answer6: testAns6, good: testGood, image: testImg
                     },
                     {where: {id: testId}});}
             }),
-            addQuestion: coroutine(function *(testTheme, testQuestion, testAns1, testAns2, testAns3, testAns4, testGood, testImg, testPath) {
+            addQuestion: coroutine(function *(testTheme, testQuestion, testAns1, testAns2, testAns3, testAns4,
+                                              testAns5, testAns6, testGood, testImg, testPath) {
                 if (testPath !== '') {
                     let newPlace = path.join(__dirname, '../../../dist/assets/img', testPath.replace(/.*[\/|\\](.*)/g, '$1'));
                     fse.copySync(testPath, newPlace);
@@ -82,7 +92,7 @@ module.exports = function (sequelize, DataTypes) {
                 return yield Test.create({
                     theme: testTheme, question: testQuestion, answer1: testAns1,
                     answer2: testAns2, answer3: testAns3,
-                    answer4: testAns4, good: testGood, image: testImg
+                    answer4: testAns4,answer5: testAns5,answer6: testAns6, good: testGood, image: testImg
                 });
             }),
             destroyQuestions: coroutine(function *(tempId) {

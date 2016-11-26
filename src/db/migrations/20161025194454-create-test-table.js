@@ -34,6 +34,14 @@ module.exports = {
                     type: Sequelize.TEXT,
                     allowNull: true,
                 },
+                answer5: {
+                    type: Sequelize.TEXT,
+                    allowNull: true,
+                },
+                answer6: {
+                    type: Sequelize.TEXT,
+                    allowNull: true,
+                },
                 good: {
                     type: Sequelize.INTEGER,
                     allowNull: true,

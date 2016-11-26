@@ -28,48 +28,106 @@
                 <button md-raised-button class="md-raised md-warn" (click)="cancelAddTest()">Відмінити</button>
             </div>
         </div>
-        <div class="col-md-6" *ngIf="changeTest">
-            <div class="form-group margin-top">
-                <md-input class="enter-question" [(ngModel)]="Theme" [placeholder]="'Тема: '"
-                          type="text" [disabled]="true"></md-input>
-                <md-input class="enter-question" [(ngModel)]="newQuestion" [placeholder]="'Введіть питання...'"
-                          type="text"></md-input>
-                <md-input class="enter-ans" [(ngModel)]="newAns1" [placeholder]="'Введіть першу відповідь...'"
-                          type="text"></md-input>
-                <md-input class="enter-ans" [(ngModel)]="newAns2" [placeholder]="'Введіть другу відповідь...'"
-                          type="text"></md-input>
-                <md-input class="enter-ans" [(ngModel)]="newAns3" [placeholder]="'Введіть третю відповідь...'"
-                          type="text"></md-input>
-                <md-input class="enter-ans" [(ngModel)]="newAns4" [placeholder]="'Введіть четверту відповідь...'"
-                          type="text"></md-input>
-                <md-input class="enter-good" [(ngModel)]="newGood"
-                          [placeholder]="'Введіть правильну відповідь...(Номер: 1,2,3,4)'" type="text"></md-input>
-                <span class="choose-text">Поточне зображення: {{img}}</span><br>
-                <span class="choose-text">Вибрати нове зображення(не обов'язково)</span>
-                <input class="file" type="file" ng2FileSelect [uploader]="uploader"/>
+        <div class="col-md-6 " *ngIf="changeTest" style="height: 100%">
+            <div class="form-group margin-top" style="height: 100%">
+                <div class="scroll">
+                    <md-input class="enter-question" [(ngModel)]="Theme" [placeholder]="'Тема: '"
+                              type="text" [disabled]="true"></md-input>
+                    <label for="1">Питання: </label>
+                    <textarea class="form-control" rows="2" id="1" [(ngModel)]="newQuestion"></textarea>
+
+                    <label for="10">Виберіть кількість питань: </label>
+                    <select #selectedCount [(ngModel)]="simpleValue" class="setCountAnswers" id="10" (change)="changeCountAnswer(selectedCount.value)">
+                        <option [value]=2>2</option>
+                        <option [value]=3>3</option>
+                        <option [value]=4>4</option>
+                        <option [value]=5>5</option>
+                        <option [value]=6>6</option>
+                    </select>
+                    <br>
+                    <label *ngIf="showAns[0]" for="2">Перша відповідь: </label>
+                    <textarea *ngIf="showAns[0]" class="form-control" rows="2" id="2" [(ngModel)]="newAns1"></textarea>
+
+                    <label *ngIf="showAns[0]" for="3">Друга відповідь: </label>
+                    <textarea *ngIf="showAns[0]" class="form-control" rows="2" id="3" [(ngModel)]="newAns2"></textarea>
+
+                    <label *ngIf="showAns[1]" for="4">Третя відповідь: </label>
+                    <textarea *ngIf="showAns[1]" class="form-control" rows="2" id="4" [(ngModel)]="newAns3"></textarea>
+
+                    <label *ngIf="showAns[2]" for="5">Четверта відповідь: </label>
+                    <textarea *ngIf="showAns[2]" class="form-control" rows="2" id="5" [(ngModel)]="newAns4"></textarea>
+
+                    <label *ngIf="showAns[3]" for="6">П'ята відповідь: </label>
+                    <textarea *ngIf="showAns[3]" class="form-control" rows="2" id="6" [(ngModel)]="newAns5"></textarea>
+
+                    <label *ngIf="showAns[4]" for="7">Шоста відповідь: </label>
+                    <textarea *ngIf="showAns[4]" class="form-control" rows="2" id="7" [(ngModel)]="newAns6"></textarea>
+                    <label for="11">Виберіть правильну відповідь: </label>
+                    <select #selectedGood [(ngModel)]="newGood" class="setCountAnswers" id="11" (change)="changeSimpleGood(selectedGood.value)">
+                        <option *ngIf="showAns[0]" [value]=1>1</option>
+                        <option *ngIf="showAns[0]" [value]=2>2</option>
+                        <option *ngIf="showAns[1]" [value]=3>3</option>
+                        <option *ngIf="showAns[2]" [value]=4>4</option>
+                        <option *ngIf="showAns[3]" [value]=5>5</option>
+                        <option *ngIf="showAns[4]" [value]=6>6</option>
+                    </select>
+                    <br>
+                    <span class="choose-text">Поточне зображення: {{img}}</span><br>
+                    <span class="choose-text">Вибрати нове зображення(не обов'язково)</span>
+                    <input class="file" type="file" ng2FileSelect [uploader]="uploader"/>
+                </div>
                 <button md-raised-button class="md-raised md-primary" (click)="confirmChangeTest()">Внести зміни в питання</button>
                 <button md-raised-button class="md-raised md-warn" (click)="removeQuestion()">Видалити питання</button>
                 <button md-raised-button class="md-raised md-warn" (click)="cancelAddTest()">Відмінити</button>
             </div>
         </div>
-        <div class="col-md-6" *ngIf="changeAddTest">
-            <div class="form-group margin-top">
-                <md-input class="enter-question" [(ngModel)]="Theme" [placeholder]="'Тема: '"
-                          type="text" [disabled]="true"></md-input>
-                <md-input class="enter-question" [(ngModel)]="newQuestion" [placeholder]="'Введіть питання...'"
-                          type="text"></md-input>
-                <md-input class="enter-ans" [(ngModel)]="newAns1" [placeholder]="'Введіть першу відповідь...'"
-                          type="text"></md-input>
-                <md-input class="enter-ans" [(ngModel)]="newAns2" [placeholder]="'Введіть другу відповідь...'"
-                          type="text"></md-input>
-                <md-input class="enter-ans" [(ngModel)]="newAns3" [placeholder]="'Введіть третю відповідь...'"
-                          type="text"></md-input>
-                <md-input class="enter-ans" [(ngModel)]="newAns4" [placeholder]="'Введіть четверту відповідь...'"
-                          type="text"></md-input>
-                <md-input class="enter-good" [(ngModel)]="newGood"
-                          [placeholder]="'Введіть правильну відповідь...(Номер: 1,2,3,4)'" type="text"></md-input>
-                <span class="choose-text">Вибрати зображення(не обов'язково)</span>
-                <input class="file" type="file" ng2FileSelect [uploader]="uploader"/>
+        <div class="col-md-6 " *ngIf="changeAddTest" style="height: 100%">
+            <div class="form-group margin-top" style="height: 100%">
+                <div class="scroll">
+                    <md-input class="enter-question" [(ngModel)]="Theme" [placeholder]="'Тема: '"
+                              type="text" [disabled]="true"></md-input>
+                    <label for="101">Питання: </label>
+                    <textarea class="form-control" rows="2" id="101" [(ngModel)]="newQuestion"></textarea>
+
+                    <label for="110">Виберіть кількість питань: </label>
+                    <select #selectedCount [(ngModel)]="simpleValue" class="setCountAnswers" id="110" (change)="changeCountAnswer(selectedCount.value)">
+                        <option [value]=2>2</option>
+                        <option [value]=3>3</option>
+                        <option [value]=4>4</option>
+                        <option [value]=5>5</option>
+                        <option [value]=6>6</option>
+                    </select>
+                    <br>
+                    <label *ngIf="showAns[0]" for="102">Перша відповідь: </label>
+                    <textarea *ngIf="showAns[0]" class="form-control" rows="2" id="102" [(ngModel)]="newAns1"></textarea>
+
+                    <label *ngIf="showAns[0]" for="103">Друга відповідь: </label>
+                    <textarea *ngIf="showAns[0]" class="form-control" rows="2" id="103" [(ngModel)]="newAns2"></textarea>
+
+                    <label *ngIf="showAns[1]" for="104">Третя відповідь: </label>
+                    <textarea *ngIf="showAns[1]" class="form-control" rows="2" id="104" [(ngModel)]="newAns3"></textarea>
+
+                    <label *ngIf="showAns[2]" for="105">Четверта відповідь: </label>
+                    <textarea *ngIf="showAns[2]" class="form-control" rows="2" id="105" [(ngModel)]="newAns4"></textarea>
+
+                    <label *ngIf="showAns[3]" for="106">П'ята відповідь: </label>
+                    <textarea *ngIf="showAns[3]" class="form-control" rows="2" id="106" [(ngModel)]="newAns5"></textarea>
+
+                    <label *ngIf="showAns[4]" for="107">Шоста відповідь: </label>
+                    <textarea *ngIf="showAns[4]" class="form-control" rows="2" id="107" [(ngModel)]="newAns6"></textarea>
+                    <label for="111">Виберіть правильну відповідь: </label>
+                    <select #selectedGood [(ngModel)]="newGood" class="setCountAnswers" id="111" (change)="changeSimpleGood(selectedGood.value)">
+                        <option *ngIf="showAns[0]" [value]=1>1</option>
+                        <option *ngIf="showAns[0]" [value]=2>2</option>
+                        <option *ngIf="showAns[1]" [value]=3>3</option>
+                        <option *ngIf="showAns[2]" [value]=4>4</option>
+                        <option *ngIf="showAns[3]" [value]=5>5</option>
+                        <option *ngIf="showAns[4]" [value]=6>6</option>
+                    </select>
+                    <br>
+                    <span class="choose-text">Вибрати зображення(не обов'язково)</span>
+                    <input class="file" type="file" ng2FileSelect [uploader]="uploader"/>
+                </div>
                 <button md-raised-button class="md-raised md-primary" (click)="confirmAddTest()">Створити нове питанння</button>
                 <button md-raised-button class="md-raised md-warn" (click)="cancelAddTest()">Відмінити</button>
             </div>
