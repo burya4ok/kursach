@@ -4,6 +4,11 @@ import { ipcRenderer } from 'electron';
 @Injectable()
 export class LoginService {
     public title: string;
+    public hide: boolean;
+
+    constructor() {
+        this.hide = false;
+    }
     setTypeOfUser(type: string): void{
         ipcRenderer.send('setTypeOfUser', type);
     }
@@ -27,4 +32,8 @@ export class LoginService {
     getTitle(): string{
         return this.title ;
     };
+
+    hideMenu(data) {
+        this.hide = data;
+    }
 }
