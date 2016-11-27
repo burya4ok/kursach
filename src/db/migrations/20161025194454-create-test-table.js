@@ -49,6 +49,10 @@ module.exports = {
                 image: {
                     type: Sequelize.TEXT,
                     allowNull: true,
+                },
+                time: {
+                    type: Sequelize.INTEGER,
+                    allowNull: true,
                 }
             });
     },

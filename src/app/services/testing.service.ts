@@ -26,19 +26,19 @@ export class TestingService {
         return ipcRenderer.sendSync('getTest', {testTheme: id[0].id});
     }
 
-    updateTest(tempId, tempQuestion, tempAns1, tempAns2, tempAns3, tempAns4, tempAns5, tempAns6, tempGood, tempImg, tempPath) {
+    updateTest(tempId, tempQuestion, tempAns1, tempAns2, tempAns3, tempAns4, tempAns5, tempAns6, tempGood, tempImg, tempPath, tempTime) {
         return ipcRenderer.sendSync('updateTest', {
             testId: tempId, testQuestion: tempQuestion, testAns1: tempAns1,
             testAns2: tempAns2, testAns3: tempAns3, testAns4: tempAns4, testAns5: tempAns5,
-            testAns6: tempAns6, testGood: tempGood, testImg: tempImg, testPath: tempPath
+            testAns6: tempAns6, testGood: tempGood, testImg: tempImg, testPath: tempPath, testTime: tempTime
         });
     }
 
-    addQuestion(tempTheme, tempQuestion, tempAns1, tempAns2, tempAns3, tempAns4, tempAns5, tempAns6, tempGood, tempImg, tempPath) {
+    addQuestion(tempTheme, tempQuestion, tempAns1, tempAns2, tempAns3, tempAns4, tempAns5, tempAns6, tempGood, tempImg, tempPath, tempTime) {
         return ipcRenderer.sendSync('addQuestion', {
             testTheme: tempTheme, testQuestion: tempQuestion, testAns1: tempAns1,
             testAns2: tempAns2, testAns3: tempAns3, testAns4: tempAns4, testAns5: tempAns5,
-            testAns6: tempAns6, testGood: tempGood, testImg: tempImg, testPath: tempPath
+            testAns6: tempAns6, testGood: tempGood, testImg: tempImg, testPath: tempPath, testTime: tempTime
         });
     }
 

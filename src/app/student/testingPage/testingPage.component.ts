@@ -13,6 +13,7 @@ import {SimpleTimer} from 'ng2-simple-timer';
 export class TestingPageComponent implements OnInit {
     win: Electron.BrowserWindow;
     themeArray: any[];
+    sumSec: any;
     title: string;
     test: any;
     result: number[];
@@ -54,6 +55,7 @@ export class TestingPageComponent implements OnInit {
         this.wrong = false;
         this.activeButton = false;
         this.goodQuestion = 0;
+        this.sumSec = 0;
     }
 
     saveResult(data) {
@@ -129,12 +131,18 @@ export class TestingPageComponent implements OnInit {
     }
 
     timer() {
-        if (this.setAllTheme) {
-            this.minutes = 59;
+        this.sumSec = 0;
+        var temp = 0;
+        this.test.forEach(function (data) {
+            temp = temp + data.time;
+        });
+        this.sumSec = temp;
+        if ((this.sumSec % 60) === 0) {
+            this.minutes = Math.floor(this.sumSec / 60) - 1;
             this.sec = 60;
         } else {
-            this.minutes = 29;
-            this.sec = 60;
+            this.minutes = Math.floor(this.sumSec / 60);
+            this.sec = this.sumSec % 60;
         }
         this.timeend = false;
         this.st.newTimer('1sec', 1);

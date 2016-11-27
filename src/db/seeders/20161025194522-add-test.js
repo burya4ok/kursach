@@ -14,6 +14,7 @@ module.exports = {
                 answer6: '',
                 good: 3,
                 image: '../dist/assets/img/test-img.jpg',
+                time: 60
             },
             {
                 theme: 1,
@@ -26,6 +27,7 @@ module.exports = {
                 answer6: '',
                 good: 1,
                 image: '../dist/assets/img/test-img.jpg',
+                time: 60
             },
             {//???
                 theme: 1,
@@ -38,6 +40,7 @@ module.exports = {
                 answer6: '',
                 good: 1,
                 image: '../dist/assets/img/test-img.jpg',
+                time: 60
             },
             {//???
                 theme: 1,
@@ -50,6 +53,7 @@ module.exports = {
                 answer6: '',
                 good: 1,
                 image: '../dist/assets/img/test-img.jpg',
+                time: 60
             },
             {
                 theme: 1,
@@ -62,6 +66,7 @@ module.exports = {
                 answer6: '',
                 good: 2,
                 image: '../dist/assets/img/test-img.jpg',
+                time: 60
             },
             {
                 theme: 1,
@@ -74,6 +79,7 @@ module.exports = {
                 answer6: '',
                 good: 4,
                 image: '../dist/assets/img/test-img.jpg',
+                time: 60
             },
             {
                 theme: 1,
@@ -86,6 +92,7 @@ module.exports = {
                 answer6: '',
                 good: 1,
                 image: '../dist/assets/img/test-img.jpg',
+                time: 60
             },
             {
                 theme: 1,
@@ -98,6 +105,7 @@ module.exports = {
                 answer6: '',
                 good: 2,
                 image: '../dist/assets/img/test-img.jpg',
+                time: 60
             },
             {
                 theme: 1,
@@ -110,6 +118,7 @@ module.exports = {
                 answer6: '',
                 good: 4,
                 image: '../dist/assets/img/test-img.jpg',
+                time: 60
             },
             {
                 theme: 1,
@@ -122,6 +131,7 @@ module.exports = {
                 answer6: '',
                 good: 1,
                 image: '../dist/assets/img/test-img.jpg',
+                time: 60
             },
             {
                 theme: 1,
@@ -134,6 +144,7 @@ module.exports = {
                 answer6: '',
                 good: 1,
                 image: '../dist/assets/img/test-img.jpg',
+                time: 60
             },
             {
                 theme: 1,
@@ -146,6 +157,7 @@ module.exports = {
                 answer6: '',
                 good: 1,
                 image: '../dist/assets/img/test-img.jpg',
+                time: 60
             },
             {
                 theme: 1,
@@ -158,6 +170,7 @@ module.exports = {
                 answer6: '',
                 good: 1,
                 image: '../dist/assets/img/test-img.jpg',
+                time: 60
             },
             {
                 theme: 2,
@@ -170,6 +183,7 @@ module.exports = {
                 answer6: '',
                 good: 1,
                 image: '../dist/assets/img/test-img.jpg',
+                time: 60
             },
             {
                 theme: 2,
@@ -182,6 +196,7 @@ module.exports = {
                 answer6: '',
                 good: 1,
                 image: '../dist/assets/img/test-img.jpg',
+                time: 60
             },
             {
                 theme: 2,
@@ -194,6 +209,7 @@ module.exports = {
                 answer6: '',
                 good: 1,
                 image: '../dist/assets/img/test-img.jpg',
+                time: 60
             },
             {
                 theme: 2,
@@ -206,6 +222,7 @@ module.exports = {
                 answer6: '',
                 good: 1,
                 image: '../dist/assets/img/test-img.jpg',
+                time: 60
             },
             {
                 theme: 2,
@@ -218,6 +235,7 @@ module.exports = {
                 answer6: '',
                 good: 1,
                 image: '../dist/assets/img/test-img.jpg',
+                time: 60
             },
             {
                 theme: 2,
@@ -230,6 +248,7 @@ module.exports = {
                 answer6: '',
                 good: 1,
                 image: '../dist/assets/img/test-img.jpg',
+                time: 60
             },
             {
                 theme: 2,
@@ -242,6 +261,7 @@ module.exports = {
                 answer6: '',
                 good: 1,
                 image: '../dist/assets/img/test-img.jpg',
+                time: 60
             },
             {
                 theme: 2,
@@ -254,6 +274,7 @@ module.exports = {
                 answer6: '',
                 good: 1,
                 image: '../dist/assets/img/test-img.jpg',
+                time: 60
             },
             {
                 theme: 2,
@@ -266,6 +287,7 @@ module.exports = {
                 answer6: '',
                 good: 1,
                 image: '../dist/assets/img/test-img.jpg',
+                time: 60
             },
             {
                 theme: 2,
@@ -278,6 +300,7 @@ module.exports = {
                 answer6: '',
                 good: 1,
                 image: '../dist/assets/img/test-img.jpg',
+                time: 60
             },
             {
                 theme: 2,
@@ -290,6 +313,7 @@ module.exports = {
                 answer6: '',
                 good: 1,
                 image: '../dist/assets/img/test-img.jpg',
+                time: 60
             },
             {
                 theme: 3,
@@ -302,6 +326,7 @@ module.exports = {
                 answer6: '',
                 good: 1,
                 image: '../dist/assets/img/test-img.jpg',
+                time: 60
             },
             {
                 theme: 3,
@@ -314,6 +339,7 @@ module.exports = {
                 answer6: '',
                 good: 1,
                 image: '../dist/assets/img/test-img.jpg',
+                time: 60
             },
             {
                 theme: 3,
@@ -326,6 +352,7 @@ module.exports = {
                 answer6: '',
                 good: 1,
                 image: '../dist/assets/img/test-img.jpg',
+                time: 60
             },
             {
                 theme: 3,
@@ -338,6 +365,7 @@ module.exports = {
                 answer6: '',
                 good: 1,
                 image: '../dist/assets/img/test-img.jpg',
+                time: 60
             },
             {
                 theme: 3,
@@ -350,6 +378,7 @@ module.exports = {
                 answer6: '',
                 good: 1,
                 image: '../dist/assets/img/test-img.jpg',
+                time: 60
             },
             {
                 theme: 3,
@@ -362,6 +391,7 @@ module.exports = {
                 answer6: '',
                 good: 1,
                 image: '../dist/assets/img/test-img.jpg',
+                time: 60
             },
             {
                 theme: 3,
@@ -374,6 +404,7 @@ module.exports = {
                 answer6: '',
                 good: 1,
                 image: '../dist/assets/img/test-img.jpg',
+                time: 60
             },
             {
                 theme: 3,
@@ -386,6 +417,7 @@ module.exports = {
                 answer6: '',
                 good: 2,
                 image: '../dist/assets/img/test-img.jpg',
+                time: 60
             },
             {
                 theme: 3,
@@ -398,6 +430,7 @@ module.exports = {
                 answer6: '',
                 good: 2,
                 image: '../dist/assets/img/test-img.jpg',
+                time: 60
             },
             {
                 theme: 3,
@@ -410,6 +443,7 @@ module.exports = {
                 answer6: '',
                 good: 1,
                 image: '../dist/assets/img/test-img.jpg',
+                time: 60
             },
             {
                 theme: 3,
@@ -422,6 +456,7 @@ module.exports = {
                 answer6: '',
                 good: 4,
                 image: '../dist/assets/img/test-img.jpg',
+                time: 60
             },
             {
                 theme: 3,
@@ -434,6 +469,7 @@ module.exports = {
                 answer6: '',
                 good: 4,
                 image: '../dist/assets/img/test-img.jpg',
+                time: 60
             },
             {
                 theme: 3,
@@ -446,6 +482,7 @@ module.exports = {
                 answer6: '',
                 good: 1,
                 image: '../dist/assets/img/test-img.jpg',
+                time: 60
             },
             {
                 theme: 3,
@@ -458,6 +495,7 @@ module.exports = {
                 answer6: '',
                 good: 1,
                 image: '../dist/assets/img/test-img.jpg',
+                time: 60
             }
         ], {});
     },

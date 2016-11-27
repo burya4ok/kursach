@@ -48,6 +48,7 @@ export class TeacherTestingComponent implements OnInit {
     showAns: boolean[];
     showDemo: boolean;
     question: {};
+    newTime: number;
 
     constructor(private testingService: TestingService, private loginService: LoginService, private renderer: Renderer) {
         this.title = 'Testing';
@@ -86,6 +87,7 @@ export class TeacherTestingComponent implements OnInit {
     }
 
     activeChangeTest(data) {
+        this.uploader.clearQueue();
         var temp = this.testingService.getThemeById(data.theme);
         this.Theme = temp[0].theme;
         this.newQuestion = data.question;
@@ -95,6 +97,7 @@ export class TeacherTestingComponent implements OnInit {
         this.newAns4 = data.answer4;
         this.newAns5 = data.answer5;
         this.newAns6 = data.answer6;
+        this.newTime = data.time;
         if (data.answer6 === '') {
             this.simpleValue = 5;
             this.showAns = [true,true,true,true,false];
@@ -159,7 +162,7 @@ export class TeacherTestingComponent implements OnInit {
                 break;
         }
         this.testingService.updateTest(this.testId, this.newQuestion, this.newAns1, this.newAns2, this.newAns3,
-            this.newAns4, this.newAns5, this.newAns6, this.newGood, this.newImg, tempPath);
+            this.newAns4, this.newAns5, this.newAns6, this.newGood, this.newImg, tempPath, this.newTime);
         this.tests = this.testingService.getAllTest();
         this.sortArray();
         this.newTest = this.tests;
@@ -169,6 +172,7 @@ export class TeacherTestingComponent implements OnInit {
     }
 
     addQuestion() {
+        this.uploader.clearQueue();
         if (this.saveThemeForAdd === null) {
             alert('Виберіть тему');
         } else {
@@ -183,6 +187,7 @@ export class TeacherTestingComponent implements OnInit {
             this.newAns4 = '';
             this.newAns5 = '';
             this.newAns6 = '';
+            this.newTime = null;
             this.newGood = 1;
             this.changeAddTest = true;
             this.disable = true;
@@ -203,7 +208,7 @@ export class TeacherTestingComponent implements OnInit {
             this.newImg = '../dist/assets/img/test-img.jpg';
         }
         this.testingService.addQuestion(this.saveThemeForAdd, this.newQuestion, this.newAns1,
-            this.newAns2, this.newAns3, this.newAns4, this.newAns5, this.newAns6, this.newGood, this.newImg, tempPath);
+            this.newAns2, this.newAns3, this.newAns4, this.newAns5, this.newAns6, this.newGood, this.newImg, tempPath, this.newTime);
         this.tests = this.testingService.getAllTest();
         this.sortArray();
         this.sortTheme(this.saveThemeForAdd);
@@ -299,6 +304,24 @@ export class TeacherTestingComponent implements OnInit {
         if (this.newImg === null) {
             this.newImg = '../dist/assets/img/test-img.jpg';
         }
+        if (!this.showAns[1]) {
+            this.newAns3 = '';
+            this.newAns4 = '';
+            this.newAns5 = '';
+            this.newAns6 = '';
+        }
+        if (!this.showAns[2]) {
+            this.newAns4 = '';
+            this.newAns5 = '';
+            this.newAns6 = '';
+        }
+        if (!this.showAns[3]) {
+            this.newAns5 = '';
+            this.newAns6 = '';
+        }
+        if (!this.showAns[4]) {
+            this.newAns6 = '';
+        }
         this.question = {
             theme: this.Theme,
             question: this.newQuestion,
@@ -317,6 +340,14 @@ export class TeacherTestingComponent implements OnInit {
     showGlobalMenu() {
         this.loginService.hideMenu(false);
         this.showDemo = false;
+    }
+
+    validTime() {
+        if (!isNaN(this.newTime)) {
+            return true
+        } else {
+            return false
+        }
     }
 
     validQuest() {

@@ -72,17 +72,19 @@
                         <option *ngIf="showAns[4]" [value]=6>6</option>
                     </select>
                     <br>
+                    <md-input class="enter-question" [(ngModel)]="newTime" [placeholder]="'Введіть час на це питання(в секундах): '"
+                              type="number"></md-input>
                     <span class="choose-text">Поточне зображення: {{img}}</span><br>
                     <span class="choose-text">Вибрати нове зображення(не обов'язково)</span>
                     <input class="file" type="file" ng2FileSelect [uploader]="uploader"/>
                 </div>
                 <button md-raised-button class="md-raised md-primary" [disabled]="!validQuest() || !validAns1() || !validAns2()
-                || !validAns3() || !validAns4() || !validAns5() || !validAns6()"
+                || !validAns3() || !validAns4() || !validAns5() || !validAns6() || !validTime()"
                         (click)="confirmChangeTest()">Внести зміни в питання</button>
                 <button md-raised-button class="md-raised md-warn" (click)="removeQuestion()">Видалити питання</button>
                 <button md-raised-button class="md-raised md-warn" (click)="cancelAddTest()">Відмінити</button>
                 <button md-raised-button class="md-raised md-primary customize" [disabled]="!validQuest() || !validAns1() || !validAns2()
-                || !validAns3() || !validAns4() || !validAns5() || !validAns6()"
+                || !validAns3() || !validAns4() || !validAns5() || !validAns6() || !validTime()"
                         (click)="hideGlobalMenu()">Демо показ питання</button>
             </div>
         </div>
@@ -130,15 +132,17 @@
                         <option *ngIf="showAns[4]" [value]=6>6</option>
                     </select>
                     <br>
+                    <md-input class="enter-question" [(ngModel)]="newTime" [placeholder]="'Введіть час на це питання(в секундах): '"
+                              type="number"></md-input>
                     <span class="choose-text">Вибрати зображення(не обов'язково)</span>
                     <input class="file" type="file" ng2FileSelect [uploader]="uploader"/>
                 </div>
                 <button md-raised-button class="md-raised md-primary" [disabled]="!validQuest() || !validAns1() || !validAns2()
-                || !validAns3() || !validAns4() || !validAns5() || !validAns6()"
+                || !validAns3() || !validAns4() || !validAns5() || !validAns6() || !validTime()"
                         (click)="confirmAddTest()">Створити нове питанння</button>
                 <button md-raised-button class="md-raised md-warn" (click)="cancelAddTest()">Відмінити</button>
                 <button md-raised-button class="md-raised md-primary customize" [disabled]="!validQuest() || !validAns1() || !validAns2()
-                || !validAns3() || !validAns4() || !validAns5() || !validAns6()"
+                || !validAns3() || !validAns4() || !validAns5() || !validAns6() || !validTime()"
                         (click)="hideGlobalMenu()">Демо показ питання</button>
             </div>
         </div>
