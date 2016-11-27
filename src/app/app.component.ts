@@ -36,6 +36,10 @@ export class AppComponent {
             window.location.pathname.indexOf('testingPage') > -1;
     }
 
+    hide() {
+        return this.loginService.hide;
+    }
+
     isTeacher() {
         return this.typeOfUser === 'teacher'
     }

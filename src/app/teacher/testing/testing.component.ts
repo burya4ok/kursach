@@ -46,6 +46,8 @@ export class TeacherTestingComponent implements OnInit {
     disable: boolean;
 
     showAns: boolean[];
+    showDemo: boolean;
+    question: {};
 
     constructor(private testingService: TestingService, private loginService: LoginService, private renderer: Renderer) {
         this.title = 'Testing';
@@ -61,6 +63,7 @@ export class TeacherTestingComponent implements OnInit {
         this.checkBoxForImg = false;
         this.disable = false;
         this.showAns = [true,false,false,false,false];
+        this.showDemo = false;
 
         this.uploader.onAfterAddingFile = (file: any) => {
             console.log(file);
@@ -131,6 +134,7 @@ export class TeacherTestingComponent implements OnInit {
             tempPath = '';
             this.newImg = '../dist/assets/img/test-img.jpg';
         }
+
 
         switch (parseFloat(this.simpleValue)) {
             case 2:
@@ -284,6 +288,107 @@ export class TeacherTestingComponent implements OnInit {
 
     changeSimpleGood(good) {
         this.newGood = parseFloat(good);
+    }
+
+    hideGlobalMenu() {
+        if (this.uploader.queue.length > 0) {
+            this.newImg = '../dist/assets/img/' + this.uploader.queue[0]._file.name;
+        } else {
+            this.newImg = null;
+        }
+        if (this.newImg === null) {
+            this.newImg = '../dist/assets/img/test-img.jpg';
+        }
+        this.question = {
+            theme: this.Theme,
+            question: this.newQuestion,
+            answer1: this.newAns1,
+            answer2: this.newAns2,
+            answer3: this.newAns3,
+            answer4: this.newAns4,
+            answer5: this.newAns5,
+            answer6: this.newAns6,
+            image: this.newImg
+        };
+        this.loginService.hideMenu(true);
+        this.showDemo = true;
+    }
+
+    showGlobalMenu() {
+        this.loginService.hideMenu(false);
+        this.showDemo = false;
+    }
+
+    validQuest() {
+        if (this.newQuestion !== '') {
+            return true
+        } else {
+            return false
+        }
+    }
+
+    validAns1() {
+        if (this.newAns1 !== '') {
+            return true
+        } else {
+            return false
+        }
+    }
+
+    validAns2() {
+        if (this.newAns2 !== '') {
+            return true
+        } else {
+            return false
+        }
+    }
+
+    validAns3() {
+        if (this.showAns[1]) {
+            if (this.newAns3 !== '') {
+                return true
+            } else {
+                return false
+            }
+        } else {
+            return true
+        }
+    }
+
+    validAns4() {
+        if (this.showAns[2]) {
+            if (this.newAns4 !== '') {
+                return true
+            } else {
+                return false
+            }
+        } else {
+            return true
+        }
+    }
+
+    validAns5() {
+        if (this.showAns[3]) {
+            if (this.newAns5 !== '') {
+                return true
+            } else {
+                return false
+            }
+        } else {
+            return true
+        }
+    }
+
+    validAns6() {
+        if (this.showAns[4]) {
+            if (this.newAns6 !== '') {
+                return true
+            } else {
+                return false
+            }
+        } else {
+            return true
+        }
     }
 
     ngOnInit() {

@@ -80,12 +80,16 @@ label.css-label {
   -ms-user-select: none;
   user-select: none;
 }
+
 .alert {
   text-align: center;
   width: 300px;
-  position: absolute;
-  right: 5%;
-  top: 5%;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+.alert-customize {
+  position: relative;
 }
 
 .timer {

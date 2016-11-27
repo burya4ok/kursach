@@ -1,7 +1,7 @@
 <button md-raised-button class="back-button" routerLink="/student/testing" *ngIf="!showResult">❮ В головне меню</button>
 <div *ngIf="!showResult">
     <h1>{{question.theme}}</h1>
-    <div class="col-md-12">
+    <div class="col-md-12" style="position: relative">
         <div class="col-md-6 image">
             <img src={{question.image}}
                  class="img-responsive">
@@ -43,11 +43,13 @@
     <div class="col-md-12 timer" *ngIf="showTimer">
         <h2>Відлік часу: {{minutes}}:{{sec}}</h2>
     </div>
-    <div class="alert alert-success" *ngIf="success && showAllert">
-        Відповідь правильна
-    </div>
-    <div class="alert alert-danger" *ngIf="wrong && showAllert">
-        Відповідь неправильна
+    <div class="alert-customize col-md-12">
+        <div class="alert alert-success" *ngIf="success && showAllert">
+            Відповідь правильна
+        </div>
+        <div class="alert alert-danger" *ngIf="wrong && showAllert">
+            Відповідь неправильна
+        </div>
     </div>
 
 </div>

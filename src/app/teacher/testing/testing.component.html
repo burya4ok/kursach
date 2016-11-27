@@ -1,4 +1,4 @@
-<div class="global-block">
+<div class="global-block" *ngIf="!showDemo">
     <h1>Заповнення тестів</h1>
     <div class="col-md-12 height">
         <div class="col-md-6 height">
@@ -24,7 +24,7 @@
             <div class="form-group margin-top">
                 <md-input class="enter-question" [(ngModel)]="newTheme" [placeholder]="'Введіть назву теми...'"
                           type="text"></md-input>
-                <button md-raised-button class="md-raised md-primary" (click)="confirmAddTheme()">Створити тему</button>
+                <button md-raised-button class="md-raised md-primary" [disabled]="newTheme === ''" (click)="confirmAddTheme()">Створити тему</button>
                 <button md-raised-button class="md-raised md-warn" (click)="cancelAddTest()">Відмінити</button>
             </div>
         </div>
@@ -36,7 +36,7 @@
                     <label for="1">Питання: </label>
                     <textarea class="form-control" rows="2" id="1" [(ngModel)]="newQuestion"></textarea>
 
-                    <label for="10">Виберіть кількість питань: </label>
+                    <label for="10">Виберіть кількість відповідей: </label>
                     <select #selectedCount [(ngModel)]="simpleValue" class="setCountAnswers" id="10" (change)="changeCountAnswer(selectedCount.value)">
                         <option [value]=2>2</option>
                         <option [value]=3>3</option>
@@ -76,9 +76,14 @@
                     <span class="choose-text">Вибрати нове зображення(не обов'язково)</span>
                     <input class="file" type="file" ng2FileSelect [uploader]="uploader"/>
                 </div>
-                <button md-raised-button class="md-raised md-primary" (click)="confirmChangeTest()">Внести зміни в питання</button>
+                <button md-raised-button class="md-raised md-primary" [disabled]="!validQuest() || !validAns1() || !validAns2()
+                || !validAns3() || !validAns4() || !validAns5() || !validAns6()"
+                        (click)="confirmChangeTest()">Внести зміни в питання</button>
                 <button md-raised-button class="md-raised md-warn" (click)="removeQuestion()">Видалити питання</button>
                 <button md-raised-button class="md-raised md-warn" (click)="cancelAddTest()">Відмінити</button>
+                <button md-raised-button class="md-raised md-primary customize" [disabled]="!validQuest() || !validAns1() || !validAns2()
+                || !validAns3() || !validAns4() || !validAns5() || !validAns6()"
+                        (click)="hideGlobalMenu()">Демо показ питання</button>
             </div>
         </div>
         <div class="col-md-6 " *ngIf="changeAddTest" style="height: 100%">
@@ -89,7 +94,7 @@
                     <label for="101">Питання: </label>
                     <textarea class="form-control" rows="2" id="101" [(ngModel)]="newQuestion"></textarea>
 
-                    <label for="110">Виберіть кількість питань: </label>
+                    <label for="110">Виберіть кількість відповідей: </label>
                     <select #selectedCount [(ngModel)]="simpleValue" class="setCountAnswers" id="110" (change)="changeCountAnswer(selectedCount.value)">
                         <option [value]=2>2</option>
                         <option [value]=3>3</option>
@@ -128,9 +133,62 @@
                     <span class="choose-text">Вибрати зображення(не обов'язково)</span>
                     <input class="file" type="file" ng2FileSelect [uploader]="uploader"/>
                 </div>
-                <button md-raised-button class="md-raised md-primary" (click)="confirmAddTest()">Створити нове питанння</button>
+                <button md-raised-button class="md-raised md-primary" [disabled]="!validQuest() || !validAns1() || !validAns2()
+                || !validAns3() || !validAns4() || !validAns5() || !validAns6()"
+                        (click)="confirmAddTest()">Створити нове питанння</button>
                 <button md-raised-button class="md-raised md-warn" (click)="cancelAddTest()">Відмінити</button>
+                <button md-raised-button class="md-raised md-primary customize" [disabled]="!validQuest() || !validAns1() || !validAns2()
+                || !validAns3() || !validAns4() || !validAns5() || !validAns6()"
+                        (click)="hideGlobalMenu()">Демо показ питання</button>
             </div>
         </div>
     </div>
 </div>
+
+<div class="demo" *ngIf="showDemo">
+    <button md-raised-button class="back-button md-primary md-raised" (click)="showGlobalMenu()">Назад</button>
+    <div>
+        <h1>{{question.theme}}</h1>
+        <div class="col-md-12">
+            <div class="col-md-6 image">
+                <img src={{question.image}}
+                     class="img-responsive">
+            </div>
+
+            <div class="col-md-6 block-question">
+                <span class="question">{{question.question}}</span>
+                <div class="question-block">
+                    <div>
+                        <input type="radio" name="radiog_lite" id="radio1" class="css-checkbox"/>
+                        <label for="radio1" class="css-label radGroup1">{{question.answer1}}</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="radiog_lite" id="radio2" class="css-checkbox"/>
+                        <label for="radio2" class="css-label radGroup1">{{question.answer2}}</label>
+                    </div>
+                    <div *ngIf="question.answer3 !== ''">
+                        <input type="radio" name="radiog_lite" id="radio3" class="css-checkbox"/>
+                        <label for="radio3" class="css-label radGroup1">{{question.answer3}}</label>
+                    </div>
+                    <div *ngIf="question.answer4 !== ''">
+                        <input type="radio" name="radiog_lite" id="radio4" class="css-checkbox"/>
+                        <label for="radio4" class="css-label radGroup1">{{question.answer4}}</label>
+                    </div>
+                    <div *ngIf="question.answer5 !== ''">
+                        <input type="radio" name="radiog_lite" id="radio5" class="css-checkbox"/>
+                        <label for="radio5" class="css-label radGroup1">{{question.answer5}}</label>
+                    </div>
+                    <div *ngIf="question.answer6 !== ''">
+                        <input type="radio" name="radiog_lite" id="radio6" class="css-checkbox"/>
+                        <label for="radio6" class="css-label radGroup1">{{question.answer6}}</label>
+                    </div>
+                </div>
+                <div class="col-md-12 button">
+                    <button md-raised-button>Слідуюче питання</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

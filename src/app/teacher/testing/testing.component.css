@@ -53,3 +53,107 @@ textarea {
   margin-top: 5px;
   width: 50px;
 }
+
+.customize {
+  margin-top: 5px;
+  width: 100%;
+}
+
+
+.demo .fill-bar{
+  flex: 1 1 auto;
+}
+
+.demo h1 {
+  text-align: center;
+  margin: 25px 0;
+}
+
+.demo span {
+  font-size: 1.5em;
+}
+
+.demo .question {
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.demo .block-question {
+  text-align: center;
+}
+
+.demo .question-block div {
+  margin-bottom: 10px;
+}
+.demo .question-block {
+  margin-top: 20px;
+  text-align: left;
+}
+
+.demo .image .img-responsive {
+  margin: 0 auto;
+  position: relative;
+  width: 350px;
+}
+
+.demo .image {
+  text-align: center;
+}
+
+.demo .button {
+  text-align: center;
+  position: relative;
+  bottom: 0;
+}
+
+.demo .back-button {
+  margin: 20px;
+  position: relative;
+}
+
+
+.demo  input[type=radio].css-checkbox {
+  position:absolute; z-index:-1000; left:-1000px; overflow: hidden; clip: rect(0 0 0 0); height:1px; width:1px; margin:-1px; padding:0; border:0;
+}
+
+.demo input[type=radio].css-checkbox + label.css-label {
+  padding-left:28px;
+  height:22px;
+  display:inline-block;
+  line-height:22px;
+  background-repeat:no-repeat;
+  background-position: 0 0;
+  font-size:22px;
+  vertical-align:middle;
+  cursor:pointer;
+
+}
+
+.demo input[type=radio].css-checkbox:checked + label.css-label {
+  background-position: 0 -22px;
+}
+.demo label.css-label {
+  background-image:url(../dist/assets/img/csscheckbox.png);
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.demo .alert {
+  text-align: center;
+  width: 300px;
+  position: absolute;
+  right: 5%;
+  top: 5%;
+}
+
+.demo .menu {
+  margin-top: 30px;
+}
+.demo .textcenter {
+  margin-top: 15%;
+  text-align: center;
+}
