@@ -26,17 +26,29 @@ export class LoginComponent implements OnInit {
         this.placeholder = 'Пароль';
         this.password = '';
         this.subject = this.subjectService.getSubject();
-        this.subject.mainImg = path.join('./assets/img/', this.subject.mainImg)
     }
 
     toStudent = () => {
+        this.focusInput();
         this.student = true;
         this.teacher = false;
     };
 
     toTeacher = () => {
+        this.focusInput();
         this.teacher = true;
         this.student = false;
+
+    };
+
+    private focusInput = () => {
+        if (!this.student && !this.teacher) {
+            setTimeout(() => {
+                $('md-input.login-content input').focus();
+            }, 100);
+        } else {
+            $('md-input.login-content input').focus();
+        }
     };
 
     login = () => {
@@ -52,14 +64,15 @@ export class LoginComponent implements OnInit {
     };
 
     private openMainWindow = (type: string) => {
-        this.loginService.setTypeOfUser(type);
         let checkPassword = this.loginService.checkPassword(type, this.password);
         if (checkPassword) {
             this.win.hide();
-            ipcRenderer.send('mainWindow', type);
+            this.loginService.setTypeOfUser(type);
+            ipcRenderer.send('mainWindow', {type: type, name: this.subjectService.getSubject().name});
         } else {
             this.password = '';
-            this.placeholder = 'Введіть вірний пароль'
+            this.placeholder = 'Введіть вірний пароль';
+            $('md-input.login-content .md-input-placeholder').css('color', 'red')
         }
     };
 

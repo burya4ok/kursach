@@ -12,15 +12,23 @@ import {Router } from "@angular/router";
 export class AppComponent {
     title: string;
     typeOfUser: string;
+    menu: any[];
+
     constructor(private loginService: LoginService, private router: Router) {
-        router.events.subscribe((val) => {
+        router.events.subscribe(() => {
             this.typeOfUser = this.loginService.getTypeOfUser();
         });
+        this.menu = [
+            {
+                link: 'teacher/curriculum',
+                title: 'Навчальний план'
+            }
+        ];
 
-            this.loginService = loginService;
         setInterval(() => {
             this.title = this.loginService.getTitle();
-        }, 100);}
+        }, 100);
+    }
 
     exit() {
         //noinspection TypeScriptUnresolvedFunction
@@ -46,5 +54,9 @@ export class AppComponent {
 
     isStudent() {
         return this.typeOfUser === 'student'
+    }
+
+    clickText(a: any) {
+        console.log(a);
     }
 }

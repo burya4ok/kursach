@@ -3,10 +3,10 @@ import {BrowserModule} from '@angular/platform-browser';
 import {FormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 import {MaterialModule} from '@angular/material';
-import { FileUploadModule } from 'ng2-file-upload/components/file-upload/file-upload.module';
+import {FileUploadModule} from 'ng2-file-upload/components/file-upload/file-upload.module';
 import {ToastModule} from 'ng2-toastr/ng2-toastr';
-import { DevExtremeModule } from 'devextreme-angular2';
-import { SimpleTimer } from 'ng2-simple-timer';
+import {DevExtremeModule} from 'devextreme-angular2';
+import {SimpleTimer} from 'ng2-simple-timer';
 
 
 import {routing, appRoutingProviders}  from './app-routing.module';
@@ -21,7 +21,7 @@ import {StudentMaterialsComponent, SafePipe} from './student/materials/materials
 import {TeacherMaterialsComponent} from './teacher/materials/materials.component';
 import {LoginService} from "./services/login.service";
 import {TestingService} from "./services/testing.service";
-import { MaterialsService} from "./services/materials.service";
+import {MaterialsService} from "./services/materials.service";
 import {CurriculumService} from "./services/curriculum.service";
 import {CurriculumStudentComponent} from "./student/curriculum/curriculum.component";
 import {CurriculumTeacherComponent} from "./teacher/curriculum/curriculum.component";
@@ -57,7 +57,7 @@ import {CustomIconsService} from "./services/customIcons.service";
         DevExtremeModule
     ],
     providers: [appRoutingProviders, LoginService, TestingService, MaterialsService, CurriculumService,
-                TrainingUnitService, SubjectService, CustomIconsService, SimpleTimer],
+        TrainingUnitService, SubjectService, CustomIconsService, SimpleTimer],
     bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -1,19 +1,20 @@
-<div class="row">
-        <h2>Додати навчальні матеріали</h2>
-    <dx-data-grid
-            [dataSource]="dataGridData.dataSource"
-            [columns]="dataGridData.columns"
-            [editing]="dataGridData.editing"
-            [twoWayBindingEnabled]="true"
-            [paging]="dataGridData.paging"
-            [pager]="dataGridData.pager"
-            [filterRow]="dataGridData.filterRow"
-    >
-        <div *dxTemplate="let cell of 'fileUploader'">
-            <dx-file-uploader
-            (onUploadError)="uploadFile($event, cell)">
-
-            </dx-file-uploader>
-        </div>
-    </dx-data-grid>
+<div class="row view">
+    <dx-scroll-view>
+        <h1>Додати навчальні матеріали</h1>
+        <dx-data-grid
+                [dataSource]="dataGridData.dataSource"
+                [columns]="dataGridData.columns"
+                [editing]="dataGridData.editing"
+                [twoWayBindingEnabled]="true"
+                [paging]="dataGridData.paging"
+                [pager]="dataGridData.pager"
+                [filterRow]="dataGridData.filterRow"
+        >
+            <div *dxTemplate="let cell of 'fileUploader'">
+                <dx-file-uploader
+                        (onUploadError)="uploadFile($event, cell)">
+                </dx-file-uploader>
+            </div>
+        </dx-data-grid>
+    </dx-scroll-view>
 </div>

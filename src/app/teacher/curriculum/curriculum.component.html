@@ -2,31 +2,127 @@
     <div class="clo-md-12">
         <div class="col-md-6">
             <h1>Предмет</h1>
-            <md-input [(ngModel)]="editSubject.name" required="true" [placeholder]="'Назва предмету'" type="text"></md-input>
+            <md-input [(ngModel)]="editSubject.name" required="true" [placeholder]="'Назва предмету'"
+                      type="text"></md-input>
+            <img class="login-image preview" [src]="editSubject.mainImg">
+
             <dx-file-uploader
                     [accept]="'image/*'"
                     [selectButtonText]="'Оберіть файл'"
                     [labelText]="'Або перетяніть сюди'"
                     (onUploadError)="onUploadError($event)"
             ></dx-file-uploader>
-            <button md-raised-button color="primary" [disabled]="isSameSubject()" class=" btn-xs" (click)="saveSubject()">Зберегти</button>
-            <button md-raised-button color="accent" [disabled]="isSameSubject()" class=" btn-xs" (click)="cancelSubject()">Відмінити</button>
+            <button md-raised-button color="primary" [disabled]="isSameSubject()" class=" btn-xs"
+                    (click)="saveSubject()">Зберегти
+            </button>
+            <button md-raised-button color="accent" [disabled]="isSameSubject()" class=" btn-xs"
+                    (click)="cancelSubject()">Відмінити
+            </button>
+
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6 curriculum">
             <h1>Навчальний план</h1>
-            <div class="curriculum">
-                <md-input [(ngModel)]="editCurriculum.trainingYear" [placeholder]="'Рік підготовки'" type="text"></md-input>
-                <md-input [(ngModel)]="editCurriculum.semesters" [placeholder]="'Семестри вивчення'" type="text"></md-input>
-                <md-input [(ngModel)]="editCurriculum.amountOfHours" [placeholder]="'Загальний обсяг годин'" type="text"></md-input>
-                <md-input [(ngModel)]="editCurriculum.lectures" [placeholder]="'Лекції'" type="text"></md-input>
-                <md-input [(ngModel)]="editCurriculum.practicalWork" [placeholder]="'Практичні роботи'" type="text"></md-input>
-                <md-input [(ngModel)]="editCurriculum.laboratory" [placeholder]="'Лабораторні'" type="text"></md-input>
-                <md-input [(ngModel)]="editCurriculum.selfStudy" [placeholder]="'Самостійне вивчення'" type="text"></md-input>
-                <md-input [(ngModel)]="editCurriculum.workshops" [placeholder]="'Семінари'" type="text"></md-input>
-                <md-input [(ngModel)]="editCurriculum.typeOfControl" [placeholder]="'Вид контролю'" type="text"></md-input>
-                <button md-raised-button color="primary" [disabled]="isSameCurriculum()" class=" btn-xs" (click)="saveCurriculum()">Зберегти</button>
-                <button md-raised-button color="accent" [disabled]="isSameCurriculum()" class=" btn-xs" (click)="cancelCurriculum()">Відмінити</button>
-            </div>
+            <dx-scroll-view>
+                <div class="form-group" [ngClass]="{
+                'has-success': trainingYear.valid ||trainingYear.passing,
+                'has-danger': !trainingYear.valid
+                }">
+                    <label for="trainingYear" class="col-form-label">Рік підготовки</label>
+                    <input type="text" class="form-control form-control-success form-control-danger" id="trainingYear"
+                           required minlength="1" pattern="[0-9]+(, [0-9]+)*.$"
+                           [(ngModel)]="editCurriculum.trainingYear" name="trainingYear"
+                           #trainingYear="ngModel" (ngModelChange)="setValidation(trainingYear, 'trainingYear')">
+                </div>
+                <div class="form-group" [ngClass]="{
+                'has-success': semesters.valid ||semesters.passing,
+                'has-danger': !semesters.valid
+                }">
+                    <label for="semesters" class="col-form-label">Семестри вивчення</label>
+                    <input type="text" class="form-control form-control-success form-control-danger" id="semesters"
+                           required minlength="1" pattern="[0-9]+(, [0-9]+)*.$"
+                           [(ngModel)]="editCurriculum.semesters" name="semesters"
+                           #semesters="ngModel" (ngModelChange)="setValidation(semesters, 'semesters')">
+                </div>
+                <div class="form-group" [ngClass]="{
+                'has-success': amountOfHours.valid ||amountOfHours.passing,
+                'has-danger': !amountOfHours.valid
+                }">
+                    <label for="amountOfHours" class="col-form-label">Загальний обсяг годин</label>
+                    <input type="number" class="form-control form-control-success form-control-danger"
+                           id="amountOfHours"
+                           required minlength="1"
+                           [(ngModel)]="editCurriculum.amountOfHours" name="amountOfHours"
+                           #amountOfHours="ngModel" (ngModelChange)="setValidation(amountOfHours, 'amountOfHours')">
+                </div>
+                <div class="form-group" [ngClass]="{
+                'has-success': lectures.valid ||lectures.passing,
+                'has-danger': !lectures.valid
+                }">
+                    <label for="lectures" class="col-form-label">Лекції</label>
+                    <input type="number" class="form-control form-control-success form-control-danger" id="lectures"
+                           required minlength="1"
+                           [(ngModel)]="editCurriculum.lectures" name="lectures"
+                           #lectures="ngModel" (ngModelChange)="setValidation(lectures, 'lectures')">
+                </div>
+                <div class="form-group" [ngClass]="{
+                'has-success': practicalWork.valid ||practicalWork.passing,
+                'has-danger': !practicalWork.valid
+                }">
+                    <label for="practicalWork" class="col-form-label">Практичні роботи</label>
+                    <input type="number" class="form-control form-control-success form-control-danger"
+                           id="practicalWork"
+                           required minlength="1"
+                           [(ngModel)]="editCurriculum.practicalWork" name="lectures"
+                           #practicalWork="ngModel" (ngModelChange)="setValidation(practicalWork, 'practicalWork')">
+                </div>
+                <div class="form-group" [ngClass]="{
+                'has-success': laboratory.valid ||laboratory.passing,
+                'has-danger': !laboratory.valid
+                }">
+                    <label for="laboratory" class="col-form-label">Лабораторні</label>
+                    <input type="number" class="form-control form-control-success form-control-danger" id="laboratory"
+                           required minlength="1"
+                           [(ngModel)]="editCurriculum.laboratory" name="lectures"
+                           #laboratory="ngModel" (ngModelChange)="setValidation(laboratory, 'laboratory')">
+                </div>
+                <div class="form-group" [ngClass]="{
+                'has-success': selfStudy.valid ||selfStudy.passing,
+                'has-danger': !selfStudy.valid
+                }">
+                    <label for="selfStudy" class="col-form-label">Самостійне вивчення</label>
+                    <input type="number" class="form-control form-control-success form-control-danger" id="selfStudy"
+                           required minlength="1"
+                           [(ngModel)]="editCurriculum.selfStudy" name="lectures"
+                           #selfStudy="ngModel" (ngModelChange)="setValidation(selfStudy, 'selfStudy')">
+                </div>
+                <div class="form-group" [ngClass]="{
+                'has-success': workshops.valid ||workshops.passing,
+                'has-danger': !workshops.valid
+                }">
+                    <label for="workshops" class="col-form-label">Семінари</label>
+                    <input type="number" class="form-control form-control-success form-control-danger" id="workshops"
+                           required minlength="1"
+                           [(ngModel)]="editCurriculum.workshops" name="lectures"
+                           #workshops="ngModel" (ngModelChange)="setValidation(workshops, 'workshops')">
+                </div>
+                <div class="form-group" [ngClass]="{
+                'has-success': typeOfControl.valid ||typeOfControl.passing,
+                'has-danger': !typeOfControl.valid
+                }">
+                    <label for="typeOfControl" class="col-form-label">Вид контролю</label>
+                    <input type="text" class="form-control form-control-success form-control-danger" id="typeOfControl"
+                           required minlength="1"
+                           [(ngModel)]="editCurriculum.typeOfControl" name="lectures"
+                           #typeOfControl="ngModel" (ngModelChange)="setValidation(typeOfControl, 'typeOfControl')">
+                </div>
+            </dx-scroll-view>
+            <br>
+            <button md-raised-button color="primary" [disabled]="isSameCurriculum()" class=" btn-xs"
+                    (click)="saveCurriculum()">Зберегти
+            </button>
+            <button md-raised-button color="accent" [disabled]="isSameCurriculum()" class=" btn-xs"
+                    (click)="cancelCurriculum()">Відмінити
+            </button>
         </div>
     </div>
 

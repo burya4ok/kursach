@@ -9,3 +9,14 @@ h1 {
 md-input {
   width: 100%
 }
+
+.input-group {
+  margin: 10px 0;
+}
+
+.input-group .form-control {
+  background-color: aliceblue;
+}
+.row.view {
+  height: calc(84vh - 64px);
+}

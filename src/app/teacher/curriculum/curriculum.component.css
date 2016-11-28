@@ -9,3 +9,21 @@ h1 {
 md-input {
   width: 100%
 }
+
+.curriculum .ng-valid[required], .ng-valid.required  {
+  border-left: 5px solid #42A948; /* green */
+}
+
+.curriculum .ng-invalid:not(form)  {
+  border-left: 5px solid #a94442; /* red */
+}
+
+.curriculum {
+  height: calc(65vh - 64px);
+}
+
+
+.login-image.preview {
+  width: 50%;
+  border: 2px solid black;
+}

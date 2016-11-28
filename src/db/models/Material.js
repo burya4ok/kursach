@@ -51,11 +51,9 @@ module.exports = function (sequelize, DataTypes) {
                     .FilterByOptions();
                 return yield Materials.findAll(query);
             }),
-            getMaterialsByType: coroutine(function *(type) {
+            getMaterialsByType: coroutine(function *(selectors) {
                 let materials = yield Materials.findAll({
-                    where: {
-                        type: type
-                    }
+                    where: selectors
                 });
                 for (let material of materials) {
                     material.file = path.join(__dirname, '../../../dist/assets/docs', material.file)
@@ -83,6 +81,10 @@ module.exports = function (sequelize, DataTypes) {
                     {
                         value: 'controlWork',
                         title: 'Контрольна робота'
+                    },
+                    {
+                        value: 'questionsForExams',
+                        title: 'Питання до іспиту'
                     }
                 ]
             }),

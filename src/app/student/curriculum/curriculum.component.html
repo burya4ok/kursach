@@ -1,14 +1,41 @@
-<div class="row">
+<div class="row view">
     <h1>Навчальний план</h1>
-    <div class="curriculum">
-        <md-input [(ngModel)]="curriculum.trainingYear" [disabled]="true" [placeholder]="'Рік підготовки'" type="text"></md-input>
-        <md-input [(ngModel)]="curriculum.semesters" [disabled]="true" [placeholder]="'Семестри вивчення'" type="text"></md-input>
-        <md-input [(ngModel)]="curriculum.amountOfHours" [disabled]="true" [placeholder]="'Загальний обсяг годин'" type="text"></md-input>
-        <md-input [(ngModel)]="curriculum.lectures" [disabled]="true" [placeholder]="'Лекції'" type="text"></md-input>
-        <md-input [(ngModel)]="curriculum.practicalWork" [disabled]="true" [placeholder]="'Практичні роботи'" type="text"></md-input>
-        <md-input [(ngModel)]="curriculum.laboratory" [disabled]="true" [placeholder]="'Лабораторні'" type="text"></md-input>
-        <md-input [(ngModel)]="curriculum.selfStudy" [disabled]="true" [placeholder]="'Самостійне вивчення'" type="text"></md-input>
-        <md-input [(ngModel)]="curriculum.workshops" [disabled]="true" [placeholder]="'Семінари'" type="text"></md-input>
-        <md-input [(ngModel)]="curriculum.typeOfControl" [disabled]="true" [placeholder]="'Вид контролю'" type="text"></md-input>
-    </div>
+    <dx-scroll-view class="curriculum">
+        <div class="input-group">
+            <span class="input-group-addon">Рік підготовки</span>
+            <input type="text" [ngModel]="curriculum.trainingYear" [disabled]="true" class="form-control">
+        </div>
+        <div class="input-group">
+            <span class="input-group-addon">Семестри вивчення</span>
+            <input type="text" [ngModel]="curriculum.semesters" [disabled]="true" class="form-control">
+        </div>
+        <div class="input-group">
+            <span class="input-group-addon">Загальний обсяг годин</span>
+            <input type="text" [ngModel]="curriculum.amountOfHours" [disabled]="true" class="form-control">
+        </div>
+        <div class="input-group">
+            <span class="input-group-addon">Лекції</span>
+            <input type="text" [ngModel]="curriculum.lectures" [disabled]="true" class="form-control">
+        </div>
+        <div class="input-group">
+            <span class="input-group-addon">Практичні роботи</span>
+            <input type="text" [ngModel]="curriculum.practicalWork" [disabled]="true" class="form-control">
+        </div>
+        <div class="input-group">
+            <span class="input-group-addon">Лабораторні</span>
+            <input type="text" [ngModel]="curriculum.laboratory" [disabled]="true" class="form-control">
+        </div>
+        <div class="input-group">
+            <span class="input-group-addon">Самостійне вивчення</span>
+            <input type="text" [ngModel]="curriculum.selfStudy" [disabled]="true" class="form-control">
+        </div>
+        <div class="input-group">
+            <span class="input-group-addon">Семінари</span>
+            <input type="text" [ngModel]="curriculum.workshops" [disabled]="true" class="form-control">
+        </div>
+        <div class="input-group">
+            <span class="input-group-addon">Вид контролю</span>
+            <input type="text" [ngModel]="curriculum.typeOfControl" [disabled]="true" class="form-control">
+        </div>
+    </dx-scroll-view>
 </div>

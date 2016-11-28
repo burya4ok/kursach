@@ -1,12 +1,25 @@
 <div class="content" *ngIf="!filesNotFound">
     <iframe class="document" [src]="currentMaterial.viewerPath | safe" frameborder="0"></iframe>
-    <md-nav-list layout="row">
-        <a class="material" md-list-item [ngClass]="{active: material.id === currentMaterial.id}"
-           *ngFor="let material of materials" (click)="setLecture(material)">
-            <img class="list-img" src="./assets/img/pdf.png">
-            {{material.title}}
-        </a>
-    </md-nav-list>
+    <div class="col-md-12 no-padding">
+        <div class="col-md-2 no-padding">
+            <span class="input-group-addon">Оберіть блок: </span>
+            <dx-select-box [dataSource]="filter"
+                           [valueExpr]="'code'"
+                           [displayExpr]="'name'"
+                           (selectedItemChange)="filteredBy($event)"></dx-select-box>
+        </div>
+        <div class="col-md-9 no-padding offset-md-1">
+            <md-nav-list layout="row">
+                <a class="material" md-list-item [ngClass]="{active: material.id === currentMaterial.id}"
+                   *ngFor="let material of materials" (click)="setLecture(material)">
+                    <img class="list-img" src="./assets/img/pdf.png">
+                    {{material.title}}
+                </a>
+            </md-nav-list>
+        </div>
+    </div>
+
+
 </div>
 <div class="not-found" *ngIf="filesNotFound">
     <h1 class="title">За данною категорією файлів немає</h1>

@@ -8,7 +8,7 @@
             <md-icon>exit_to_app</md-icon>
         </button>
     </md-toolbar>
-    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" *ngIf="isTeacher()">
+    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 row" *ngIf="isTeacher()">
         <md-nav-list>
             <md-list-item routerLink="teacher/curriculum" routerLinkActive="active">
                 <a md-line>Навчальний план</a>
@@ -25,7 +25,7 @@
 
         </md-nav-list>
     </div>
-    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" *ngIf="isStudent()">
+    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 row" *ngIf="isStudent()">
         <md-nav-list>
             <md-list-item routerLink="student/curriculum" routerLinkActive="active">
                 <a md-line>Навчальний план</a>
@@ -44,6 +44,9 @@
             </md-list-item>
             <md-list-item routerLink="student/materials/controlWork" routerLinkActive="active">
                 <a md-line>Контрольна робота</a>
+            </md-list-item>
+            <md-list-item routerLink="student/materials/questionsForExams" routerLinkActive="active">
+                <a md-line>Питання до іспиту</a>
             </md-list-item>
             <md-list-item routerLink="student/testing" routerLinkActive="active">
                 <a md-line >Перевірка знань</a>

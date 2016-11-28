@@ -19,27 +19,27 @@ module.exports = {
                     allowNull: true,
                 },
                 amountOfHours: {
-                    type: Sequelize.TEXT,
+                    type: Sequelize.INTEGER,
                     allowNull: true,
                 },
                 lectures: {
-                    type: Sequelize.TEXT,
+                    type: Sequelize.INTEGER,
                     allowNull: true,
                 },
                 practicalWork: {
-                    type: Sequelize.TEXT,
+                    type: Sequelize.INTEGER,
                     allowNull: true,
                 },
                 laboratory: {
-                    type: Sequelize.TEXT,
+                    type: Sequelize.INTEGER,
                     allowNull: true,
                 },
                 selfStudy: {
-                    type: Sequelize.TEXT,
+                    type: Sequelize.INTEGER,
                     allowNull: true,
                 },
                 workshops: {
-                    type: Sequelize.TEXT,
+                    type: Sequelize.INTEGER,
                     allowNull: true,
                 },
                 typeOfControl: {

@@ -59,7 +59,7 @@ export class TrainingUnitComponent implements OnInit {
             paging: {
                 enabled: true,
                 pageIndex: 0,
-                pageSize: 10
+                pageSize: 6
             },
             columns: [
                 {

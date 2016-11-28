@@ -16,11 +16,13 @@ export class CurriculumTeacherComponent implements OnInit {
   editCurriculum: any;
   subject: any;
   editSubject: any;
+  validation: any[];
 
   constructor(private curriculumService: CurriculumService, private loginService: LoginService,
               private subjectService: SubjectService, private toastr: ToastsManager) {
     this.refreshCurriculumData();
     this.refreshSubjectData();
+    this.validation = [];
   }
 
   private refreshSubjectData() {
@@ -68,7 +70,11 @@ export class CurriculumTeacherComponent implements OnInit {
   };
 
   isSameCurriculum = (): boolean => {
-    return JSON.stringify(this.editCurriculum) === JSON.stringify(this.curriculum);
+    let isSame = JSON.stringify(this.editCurriculum) === JSON.stringify(this.curriculum);
+    let isValid = Object.keys(this.validation).every((key) => {
+      return this.validation[key];
+    });
+    return isSame || !isValid;
   };
 
 
@@ -76,6 +82,11 @@ export class CurriculumTeacherComponent implements OnInit {
     this.toastr.success('Зміни збережено', 'Успіх!');
   }
 
+  setValidation(model: any, name: string) {
+    setTimeout(() => {
+      this.validation[name] = model.valid;
+    }, 10);
+  }
   ngOnInit() {
     this.loginService.setTitle('Навчальний план');
   }

@@ -15,8 +15,8 @@ export class CurriculumStudentComponent implements OnInit {
 
   constructor(private curriculumService: CurriculumService, private loginService: LoginService) {
     this.curriculum = curriculumService.getCurriculum();
-  }
 
+  }
 
   ngOnInit() {
     this.loginService.setTitle('Навчальний план');

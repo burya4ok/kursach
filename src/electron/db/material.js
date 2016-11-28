@@ -10,7 +10,7 @@ module.exports = function (electron) {
     }));
 
     ipcMain.on('getMaterialsByType', Promise.coroutine(function *(event, data) {
-        event.returnValue = yield db.Materials.getMaterialsByType(data.type);
+        event.returnValue = yield db.Materials.getMaterialsByType(data);
     }));
 
     ipcMain.on('getTypes', Promise.coroutine(function *(event, data) {

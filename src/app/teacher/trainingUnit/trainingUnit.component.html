@@ -1,13 +1,14 @@
-<div class="row">
-    <h1>Навчальні блоки</h1>
-    <dx-data-grid
-            [dataSource]="dataGridData.dataSource"
-            [columns]="dataGridData.columns"
-            [editing]="dataGridData.editing"
-            [twoWayBindingEnabled]="true"
-            [paging]="dataGridData.paging"
-            [pager]="dataGridData.pager"
-            [filterRow]="dataGridData.filterRow"
-    ></dx-data-grid>
-
+<div class="row view">
+    <dx-scroll-view>
+        <h1>Навчальні блоки</h1>
+        <dx-data-grid
+                [dataSource]="dataGridData.dataSource"
+                [columns]="dataGridData.columns"
+                [editing]="dataGridData.editing"
+                [twoWayBindingEnabled]="true"
+                [paging]="dataGridData.paging"
+                [pager]="dataGridData.pager"
+                [filterRow]="dataGridData.filterRow"
+        ></dx-data-grid>
+    </dx-scroll-view>
 </div>

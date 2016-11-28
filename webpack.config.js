@@ -41,6 +41,10 @@ module.exports = {
     new webpack.optimize.CommonsChunkPlugin({ name: ['app', 'vendor', 'polyfills'], minChunks: Infinity }),
     new ExtractTextPlugin("[name].css"),
     new webpack.optimize.DedupePlugin(),
+    /*new webpack.optimize.UglifyJsPlugin({
+      sourceMap: false,
+      comments: false,
+    }),*/
     new webpack.ProvidePlugin({
       jQuery: 'jquery',
       $: 'jquery',

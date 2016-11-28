@@ -8,10 +8,10 @@ module.exports = function (electron) {
             height: 600,
             minWidth: 900,
             minHeight: 600,
-            show: false
+            //show: false
         };
         win = new BrowserWindow(options);
-        win.setMenu(null);
+        //win.setMenu(null);
 
         win.loadURL(`file://${__dirname}/../../dist/index.html`);
 
@@ -20,8 +20,8 @@ module.exports = function (electron) {
         });
 
         win.once('ready-to-show', () => {
-            let title = data === 'student' ? 'Режим студента' : 'Режим викладача';
-            win.setTitle(title);
+            let title = data.type === 'student' ? 'Режим студента' : 'Режим викладача';
+            win.setTitle(data.name + ' - ' + title);
             win.show();
             win.maximize();
         });

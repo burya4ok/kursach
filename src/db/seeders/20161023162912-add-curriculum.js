@@ -7,10 +7,10 @@ module.exports = {
             semesters: '7.',
             amountOfHours: 54,
             lectures: 12,
-            practicalWork: null,
+            practicalWork: 0,
             laboratory: 14,
             selfStudy: 28,
-            workshops: null,
+            workshops: 0,
             typeOfControl: 'Залік.',
         }], {});
     },

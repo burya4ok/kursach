@@ -7,8 +7,19 @@ export class MaterialsService {
     getAllMaterials(loadOptions: any): any[]{
         return ipcRenderer.sendSync('getAllMaterials', loadOptions);
     }
-    getMaterialsByType(type: string): any[]{
-        return ipcRenderer.sendSync('getMaterialsByType', {type: type});
+    getMaterialsByType(type: string, unit?: string): any[]{
+        let selectors = {};
+        if (unit) {
+            selectors = {
+                type: type,
+                unit: unit
+            }
+        } else {
+            selectors = {
+                type: type
+            }
+        }
+        return ipcRenderer.sendSync('getMaterialsByType', selectors);
     }
     getTypes(): any[]{
         return ipcRenderer.sendSync('getTypes');
