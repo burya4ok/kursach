@@ -5,7 +5,6 @@ import {MaterialsService} from "../../services/materials.service";
 import {DomSanitizer} from "@angular/platform-browser";
 import {ActivatedRoute} from "@angular/router";
 import {TrainingUnitService} from "../../services/trainingUnit.service";
-import {DxSelectBoxComponent} from "devextreme-angular2";
 
 @Pipe({ name: 'safe' })
 export class SafePipe implements PipeTransform {

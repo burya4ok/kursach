@@ -3,7 +3,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {FormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 import {MaterialModule} from '@angular/material';
-import {FileUploadModule} from 'ng2-file-upload/file-upload/file-upload.module';
+import {FileUploadModule} from 'ng2-file-upload/components/file-upload/file-upload.module';
 import {ToastModule} from 'ng2-toastr/ng2-toastr';
 import {SimpleTimer} from 'ng2-simple-timer';
 import {
@@ -11,7 +11,7 @@ import {
     DxScrollViewModule,
     DxFileUploaderModule,
     DxSelectBoxModule
-} from 'devextreme-angular2';
+} from 'devextreme-angular';
 
 
 import {routing, appRoutingProviders}  from './app-routing.module';

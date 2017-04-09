@@ -9,8 +9,7 @@ module.exports = function (electron) {
             minWidth: 800,
             minHeight: 500,
             resizable: false,
-            //show: false
-
+            show: false
         };
         win = new BrowserWindow(options);
         win.setMenu(null);
