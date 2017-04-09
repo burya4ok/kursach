@@ -13,3 +13,12 @@ md-input {
 .row.view {
   height: calc(100vh - 64px);
 }
+
+.dx-datagrid {
+  top: -50px;
+  background-color: transparent;
+}
+
+.dx-toolbar {
+  background-color: transparent;
+}

@@ -3,7 +3,7 @@ module.exports = function (electron) {
     let win = null;
 
     function createWindow(event, data) {
-        var options = {
+        let options = {
             width: 900,
             height: 600,
             minWidth: 900,
@@ -11,7 +11,7 @@ module.exports = function (electron) {
             //show: false
         };
         win = new BrowserWindow(options);
-        //win.setMenu(null);
+        win.setMenu(null);
 
         win.loadURL(`file://${__dirname}/../../dist/index.html`);
 

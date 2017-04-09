@@ -65,12 +65,14 @@ export class TrainingUnitComponent implements OnInit {
                 {
                     dataField: "code",
                     caption: 'Шифр',
-                    alignment: "center"
+                    alignment: "center",
+                    width: '30%'
                 },
                 {
                     dataField: "name",
                     caption: 'Назва',
-                    alignment: "center"
+                    alignment: "center",
+                    width: '70%'
                 },
             ],
             bindingOptions: {

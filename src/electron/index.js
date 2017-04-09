@@ -5,10 +5,12 @@ const loginWindow = require('./loginWindow');
 const mainWindow = require('./mainWindow');
 const db = require('./db');
 const models = require('../db/models');
+require('electron-reload')(__dirname);
 
 loginWindow(electron);
 db(electron);
 mainWindow(electron);
+
 
 app.on('ready', Promise.coroutine(function *() {
     let type = yield models.Config.getTypeOfUser();

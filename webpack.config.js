@@ -19,7 +19,7 @@ module.exports = {
   devServer: {
     port: 1337
   },
-  devtool: 'source-map',
+  devtool: 'inline-source-map',
 
   output: {
     path: './dist',
@@ -73,7 +73,6 @@ module.exports = {
       {
         test: /\.ts$/,
         loaders: ['awesome-typescript-loader', 'angular2-template-loader'],
-        exclude: [/\.(spec|e2e)\.ts$/],
         include: [path.resolve(path.join(__dirname, "src"))]
       },
       {

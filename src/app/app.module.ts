@@ -3,10 +3,15 @@ import {BrowserModule} from '@angular/platform-browser';
 import {FormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 import {MaterialModule} from '@angular/material';
-import {FileUploadModule} from 'ng2-file-upload/components/file-upload/file-upload.module';
+import {FileUploadModule} from 'ng2-file-upload/file-upload/file-upload.module';
 import {ToastModule} from 'ng2-toastr/ng2-toastr';
-import {DevExtremeModule} from 'devextreme-angular2';
 import {SimpleTimer} from 'ng2-simple-timer';
+import {
+    DxDataGridModule,
+    DxScrollViewModule,
+    DxFileUploaderModule,
+    DxSelectBoxModule
+} from 'devextreme-angular2';
 
 
 import {routing, appRoutingProviders}  from './app-routing.module';
@@ -54,7 +59,10 @@ import {CustomIconsService} from "./services/customIcons.service";
         routing,
         MaterialModule.forRoot(),
         ToastModule,
-        DevExtremeModule
+        DxDataGridModule,
+        DxScrollViewModule,
+        DxFileUploaderModule,
+        DxSelectBoxModule
     ],
     providers: [appRoutingProviders, LoginService, TestingService, MaterialsService, CurriculumService,
         TrainingUnitService, SubjectService, CustomIconsService, SimpleTimer],

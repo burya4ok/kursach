@@ -3,17 +3,17 @@ module.exports = function (electron) {
     let win = null;
 
     function createWindow() {
-        var options = {
+        let options = {
             width: 800,
             height: 500,
             minWidth: 800,
             minHeight: 500,
             resizable: false,
-            show: false
+            //show: false
 
         };
         win = new BrowserWindow(options);
-        //win.setMenu(null);
+        win.setMenu(null);
 
         win.loadURL(`file://${__dirname}/../../dist/index.html`);
 

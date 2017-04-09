@@ -32,7 +32,7 @@ export class AppComponent {
 
     exit() {
         //noinspection TypeScriptUnresolvedFunction
-        var answer: boolean = confirm("Ви дійсно хочете змінити режим?", "Обережно!");
+        let answer: boolean = confirm("Ви дійсно хочете змінити режим?");
         if (answer){
             this.loginService.deleteTypeOfUser();
             ipcRenderer.send('loginWindow')
