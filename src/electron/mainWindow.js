@@ -13,14 +13,19 @@ module.exports = function (electron) {
         win = new BrowserWindow(options);
         win.setMenu(null);
 
-        win.loadURL(`file://${__dirname}/../../dist/index.html`);
+        let isStudent = data.type === 'student';
+
+        let htmlPath = isStudent ? `file://${__dirname}/../../dist/student.html`
+            : `file://${__dirname}/../../dist/teacher.html`;
+
+        win.loadURL(htmlPath);
 
         win.on('closed', () => {
             app.quit();
         });
 
         win.once('ready-to-show', () => {
-            let title = data.type === 'student' ? 'Режим студента' : 'Режим викладача';
+            let title = isStudent ? 'Режим студента' : 'Режим викладача';
             win.setTitle(data.name + ' - ' + title);
             win.show();
             win.maximize();

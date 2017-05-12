@@ -88,6 +88,6 @@ export class CurriculumTeacherComponent implements OnInit {
     }, 10);
   }
   ngOnInit() {
-    this.loginService.setTitle('Навчальний план');
+    this.loginService.setTitle('Навчальний план та дисципліна');
   }
 }

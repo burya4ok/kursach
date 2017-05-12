@@ -4,6 +4,8 @@
 h1 {
   text-align: center;
   margin: 10px 0;
+  position: relative;
+  z-index: 2;
 }
 
 md-input {

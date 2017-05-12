@@ -1,5 +1,36 @@
-<button md-fab class="add-btn">
-    <md-icon class="md-24">add</md-icon>
-</button>
-Інформації нема...
+<div *ngIf="!isActive() && !hide()">
+    <md-toolbar color="primary">
+    <span>
+      {{title}}
+    </span>
+        <span class="fill-bar"></span>
+        <button md-icon-button (click)="exit()">
+            <md-icon>exit_to_app</md-icon>
+        </button>
+    </md-toolbar>
+    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 row">
+        <md-nav-list>
+            <md-list-item routerLink="/curriculum" routerLinkActive="active">
+                <a md-line>Навчальний план</a>
+            </md-list-item>
+            <md-list-item routerLink="/unit" routerLinkActive="active">
+                <a md-line>Навчальний блок</a>
+            </md-list-item>
+            <md-list-item routerLink="/materials" routerLinkActive="active">
+                <a md-line>Навчальні матеріали</a>
+            </md-list-item>
+            <md-list-item routerLink="/additional-materials" routerLinkActive="active">
+                <a md-line>Додаткові матеріали</a>
+            </md-list-item>
+            <md-list-item routerLink="/testing" routerLinkActive="active">
+                <a md-line >Питання для тестування</a>
+            </md-list-item>
 
+        </md-nav-list>
+    </div>
+</div>
+
+<div class="" [ngClass]="{'col-xs-12 col-sm-12 col-md-12 col-lg-12 row main-without-toolbar': isActive(),
+              'col-xs-9 col-sm-9 col-md-9 col-lg-9 main-with-toolbar': !isActive() && !hide()}">
+    <router-outlet></router-outlet>
+</div>

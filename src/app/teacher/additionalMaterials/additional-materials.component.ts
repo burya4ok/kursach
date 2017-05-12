@@ -3,19 +3,20 @@ import {LoginService} from "../../services/login.service";
 import {MaterialsService} from "../../services/materials.service";
 import {CustomIconsService} from "../../services/customIcons.service";
 import {TrainingUnitService} from "../../services/trainingUnit.service";
+import {AdditionalMaterialsService} from "../../services/additional-materials.service";
 
 @Component({
-    selector: 'app-materials',
-    templateUrl: 'materials.component.html',
-    styleUrls: ['materials.component.css'],
+    selector: 'app-additional-materials',
+    templateUrl: 'additional-materials.component.html',
+    styleUrls: ['additional-materials.component.css'],
 
 })
-export class TeacherMaterialsComponent implements OnInit {
+export class TeacherAdditionalMaterialsComponent implements OnInit {
     win: Electron.BrowserWindow;
     materials: any;
     dataGridData: any;
 
-    constructor(private loginService: LoginService, private materialsService: MaterialsService,
+    constructor(private loginService: LoginService, private materialsService: AdditionalMaterialsService,
                 private customIcons: CustomIconsService, private unitService: TrainingUnitService) {
         this.dataGridData = {
             dataSource: {
@@ -132,6 +133,6 @@ export class TeacherMaterialsComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.loginService.setTitle('Навчальний матеріал');
+        this.loginService.setTitle('Додаткові матеріали');
     }
 }

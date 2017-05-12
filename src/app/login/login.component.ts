@@ -1,6 +1,4 @@
-import {Component, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
-import * as path from 'path';
+import {Component} from '@angular/core';
 import {ipcRenderer, remote} from 'electron';
 import {LoginService} from "../services/login.service";
 import {SubjectService} from "../services/subject.service";
@@ -11,7 +9,7 @@ import {SubjectService} from "../services/subject.service";
     styleUrls: ['./login.component.css'],
     providers: [LoginService],
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent  {
     win: Electron.BrowserWindow;
     teacher: boolean;
     student: boolean;
@@ -19,7 +17,7 @@ export class LoginComponent implements OnInit {
     password: string;
     subject: any;
 
-    constructor(private router: Router, private loginService: LoginService,
+    constructor(private loginService: LoginService,
                 private subjectService: SubjectService) {
         this.student = false;
         this.teacher = false;
@@ -75,14 +73,4 @@ export class LoginComponent implements OnInit {
             $('md-input.login-content .md-input-placeholder').css('color', 'red')
         }
     };
-
-    ngOnInit() {
-        let type = this.loginService.getTypeOfUser();
-        if (type === 'student') {
-            this.router.navigate(['student/curriculum']);
-        } else if (type === 'teacher') {
-            this.router.navigate(['teacher/curriculum']);
-        }
-    }
-
 }

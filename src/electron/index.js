@@ -5,7 +5,7 @@ const loginWindow = require('./loginWindow');
 const mainWindow = require('./mainWindow');
 const db = require('./db');
 const models = require('../db/models');
-require('electron-reload')(__dirname);
+//require('electron-reload')(__dirname);
 
 loginWindow(electron);
 db(electron);

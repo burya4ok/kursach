@@ -1,17 +1,18 @@
-<div class="col-md-5 image-block">
-    <img class="login-image" [src]="subject.mainImg">
-</div>
 
-<div class="col-md-7">
-    <div class="container col-centered">
-        <span class="subject-name login-content">{{subject.name}}</span>
-        <button class="btn-type md-primary" md-raised-button [disabled]="student" (click)="toStudent()">Студент</button>
-        <button class="btn-type md-primary" md-raised-button [disabled]="teacher" (click)="toTeacher()">Викладач</button>
-        <md-input class="login-content" [(ngModel)]="password" [placeholder]="placeholder" type="password"
-                  [disabled]="!student && !teacher"  align="end" (keyup.enter)="login()"></md-input>
-        <button class="login-content btn-type md-primary" md-raised-button [disabled]="!student && !teacher" (click)="login()">УВІЙТИ</button>
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 row main-without-toolbar">
+    <div class="col-md-5 image-block">
+        <img class="login-image" [src]="subject.mainImg">
     </div>
+
+    <div class="col-md-7">
+        <div class="container col-centered">
+            <span class="subject-name login-content">{{subject.name}}</span>
+            <button class="btn-type md-primary" md-raised-button [disabled]="student" (click)="toStudent()">Студент</button>
+            <button class="btn-type md-primary" md-raised-button [disabled]="teacher" (click)="toTeacher()">Викладач</button>
+            <md-input class="login-content" [(ngModel)]="password" [placeholder]="placeholder" type="password"
+                      [disabled]="!student && !teacher"  align="end" (keyup.enter)="login()"></md-input>
+            <button class="login-content btn-type md-primary" md-raised-button [disabled]="!student && !teacher" (click)="login()">УВІЙТИ</button>
+        </div>
+    </div>
+
 </div>
-
-
-

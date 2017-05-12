@@ -1,3 +1,48 @@
+body {
+    margin: 0;
+}
+html, body {
+    height: 100vh;
+    overflow: hidden;
+}
+md-toolbar {
+    -webkit-user-select: none;
+    -webkit-app-region: drag;
+}
+md-toolbar span, md-toolbar button {
+    -webkit-app-region: no-drag;
+}
+
+.col-centered{
+    float: none;
+    margin: 70px auto 0 auto;
+}
+
+md-list-item.active .md-list-item {
+    background-color: #cccccc;
+}
+
+* {
+    -webkit-user-select: none;
+}
+
+.fill-bar {
+    flex: 1 1 auto;
+}
+
+.dx-fileuploader-file-status-message{
+    display: none !important;
+}
+
+.main-without-toolbar {
+    height: 100vh;
+}
+
+.main-with-toolbar {
+    height: calc(100% - 64px);
+}
+
+
 .fill-bar {
     flex: 1 1 auto;
 }

@@ -1,9 +1,16 @@
 <div class="row">
     <div class="clo-md-12">
         <div class="col-md-6">
-            <h1>Предмет</h1>
-            <md-input [(ngModel)]="editSubject.name" required="true" [placeholder]="'Назва предмету'"
-                      type="text"></md-input>
+            <h1>Дисципліна</h1>
+            <div class="form-group" [ngClass]="{
+                'has-success': subjectName.valid || subjectName.passing,
+                'has-danger': !subjectName.valid
+                }">
+                <label for="subjectName" class="col-form-label">Назва предмету</label>
+                <input type="text" class="form-control form-control-success form-control-danger" id="subjectName"
+                       required [(ngModel)]="editSubject.name" name="subjectName"
+                       #subjectName="ngModel" (ngModelChange)="setValidation(subjectName, 'subjectName')">
+            </div>
             <img class="login-image preview" [src]="editSubject.mainImg">
 
             <dx-file-uploader

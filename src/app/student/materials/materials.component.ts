@@ -1,4 +1,4 @@
-import {Component, OnInit, Pipe, PipeTransform, ViewChild} from '@angular/core';
+import {Component, OnInit, Pipe, PipeTransform} from '@angular/core';
 import * as path from 'path';
 import {LoginService} from "../../services/login.service";
 import {MaterialsService} from "../../services/materials.service";

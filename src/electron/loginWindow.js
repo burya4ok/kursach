@@ -14,7 +14,7 @@ module.exports = function (electron) {
         win = new BrowserWindow(options);
         win.setMenu(null);
 
-        win.loadURL(`file://${__dirname}/../../dist/index.html`);
+        win.loadURL(`file://${__dirname}/../../dist/login.html`);
 
         win.on('closed', () => {
             app.quit();
